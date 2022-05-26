@@ -59,9 +59,9 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div id="app" class="wrapper">
 
-       {{--  @include('layouts.menu-lateral'); --}}
+        @include('layouts.menu-lateral');
 
-        {{-- @include('auth.login') --}}
+       {{--  @include('auth.login') --}}
 
         <div class="content-wrapper">
             <div class="col-sm-12">
@@ -76,7 +76,7 @@
                             @yield('title')
                         </div>
 
-                        {{-- <div class="col-sm-6">
+                        <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">
                                     <a href="{{ route('home') }}">Dashboard</a>
@@ -84,7 +84,7 @@
 
                                 @yield('breadcrumb')
                             </ol>
-                        </div> --}}
+                        </div>
 
                     </div>
                 </div>

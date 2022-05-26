@@ -18,8 +18,12 @@ use App\Http\Controllers\Auth\RegisteredUserController;
     return view('welcome');;
 }); */
 
-Route::get('/dashboard', function () {
+/* Route::get('/dashboard', function () {
     return view('dashboard');
+})->middleware(['auth'])->name('dashboard'); */
+
+Route::get('/dashboard', function () {
+    return view('home');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/register', 'App\Http\Controllers\UserController@register');

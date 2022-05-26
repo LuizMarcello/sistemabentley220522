@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Representante;
+use App\Models\Chamado;
 use Illuminate\Http\Request;
 
-class RepresentanteController extends Controller
+class ChamadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class RepresentanteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Representante  $representante
+     * @param  \App\Models\Chamado  $chamado
      * @return \Illuminate\Http\Response
      */
-    public function show(Representante $representante)
+    public function show(Chamado $chamado)
     {
         //
     }
@@ -52,10 +52,10 @@ class RepresentanteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Representante  $representante
+     * @param  \App\Models\Chamado  $chamado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Representante $representante)
+    public function edit(Chamado $chamado)
     {
         //
     }
@@ -64,10 +64,10 @@ class RepresentanteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Representante  $representante
+     * @param  \App\Models\Chamado  $chamado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Representante $representante)
+    public function update(Request $request, Chamado $chamado)
     {
         //
     }
@@ -75,10 +75,10 @@ class RepresentanteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Representante  $representante
+     * @param  \App\Models\Chamado  $chamado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Representante $representante)
+    public function destroy(Chamado $chamado)
     {
         //
     }
