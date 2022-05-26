@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers;
+use App\Http\Middleware\CheckTasks;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Auth\RegisteredUserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,20 +44,52 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* 1º parâmetro: O nome do recurso(no plural) e 2º parâmetro, o controler: */
 Route::middleware('auth')->group(function () {
     Route::resource('empresas', 'EmpresaController');
+
     Route::resource('tecnicos', 'TecnicoController');
+
     Route::resource('historicos', 'HistoricoController');
+
     Route::resource('planos', 'PlanoController');
-    Route::resource('clientes', 'ClientesController');
+
+    Route::resource('clientes', 'ClienteController');
+
     Route::resource('representantes', 'RepresentanteController');
-    Route::resource('migracao', 'MigracaoController');
+
+    Route::resource('migracoes', 'MigracaoController');
+
     Route::resource('users', 'UsersController');
-    Route::resource('ferramentas', 'FerramentasController');
-    Route::resource('equipamentos', 'EquipamentosController');
-    Route::resource('designacoes', 'DesignacoesController');
-    Route::resource('medirvelocidades', 'MedirVelocidadeController');
+
+    Route::resource('ferramentas', 'FerramentaController');
+
+    Route::resource('equipamentos', 'EquipamentoController');
+
+    Route::resource('designacoes', 'DesignacaoController');
+
     Route::resource('modelocontratos', 'ModelocontratoController');
+
     Route::resource('contratos', 'ContratoController');
+
     Route::resource('chamados', 'ChamadoController');
+
+    Route::resource('antenas', 'AntenaController');
+
+    Route::resource('cabos', 'CaboController');
+
+    Route::resource('fontes', 'FonteController');
+
+    Route::resource('ilnbs', 'IlnbController');
+
+    Route::resource('lnbs', 'LnbController');
+
+    Route::resource('grooves', 'GrooveController');
+
+    Route::resource('modens', 'ModemController');
+
+    Route::resource('roteadores', 'RoteadorController');
+
+    Route::resource('trias', 'TriaController');
+
+    Route::resource('medirvelocidades', 'MedirVelocidadeController');
 });
 
 require __DIR__.'/auth.php';

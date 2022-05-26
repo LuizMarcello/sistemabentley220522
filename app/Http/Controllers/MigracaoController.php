@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Migracao;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\EmpresaRequest;
+
+use App\Models\Migracao;
 
 class MigracaoController extends Controller
 {
@@ -14,7 +18,8 @@ class MigracaoController extends Controller
      */
     public function index()
     {
-        //
+        $registros = Migracao::paginate(1);
+        return view('migracao.indexMigracao', \compact('registros'));
     }
 
     /**
@@ -24,7 +29,7 @@ class MigracaoController extends Controller
      */
     public function create()
     {
-        //
+        return view('migracao.createMigracao');
     }
 
     /**
@@ -35,27 +40,29 @@ class MigracaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $registro = Migracao::create($request->all());
+
+        return \redirect()->route('migracao.show', $registro->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Migracao  $migracao
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Migracao $migracao)
+    public function show($id)
     {
-        //
+        return 'Estou no show';
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Migracao  $migracao
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Migracao $migracao)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +71,10 @@ class MigracaoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Migracao  $migracao
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Migracao $migracao)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +82,10 @@ class MigracaoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Migracao  $migracao
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Migracao $migracao)
+    public function destroy($id)
     {
         //
     }

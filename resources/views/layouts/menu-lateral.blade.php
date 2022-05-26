@@ -230,7 +230,7 @@
                 <ul class="nav nav-treeview">
 
                     <li class="nav-item">
-                        <a href="{{ route('migracao.index') }}?" class="nav-link">
+                        <a href="{{ route('migracoes.index') }}?" class="nav-link">
                             <i class="fas fa-list-alt nav-icon"></i>
                             <p>Lista de Migrações</p>
                         </a>

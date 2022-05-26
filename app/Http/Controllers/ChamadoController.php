@@ -12,9 +12,27 @@ class ChamadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            $modelochamados = Chamado::where('cliente', 'LIKE', "%$keyword%")
+                ->orWhere('categoria', 'LIKE', "%$keyword%")
+                ->orWhere('responsavel', 'LIKE', "%$keyword%")
+                ->orWhere('agendamento', 'LIKE', "%$keyword%")
+                ->orWhere('assunto', 'LIKE', "%$keyword%")
+                ->orWhere('mensagem', 'LIKE', "%$keyword%")
+                ->orWhere('prioridade', 'LIKE', "%$keyword%")
+                ->orWhere('horario', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+        } else {
+            /* $chamado = Chamado::latest()->paginate($perPage); */
+               $chamados = Chamado::latest()->paginate(3);
+        }
+
+        return view('chamados.index', compact('chamados'));
     }
 
     /**
@@ -24,7 +42,7 @@ class ChamadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('chamados.create');
     }
 
     /**
@@ -41,10 +59,10 @@ class ChamadoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Chamado  $chamado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Chamado $chamado)
+    public function show($id)
     {
         //
     }
@@ -52,10 +70,10 @@ class ChamadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Chamado  $chamado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chamado $chamado)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +82,10 @@ class ChamadoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chamado  $chamado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chamado $chamado)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +93,10 @@ class ChamadoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Chamado  $chamado
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chamado $chamado)
+    public function destroy($id)
     {
         //
     }

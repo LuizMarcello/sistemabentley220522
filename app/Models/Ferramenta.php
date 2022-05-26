@@ -2,10 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ferramenta extends Model
 {
-    use HasFactory;
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'ferramentas';
+
+    /**
+     * The database primary key value.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['user_id', 'tipoferramenta', 'tipoinstrumento', 'controle', 'categoria', 'unidademedida', 'medida', 'descricao', 'situacao', 'desde', 'observacao'];
 }

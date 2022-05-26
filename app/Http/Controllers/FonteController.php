@@ -3,83 +3,110 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fonte;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Http\Requests\FonteRequest;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class FonteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $registros = Fonte::paginate(1);
+        return view('fonte.indexFonte', \compact('registros'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return View
      */
-    public function create()
+    public function create(Request $request): View
     {
-        //
+        return view('fonte.createFonte');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param FonteRequest $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(FonteRequest $request): Response
     {
-        //
+        $registro = Fonte::create($request->all());
+
+        return \redirect()->route('fontes.show', $registro->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Fonte  $fonte
-     * @return \Illuminate\Http\Response
+     * @param Fonte $fonte
+     * @return View
+     *
+     * Também usando "Route Model Binding", como no "edit" e "upgrade".
      */
-    public function show(Fonte $fonte)
+    public function show(Fonte $fonte): View
     {
-        //
+        return view('fonte.showFonte', \compact('fonte'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Fonte  $fonte
-     * @return \Illuminate\Http\Response
+     * @param Fonte $fonte
+     * @return View
+     *
+     * Aplicando o "Route Model Binding" do laravel,
+     * que está injetando uma instância do Model como
+     * parâmetro.
+     * Isto já vai tornar meu Model "Fonte" filtrado
+     * e dísponivel dentro da view retornada.
      */
-    public function edit(Fonte $fonte)
+    public function edit(Fonte $fonte): View
     {
-        //
+        return view('fonte.editFonte', \compact('fonte'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Fonte  $fonte
-     * @return \Illuminate\Http\Response
+     * @param FonteRequest $request
+     * @param Fonte $fonte
+     * @return Response
+     *
+     * Usando a classe "FonteRequest" para validar.
+     * Também usando "Route Model Binding", como no "edit" acima.
      */
-    public function update(Request $request, Fonte $fonte)
+    public function update(FonteRequest $request, Fonte $fonte): Response
     {
-        //
+        $fonte->update($request->all());
+
+        return \redirect()->route('fontes.show', $fonte);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Fonte  $fonte
-     * @return \Illuminate\Http\Response
+     * @param Fonte $fonte
+     * @return Response
+     *
+     * Também usando "Route Model Binding", como no "edit" acima.
      */
-    public function destroy(Fonte $fonte)
+    public function destroy(Fonte $fonte): Response
     {
-        //
+        $fonte->delete();
+
+        return \redirect()->route('fontes.index');
     }
 }

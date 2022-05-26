@@ -12,9 +12,30 @@ class ContratoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+          $keyword = $request->get('search');
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            $modelocontratos = Contrato::where('cliente', 'LIKE', "%$keyword%")
+                ->orWhere('cortesia', 'LIKE', "%$keyword%")
+                ->orWhere('desconto', 'LIKE', "%$keyword%")
+                ->orWhere('msg_pend_automatica', 'LIKE', "%$keyword%")
+                ->orWhere('dias_para_pendencia', 'LIKE', "%$keyword%")
+                ->orWhere('acrescimo', 'LIKE', "%$keyword%")
+                ->orWhere('msg_bloqueio_automatica', 'LIKE', "%$keyword%")
+                ->orWhere('dias_para_bloqueio', 'LIKE', "%$keyword%")
+                ->orWhere('dia_de_pagamento', 'LIKE', "%$keyword%")
+                ->orWhere('forma_de_pagamento', 'LIKE', "%$keyword%")
+                ->orWhere('modelo_de_contrato', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+              } else {
+            /* $contrato = Contrato::latest()->paginate($perPage); */
+            $contratos = Contrato::latest()->paginate(3);
+        }
+
+        return view('contratos.index', compact('contratos'));
     }
 
     /**
@@ -24,7 +45,7 @@ class ContratoController extends Controller
      */
     public function create()
     {
-        //
+        return view('contratos.create');
     }
 
     /**
@@ -41,10 +62,10 @@ class ContratoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contrato  $contrato
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Contrato $contrato)
+    public function show($id)
     {
         //
     }
@@ -52,10 +73,10 @@ class ContratoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Contrato  $contrato
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contrato $contrato)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +85,10 @@ class ContratoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contrato  $contrato
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contrato $contrato)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +96,10 @@ class ContratoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Contrato  $contrato
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contrato $contrato)
+    public function destroy($id)
     {
         //
     }
