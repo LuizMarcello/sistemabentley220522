@@ -14,10 +14,10 @@ class Equipamento extends Model
     protected $table = 'equipamentos';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -25,7 +25,9 @@ class Equipamento extends Model
      *
      * @var array
      */
-    protected $fillable = ['tipodeequipamento', 'user_id', 'notafiscal', 'datanota', 'banda', 'quantidade', 'diametro', 'marca', 'modelo', 'voltagem', 'serial', 'macaddress', 'situacao', 'observacao','unidade'];
-
-
+    protected $fillable = [
+        'tipodeequipamento', 'nome', 'notafiscal', 'datanota',
+        'banda', 'quantidade', 'marca', 'modelo', 'voltagem', 'serial',
+        'macaddress', 'situacao', 'observacao', 'unidade'
+    ];
 }

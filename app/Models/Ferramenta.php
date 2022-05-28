@@ -25,5 +25,9 @@ class Ferramenta extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'tipoferramenta', 'tipoinstrumento', 'controle', 'categoria', 'unidademedida', 'medida', 'descricao', 'situacao', 'desde', 'observacao'];
+    protected $fillable = [
+        'tipodeferramenta', 'tipoinstrumento',
+        'controle', 'categoria', 'unidademedida', 'medida', 'descricao',
+        'situacao', 'desde', 'observacao'
+    ];
 }

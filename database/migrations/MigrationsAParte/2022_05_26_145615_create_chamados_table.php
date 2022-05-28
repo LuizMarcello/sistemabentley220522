@@ -15,6 +15,15 @@ class CreateChamadosTable extends Migration
     {
         Schema::create('chamados', function (Blueprint $table) {
             $table->id();
+            $table->string('cliente', 40)->nullable();
+            $table->string('categoria', 30)->nullable();
+            $table->string('responsavel', 30)->nullable();
+            $table->string('agendamento', 60)->nullable();
+            $table->string('assunto', 60)->nullable();
+            $table->string('mensagem', 70)->nullable();
+            $table->string('prioridade', 10)->nullable();
+            $table->string('horario', 12)->nullable();
+            $table->softdeletes();
             $table->timestamps();
         });
     }

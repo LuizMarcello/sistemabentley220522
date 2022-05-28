@@ -15,6 +15,15 @@ class CreateAntenasTable extends Migration
     {
         Schema::create('antenas', function (Blueprint $table) {
             $table->id();
+            $table->char('banda');
+            $table->string('datanota', 20);
+            $table->string('diametro', 5);
+            $table->string('marca', 30);
+            $table->string('modelo', 40);
+            $table->string('notafiscal', 12);
+            $table->string('situacao', 30);
+            $table->string('observacao', 60);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
