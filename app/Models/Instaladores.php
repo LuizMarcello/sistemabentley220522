@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\AbstractPaginator;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Representante extends Model
+class Instalador extends Model
 {
     /* Por questão de segurança, o "fillable" é para dizer quais são
        os únicos campos que serão aceitos pelo model. O usuário poderia
@@ -21,8 +21,8 @@ class Representante extends Model
      * @var array
      */
     protected $fillable = [
-        'responsavel', 'razao_social', 'documento', 'ie_rg', 'estado',
-        'celular', 'email', 'telefone', 'cep', 'bairro', 'cidade',
-        'observacao', 'situacao', 'numero', 'rua'
+        'nome', 'razao_social', 'documento', 'ie_rg', 'nome_contato', 'celular',
+        'email', 'telefone', 'cep', 'bairro', 'cidade', 'estado',
+        'observacao', 'situacao', 'rua', 'numero', 'dataNascimento'
     ];
 }

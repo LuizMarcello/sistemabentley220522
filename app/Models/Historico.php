@@ -19,6 +19,7 @@ class Historico extends Model
      * @var array
      */
     protected $fillable = [
-        'cliente', 'descricao', 'detalhes', 'equipamento', 'pendencias', 'datainicio', 'dataencerramento'
+        'cliente', 'descricao', 'detalhes', 'equipamento', 'pendencias', 'datainicio',
+        'dataencerramento'
     ];
 }
