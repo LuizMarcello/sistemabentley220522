@@ -33,6 +33,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/register', 'App\Http\Controllers\UserController@register');
 
+Route::middleware('auth')->get('/dynamic-dropdown', '\App\Http\Controllers\DynamicDropdownController@index')->name('dynamic-dropdown');
+
 /* Esta rota é acrescentada na ativação da autenticação do láravel,
    para não termos êrros durante a autenticação */
 Route::get('/home', 'HomeController@index')->name('home');
@@ -94,4 +96,4 @@ Route::middleware('auth')->group(function () {
     Route::resource('medirvelocidades', 'MedirVelocidadeController');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

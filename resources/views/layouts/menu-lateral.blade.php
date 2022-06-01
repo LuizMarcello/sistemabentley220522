@@ -49,6 +49,15 @@
 
             {{-- <li class="nav-item"> --}} {{-- Para recolher o menu da barra lateral --}}
             <li class=" nav-item menu-open">{{-- Para deixar o menu sempre aberto --}}
+                <a href="{{ route('dynamic-dropdown') }}" class="nav-link">
+                    <i class="nav-icon fas fa-satellite-dish"></i>
+                    <p>
+                        Estados Municipaio ibge
+                    </p>
+                </a>
+            </li>
+
+            <li class=" nav-item menu-open">{{-- Para deixar o menu sempre aberto --}}
                 <a href="{{ route('home') }}" class="nav-link">
                     <i class="nav-icon fas fa-satellite-dish"></i>
                     <p>

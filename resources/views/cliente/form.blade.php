@@ -182,13 +182,8 @@ function selected($value, $selected)
         {!! $errors->first('bairro1', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group fisica juridica {{ $errors->has('cidade1') ? 'has-error' : '' }}">
-        <label for="cidade1" class="control-label">{{ 'Cidade*' }}</label>
-        {{-- <input class="form-control" name="cidade1" type="text" id="cidade1" requered value="{{ isset($cliente->cidade1) ? $cliente->cidade1 : ''}}" > --}}
-        <input class="form-control" name="cidade1" type="text" id="cidade1" requered
-            value="{{ old('cidade1', @$cliente->cidade1) }}">
-        {!! $errors->first('cidade1', '<p class="help-block">:message</p>') !!}
-    </div>
+
+    
 
     <div class="form-group fisica juridica {{ $errors->has('estado1') ? 'has-error' : '' }}">
         <label for="estado1" class="control-label">{{ 'Estado*' }}</label>
@@ -205,6 +200,17 @@ function selected($value, $selected)
         @enderror
         {!! $errors->first('estado1', '<p class="help-block">:message</p>') !!}
     </div>
+
+    <div class="form-group fisica juridica {{ $errors->has('cidade1') ? 'has-error' : '' }}">
+        <label for="cidade1" class="control-label">{{ 'Cidade*' }}</label>
+        {{-- <input class="form-control" name="cidade1" type="text" id="cidade1" requered value="{{ isset($cliente->cidade1) ? $cliente->cidade1 : ''}}" > --}}
+        <input class="form-control" name="cidade1" type="text" id="cidade1" requered
+            value="{{ old('cidade1', @$cliente->cidade1) }}">
+        {!! $errors->first('cidade1', '<p class="help-block">:message</p>') !!}
+    </div>
+
+
+
 
     <div class="form-group fisica juridica {{ $errors->has('cep1') ? 'has-error' : '' }}">
         <label for="cep1" class="control-label">{{ 'CEP*' }}</label>
