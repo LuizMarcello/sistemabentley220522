@@ -22,7 +22,7 @@
                         <form method="POST" action="{{ url('/chamados') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('chamados.form', ['formMode' => 'create'])
+                            @include ('chamado.form', ['formMode' => 'create'])
 
                         </form>
 

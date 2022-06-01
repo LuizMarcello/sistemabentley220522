@@ -58,8 +58,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <a href="{{ route('empresa.relatorios.clientes') }}" class="btn btn-primary btn-sm">Relatório de
-                    clientes</a>
+                {{-- <a href="{{ route('empresa.relatorios.clientes') }}" class="btn btn-primary btn-sm">Relatório de
+                    clientes</a> --}}
                 <div class="card">
                     <div class="card-header">
                         <h4> Clientes</h4>

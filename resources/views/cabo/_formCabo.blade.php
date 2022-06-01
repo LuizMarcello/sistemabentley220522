@@ -1,5 +1,12 @@
 @csrf
 
+<?php
+function selected($value, $selected)
+{
+    return $value == $selected ? ' selected="selected"' : '';
+}
+?>
+
 {{-- <input type="hidden" name="tipo" value="{{ $tipo }}"> --}}
 
 {{-- Este helper "old()" recebe um segundo argumento para valor padrão, caso ele não tenha
@@ -11,8 +18,8 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="notafiscal">Nota fiscal*</label>
     <div class="col-sm-10">
-        <input value="{{ old('notafiscal', @$cabo->notafiscal) }}" type="text" id="notafiscal" name="notafiscal" required="required" maxlength="18"
-            class="notafiscal form-control @error('banda') is-invalid @enderror">
+        <input value="{{ old('notafiscal', @$cabo->notafiscal) }}" type="text" id="notafiscal" name="notafiscal"
+            required="required" maxlength="18" class="notafiscal form-control @error('banda') is-invalid @enderror">
         @error('notafiscal')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -22,8 +29,8 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="datanota">Data da Nota*</label>
     <div class="col-sm-10">
-        <input value="{{ old('datanota', @$cabo->datanota) }}" type="text" id="datanota" name="datanota" required="required" maxlength="18"
-            class="datanota form-control @error('banda') is-invalid @enderror">
+        <input value="{{ old('datanota', @$cabo->datanota) }}" type="text" id="datanota" name="datanota"
+            required="required" maxlength="18" class="datanota form-control @error('banda') is-invalid @enderror">
         @error('datanota')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -31,32 +38,36 @@
 </div>
 
 <div class="form-group row">
-    <label class="col-form-label col-sm-2 required" for="tipodecabo">Tipo de Cabo</label>
-    <div class="col-sm-10">
-        <input value="{{ old('tipodecabo', @$cabo->tipodecabo) }}" type="text" id="tipodecabo" name="tipodecabo" required="required" maxlength="18"
-            class="tipodecabo form-control @error('tipodecabo') is-invalid @enderror">
-        @error('tipodecabo')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+    <label class="col-form-label col-sm-2" for="tipodecabo">Tipo de cabo</label>
+    <div class="col-sm-3">
+        <select class="form-select" name="tipodecabo" id="tipodecabo">
+            <option value="">Selecione uma opção</option>
+            <option value="rj-45" {{ <?php echo selected('rj-45', @$cabo->tipodecabo); ?> }}>RJ-45</option>
+            <option value="coaxial" {{ <?php echo selected('coaxial', @$cabo->tipodecabo); ?> }}>Coaxial</option>
+            <option value="outrocabo1" {{ <?php echo selected('outrocabo1', @$cabo->tipodecabo); ?> }}>Outro Cabo1</option>
+            <option value="outrocabo2" {{ <?php echo selected('outrocabo2', @$cabo->tipodecabo); ?> }}>Outro Cabo2</option>
+        </select>
     </div>
 </div>
 
 <div class="form-group row">
-    <label class="col-form-label col-sm-2 required" for="marca">Marca*</label>
-    <div class="col-sm-10">
-        <input value="{{ old('marca', @$cabo->marca) }}" type="text" id="marca" name="marca" {{-- required="required" --}} maxlength="18"
-            class="marca form-control @error('marca') is-invalid @enderror">
-        @error('marca')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+    <label class="col-form-label col-sm-2" for="marca">Marca</label>
+    <div class="col-sm-3">
+        <select class="form-select" name="marca" id="marca">
+            <option value="">Selecione uma opção</option>
+            <option value="marca1" {{ <?php echo selected('marca1', @$cabo->marca); ?> }}>Marca 1</option>
+            <option value="marca2" {{ <?php echo selected('marca2', @$cabo->marca); ?> }}>Marca 2</option>
+            <option value="marca3" {{ <?php echo selected('marca3', @$cabo->marca); ?> }}>Marca 3</option>
+            <option value="marca4" {{ <?php echo selected('marca4', @$cabo->marca); ?> }}>Marca 4</option>
+        </select>
     </div>
 </div>
 
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="metros">Metros</label>
     <div class="col-sm-10">
-        <input value="{{ old('metros', @$cabo->metros) }}" type="text" id="metros" name="metros" {{-- required="required" --}} maxlength="18"
-            class="metros form-control @error('metros') is-invalid @enderror">
+        <input value="{{ old('metros', @$cabo->metros) }}" type="text" id="metros" name="metros"
+            {{-- required="required" --}} maxlength="18" class="metros form-control @error('metros') is-invalid @enderror">
         @error('metros')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -66,8 +77,8 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="observacao">Observacao</label>
     <div class="col-sm-10">
-        <input value="{{ old('observacao', @$cabo->observacao) }}" type="text" id="observacao" name="observacao" maxlength="500"
-            class="form-control @error('observacao') is-invalid @enderror">
+        <input value="{{ old('observacao', @$cabo->observacao) }}" type="text" id="observacao" name="observacao"
+            maxlength="500" class="form-control @error('observacao') is-invalid @enderror">
         @error('observacao')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -75,15 +86,14 @@
 </div>
 
 <div class="form-group row">
-    <label class="col-form-label col-sm-2" for="situacao">Situação atual</label>
+    <label class="col-form-label col-sm-2" for="situacao">Situação</label>
     <div class="col-sm-3">
-        <input value="{{ old('situacao', @$cabo->situacao) }}" type="text" id="situacao" name="situacao" class="form-control">
-        <select class="form-control" name="situacao" id="situacao">
-            <option value="{{ @$cabo->situacao }}">Alterar situação</option>
-            <option>Ativo</option>
-            <option>Em espera</option>
-            <option>Suspenso</option>
-            <option>Inativo</option>
+        <select class="form-select" name="situacao" id="situacao">
+            <option value="">Selecione uma opção</option>
+            <option value="ativo" {{ <?php echo selected('ativo', @$cabo->situacao); ?> }}>Ativo</option>
+            <option value="em espera" {{ <?php echo selected('em espera', @$cabo->situacao); ?> }}>Em espera</option>
+            <option value="suspenso" {{ <?php echo selected('suspenso', @$cabo->situacao); ?> }}>Suspenso</option>
+            <option value="inativo" {{ <?php echo selected('inativo', @$cabo->situacao); ?> }}>Inativo</option>
         </select>
     </div>
 </div>

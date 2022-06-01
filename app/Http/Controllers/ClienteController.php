@@ -14,7 +14,7 @@ use App\Http\Requests\ClienteRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class ClientesController extends Controller {
+class ClienteController extends Controller {
     /* Sobre middlewares: */
     /* Aplicando um middleware pelo controller: */
     /* public function __construct() */
@@ -98,7 +98,7 @@ class ClientesController extends Controller {
             $clientes = Cliente::latest()->paginate( 3 );
         }
 
-        return view( 'clientes.index', compact( 'clientes' ) );
+        return view( 'cliente.index', compact( 'clientes' ) );
     }
 
     /**
@@ -108,7 +108,7 @@ class ClientesController extends Controller {
     */
 
     public function create( Request $request ) {
-        return view( 'clientes.create' );
+        return view( 'cliente.create' );
     }
 
     /**
@@ -144,7 +144,7 @@ class ClientesController extends Controller {
 
     public function show( $id ) {
         $cliente = Cliente::findOrFail( $id );
-        return view( 'clientes.show', compact( 'cliente' ) );
+        return view( 'cliente.show', compact( 'cliente' ) );
     }
 
     /**
@@ -162,7 +162,7 @@ class ClientesController extends Controller {
         /* Parâmetros: Nome do gate e instância do cliente */
         //$this->authorize( 'update-client', $cliente );
 
-        return view( 'clientes.edit', compact( 'cliente' ) );
+        return view( 'cliente.edit', compact( 'cliente' ) );
     }
 
     /**

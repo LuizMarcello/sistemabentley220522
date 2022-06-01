@@ -81,7 +81,7 @@
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
-                            @include('clientes.form', ['formMode' => 'edit'])
+                            @include('cliente.form', ['formMode' => 'edit'])
 
                         </form>
 

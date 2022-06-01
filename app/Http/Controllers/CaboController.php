@@ -21,7 +21,7 @@ class CaboController extends Controller
     public function index(): View
     {
 
-        $registros = Cabo::paginate(1);
+        $registros = Cabo::paginate(8);
         return view('cabo.indexCabo', \compact('registros'));
     }
 

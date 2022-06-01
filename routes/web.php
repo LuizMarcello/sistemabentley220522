@@ -89,6 +89,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('trias', 'TriaController');
 
+    Route::resource('instalacoes', 'InstalacaoController');
+
     Route::resource('medirvelocidades', 'MedirVelocidadeController');
 });
 

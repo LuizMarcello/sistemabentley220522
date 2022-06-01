@@ -32,7 +32,7 @@ class ChamadoController extends Controller
                $chamados = Chamado::latest()->paginate(3);
         }
 
-        return view('chamados.index', compact('chamados'));
+        return view('chamado.index', compact('chamados'));
     }
 
     /**
@@ -42,7 +42,7 @@ class ChamadoController extends Controller
      */
     public function create()
     {
-        return view('chamados.create');
+        return view('chamado.create');
     }
 
     /**

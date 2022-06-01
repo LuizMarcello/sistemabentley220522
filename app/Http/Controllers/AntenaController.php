@@ -20,7 +20,7 @@ class AntenaController extends Controller
      */
     public function index(): View
     {
-        $registros = Antena::paginate(1);
+        $registros = Antena::paginate(10);
         return view('antena.indexAntena', \compact('registros'));
     }
 

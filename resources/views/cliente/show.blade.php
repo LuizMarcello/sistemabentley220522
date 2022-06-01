@@ -71,7 +71,7 @@
                                 class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 Editar</button></a>
 
-                        <form method="POST" action="{{ url('clientes' . '/' . $cliente->id) }}" accept-charset="UTF-8"
+                        <form method="POST" action="{{ url('/clientes' . '/' . $cliente->id) }}" accept-charset="UTF-8"
                             style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}

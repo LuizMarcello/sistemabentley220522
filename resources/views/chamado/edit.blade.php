@@ -60,10 +60,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4> Editando Cliente id: {{ $cliente->id }}</h4>
+                        <h4> Editando Chamado id: {{ $chamado->id }}</h4>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/clientes') }}" title="Back"><button class="btn btn-warning btn-sm"><i
+                        <a href="{{ url('/chamados') }}" title="Back"><button class="btn btn-warning btn-sm"><i
                                     class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</button></a>
                         <br />
                         <br />
@@ -76,12 +76,12 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/clientes/' . $cliente->id) }}" accept-charset="UTF-8"
+                        <form method="POST" action="{{ url('/chamados/' . $chamado->id) }}" accept-charset="UTF-8"
                             class="form-horizontal" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
-                            @include('clientes.form', ['formMode' => 'edit'])
+                            @include('chamado.form', ['formMode' => 'edit'])
 
                         </form>
 

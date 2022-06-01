@@ -81,7 +81,7 @@
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include('clientes.form', ['formMode' => 'create'])
+                            @include('cliente.form', ['formMode' => 'create'])
 
                         </form>
 

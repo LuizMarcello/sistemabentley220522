@@ -1,5 +1,12 @@
 @csrf
 
+<?php
+function selected($value, $selected)
+{
+    return $value == $selected ? ' selected="selected"' : '';
+}
+?>
+
 {{-- Essa linha foi colocada dentro do "form" do create: --}}
 {{-- <input type="hidden" name="tipo" value="{{ $tipo }}"> --}}
 
@@ -32,24 +39,29 @@
 </div>
 
 <div class="form-group row">
-    <label class="col-form-label col-sm-2 required" for="banda">Banda*</label>
-    <div class="col-sm-10">
-        <input value="{{ old('banda', @$antena->banda) }}" type="text" id="banda" name="banda" {{-- required="required" --}}
-            maxlength="18" class="banda form-control @error('banda') is-invalid @enderror">
-        @error('banda')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+    <label class="col-form-label col-sm-2" for="banda">Banda</label>
+    <div class="col-sm-3">
+
+        <select class="form-select" name="banda" id="banda">
+            <option value="">Selecione uma opção</option>
+            <option value="ka" {{ <?php echo selected('ka', @$antena->banda); ?> }}>KA</option>
+            <option value="ku" {{ <?php echo selected('ku', @$antena->banda); ?> }}>KU</option>
+
+        </select>
     </div>
 </div>
 
 <div class="form-group row">
-    <label class="col-form-label col-sm-2 required" for="marca">Marca*</label>
-    <div class="col-sm-10">
-        <input value="{{ old('marca', @$antena->marca) }}" type="text" id="marca" name="marca" {{-- required="required" --}}
-            maxlength="18" class="marca form-control @error('marca') is-invalid @enderror">
-        @error('marca')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+    <label class="col-form-label col-sm-2" for="marca">Marca</label>
+    <div class="col-sm-3">
+        <select class="form-select" name="marca" id="marca">
+            <option value="">Selecione uma opção</option>
+            <option value="cisco" {{ <?php echo selected('cisco', @$antena->marca); ?> }}>Cisco</option>
+            <option value="gigabyte" {{ <?php echo selected('gigabyte', @$antena->marca); ?> }}>Gigabyte</option>
+            <option value="encore" {{ <?php echo selected('encore', @$antena->marca); ?> }}>Encore</option>
+            <option value="tp-link" {{ <?php echo selected('tp-link', @$antena->marca); ?> }}>Tp-Link</option>
+            <option value="d-link" {{ <?php echo selected('d-link', @$antena->marca); ?> }}>D-Link</option>
+        </select>
     </div>
 </div>
 
@@ -57,7 +69,8 @@
     <label class="col-form-label col-sm-2 required" for="modelo">Modelo*</label>
     <div class="col-sm-10">
         <input value="{{ old('modelo', @$antena->modelo) }}" type="text" id="modelo" name="modelo"
-            {{-- required="required" --}} maxlength="18" class="modelo form-control
+            {{-- required="required" --}} maxlength="18"
+            class="modelo form-control
              @error('modelo') is-invalid @enderror">
         @error('modelo')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -66,22 +79,24 @@
 </div>
 
 <div class="form-group row">
-    <label class="col-form-label col-sm-2 required" for="diametro">Diâmetro*</label>
-    <div class="col-sm-10">
-        <input value="{{ old('diametro', @$antena->diametro) }}" type="text" id="diametro" name="diametro"
-            {{-- required="required" --}} maxlength="18" class="diametro form-control
-             @error('diametro') is-invalid @enderror">
-        @error('diametro')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+    <label class="col-form-label col-sm-2" for="diametro">Diâmetro</label>
+    <div class="col-sm-3">
+        <select class="form-select" name="diametro" id="diametro">
+            <option value="">Selecione uma opção</option>
+            <option value="90" {{ <?php echo selected('90', @$antena->diametro); ?> }}>90"</option>
+            <option value="80" {{ <?php echo selected('80', @$antena->diametro); ?> }}>80"</option>
+            <option value="70" {{ <?php echo selected('70', @$antena->diametro); ?> }}>70"</option>
+            <option value="60" {{ <?php echo selected('60', @$antena->diametro); ?> }}>60"</option>
+            <option value="50" {{ <?php echo selected('50', @$antena->diametro); ?> }}>50"</option>
+        </select>
     </div>
 </div>
 
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="observacao">Observacao</label>
     <div class="col-sm-10">
-        <input value="{{ old('observacao', @$antena->observacao) }}" type="text" id="observacao"
-         name="observacao" maxlength="500" class="form-control @error('observacao') is-invalid @enderror">
+        <input value="{{ old('observacao', @$antena->observacao) }}" type="text" id="observacao" name="observacao"
+            maxlength="500" class="form-control @error('observacao') is-invalid @enderror">
         @error('observacao')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -91,13 +106,13 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="situacao">Situação atual</label>
     <div class="col-sm-3">
-        <input value="{{ old('situacao', @$antena->situacao) }}" type="text" id="situacao" name="situacao" class="form-control">
-        <select class="form-control" name="situacao" id="situacao">
-            <option value="{{ @$antena->situacao }}">Alterar situação</option>
-            <option>Ativo</option>
-            <option>Em espera</option>
-            <option>Suspenso</option>
-            <option>Inativo</option>
+        <select class="form-select" name="situacao" id="situacao">
+            <option value="">Selecione uma opção</option>
+            <option value="ativo" {{ <?php echo selected('ativo', @$antena->situacao); ?> }}>Ativo</option>
+            <option value="em espera" {{ <?php echo selected('em espera', @$antena->situacao); ?> }}>Em espera</option>
+            <option value="suspenso" {{ <?php echo selected('suspenso', @$antena->situacao); ?> }}>Suspenso</option>
+            <option value="inativo" {{ <?php echo selected('inativo', @$antena->situacao); ?> }}>Inativo</option>
+
         </select>
     </div>
 </div>

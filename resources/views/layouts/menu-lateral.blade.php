@@ -102,7 +102,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-alt-circle-up"></i>
                     <p>
-                        Cliente
+                        Clientes
                         <i class="right fas fa-angle-left"></i>
 
                     </p>
@@ -116,16 +116,8 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="nav nav-treeview">
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-address-card nav-icon"></i>
-                            <p>Instalações</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
+
 
             <li class="nav-item"> {{-- Para recolher o menu da barra lateral --}}
                 {{-- <li class="nav-item menu-open"> --}}{{-- Para deixar o menu sempre aberto --}}
@@ -201,7 +193,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-alt-circle-up"></i>
                     <p>
-                        Designação
+                        Designações
                         <i class="right fas fa-angle-left"></i>
 
                     </p>
@@ -222,7 +214,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-arrow-alt-circle-up"></i>
                     <p>
-                        Migração
+                        Migrações
                         <i class="right fas fa-angle-left"></i>
 
                     </p>
@@ -241,9 +233,30 @@
             <li class="nav-item"> {{-- Para recolher o menu da barra lateral --}}
                 {{-- <li class="nav-item menu-open"> --}}{{-- Para deixar o menu sempre aberto --}}
                 <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-arrow-alt-circle-up"></i>
+                    <p>
+                        Instalações
+                        <i class="right fas fa-angle-left"></i>
+
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+
+                    <li class="nav-item">
+                        <a href="{{ route('instalacoes.index') }}?" class="nav-link">
+                            <i class="fas fa-address-card nav-icon"></i>
+                            <p>Lista de Instalações</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item"> {{-- Para recolher o menu da barra lateral --}}
+                {{-- <li class="nav-item menu-open"> --}}{{-- Para deixar o menu sempre aberto --}}
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-money-check-alt"></i>
                     <p>
-                        Instalação
+                        Instaladores
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
@@ -252,7 +265,7 @@
                     <li class="nav-item">
                         <a href="{{ route('tecnicos.index') }}" class="nav-link">
                             <i class="fas fa-chart-pie nav-icon"></i>
-                            <p>Listagem de Instaladores</p>
+                            <p>Lista de Instaladores</p>
                         </a>
                     </li>
 
@@ -270,7 +283,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-satellite-dish"></i>
                     <p>
-                        Estoque
+                        Estoques
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
@@ -308,9 +321,73 @@
 
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('equipamentos.index') }}" class="nav-link">
+                                <a href="{{ route('antenas.index') }}" class="nav-link">
                                     <i class="fas fa-users nav-icon"></i>
-                                    <p>Lista de equipamentos</p>
+                                    <p>Antenas</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('cabos.index') }}" class="nav-link">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Cabos</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('fontes.index') }}" class="nav-link">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Fontes</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('grooves.index') }}" class="nav-link">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Grooves</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('lnbs.index') }}" class="nav-link">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Lnbs</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('ilnbs.index') }}" class="nav-link">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Ilnbs</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('modens.index') }}" class="nav-link">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Modens</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('roteadores.index') }}" class="nav-link">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Roteadores</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('trias.index') }}" class="nav-link">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Trias</p>
                                 </a>
                             </li>
                         </ul>
