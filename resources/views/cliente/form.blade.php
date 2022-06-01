@@ -4,6 +4,13 @@
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
+<?php
+function selected($value, $selected)
+{
+    return $value == $selected ? ' selected="selected"' : '';
+}
+?>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <style>
@@ -115,11 +122,11 @@
         {!! $errors->first('inscricaomunicipal', '<p class="help-block">:message</p>') !!}
     </div>
 
-   {{--  <div class="form-group {{ $errors->has('datanascimento') ? 'has-error' : '' }}">
+    {{-- <div class="form-group {{ $errors->has('datanascimento') ? 'has-error' : '' }}">
         <label for="datanascimento" class="control-label">{{ 'Data de nascimento' }}</label> --}}
-        {{-- <input class="datanota form-control" name="datanascimento" type="text" id="datanascimento"
+    {{-- <input class="datanota form-control" name="datanascimento" type="text" id="datanascimento"
          value="{{ isset($cliente->datanascimento) ? $cliente->datanascimento : ''}}" > --}}
-       {{--  <input class="datanota form-control" name="datanascimento" type="text" id="datanascimento"
+    {{-- <input class="datanota form-control" name="datanascimento" type="text" id="datanascimento"
             value="{{ old('datanascimento', @$cliente->datanascimento) }}">
         {!! $errors->first('datanascimento', '<p class="help-block">:message</p>') !!}
     </div> --}}
@@ -185,7 +192,8 @@
 
     <div class="form-group fisica juridica {{ $errors->has('estado1') ? 'has-error' : '' }}">
         <label for="estado1" class="control-label">{{ 'Estado*' }}</label>
-        <select name="estado1" id="estado1" class="form-control @error('estado1') is-invalid @enderror" required="required">
+        <select name="estado1" id="estado1" class="form-control @error('estado1') is-invalid @enderror"
+            required="required">
             <option value="">Selecione</option>
             {{-- @foreach (estados() as $sigla => $nome)
                 <option {{ @$cliente->estado1 == $sigla ? 'selected' : '' }} value="{{ $sigla }}">
@@ -206,19 +214,19 @@
         {!! $errors->first('cep1', '<p class="help-block">:message</p>') !!}
     </div>
 
-   {{--  <div class="form-group {{ $errors->has('celular2') ? 'has-error' : '' }}">
+    {{-- <div class="form-group {{ $errors->has('celular2') ? 'has-error' : '' }}">
         <label for="celular2" class="control-label">{{ 'Celular 2' }}</label> --}}
-        {{-- <input class="celular form-control" name="celular2" type="text" id="celular2"
+    {{-- <input class="celular form-control" name="celular2" type="text" id="celular2"
         value="{{ isset($cliente->celular2) ? $cliente->celular2 : ''}}" > --}}
-       {{--  <input class="celular form-control" name="celular2" type="text" id="celular2"
+    {{-- <input class="celular form-control" name="celular2" type="text" id="celular2"
             value="{{ old('celular2', @$cliente->celular2) }}" placeholder="(00) 00000-0000">
         {!! $errors->first('celular2', '<p class="help-block">:message</p>') !!}
     </div> --}}
 
-   {{--  <div class="form-group {{ $errors->has('telefone2') ? 'has-error' : '' }}">
+    {{-- <div class="form-group {{ $errors->has('telefone2') ? 'has-error' : '' }}">
         <label for="telefone2" class="control-label">{{ 'Telefone 2' }}</label> --}}
-        {{-- <input class="phone form-control" name="telefone2" type="text" id="telefone2" value="{{ isset($cliente->telefone2) ? $cliente->telefone2 : ''}}" > --}}
-        {{-- input class="phone form-control" name="telefone2" type="text" id="telefone2"
+    {{-- <input class="phone form-control" name="telefone2" type="text" id="telefone2" value="{{ isset($cliente->telefone2) ? $cliente->telefone2 : ''}}" > --}}
+    {{-- input class="phone form-control" name="telefone2" type="text" id="telefone2"
             value="{{ old('telefone2', @$cliente->telefone2) }}" placeholder="(00) 0000-0000">
         {!! $errors->first('telefone2', '<p class="help-block">:message</p>') !!}
     </div> --}}
@@ -239,11 +247,11 @@
         {!! $errors->first('chave', '<p class="help-block">:message</p>') !!}
     </div>
 
-   {{--  <div class="form-group {{ $errors->has('equipamento') ? 'has-error' : '' }}">
+    {{-- <div class="form-group {{ $errors->has('equipamento') ? 'has-error' : '' }}">
         <label for="equipamento" class="control-label">{{ 'Equipamento' }}</label> --}}
-        {{-- <input class="form-control" name="equipamento" type="text" id="equipamento"
+    {{-- <input class="form-control" name="equipamento" type="text" id="equipamento"
         value="{{ isset($cliente->equipamento) ? $cliente->equipamento : ''}}" > --}}
-        {{-- input class="form-control" name="equipamento" type="text" id="equipamento"
+    {{-- input class="form-control" name="equipamento" type="text" id="equipamento"
             value="{{ old('equipamento', @$cliente->equipamento) }}">
         {!! $errors->first('equipamento', '<p class="help-block">:message</p>') !!}
     </div> --}}
@@ -272,7 +280,8 @@
         {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group fisica juridica {{ $errors->has('formapagamento') ? 'has-error' : '' }}">
+    {{-- NÃO APAGAR ESTE PRÓXIMO --}}
+    {{-- <div class="form-group fisica juridica {{ $errors->has('formapagamento') ? 'has-error' : '' }}">
         <label for="formapagamento" class="control-label">{{ 'Formapagamento' }}</label>
         <select name="formapagamento" class="form-control" id="formapagamento">
             @foreach (json_decode('{"boleto":"Boleto","cartao":"Cart\u00e3o","depccorrente":"Dep\u00f3sito em conta","pix":"Pix"}', true) as $optionKey => $optionValue)
@@ -282,6 +291,19 @@
             @endforeach
         </select>
         {!! $errors->first('formapagamento', '<p class="help-block">:message</p>') !!}
+    </div> --}}
+
+    <div class="form-group fisica juridica row">
+        <label class="col-form-label col-sm-2" for="formapagamento">Forma de pagamento</label>
+        <div class="col-sm-3 fisica juridica" >
+            <select class="form-select" name="formapagamento" id="formapagamento">
+                <option value="">Selecione uma opção</option>
+                <option value="boleto" {{ <?php echo selected('boleto', @$cliente->formapagamento); ?> }}>Boleto</option>
+                <option value="cartao" {{ <?php echo selected('cartao', @$cliente->formapagamento); ?> }}>Cartão débito crédito</option>
+                <option value="pix" {{ <?php echo selected('pix', @$cliente->formapagamento); ?> }}>Pix</option>
+                <option value="deposito" {{ <?php echo selected('deposito', @$cliente->formapagamento); ?> }}>Depósito na conta</option>
+            </select>
+        </div>
     </div>
 
     {{-- <div class="form-group {{ $errors->has('instalador') ? 'has-error' : '' }}">
@@ -296,7 +318,7 @@
         {!! $errors->first('instalador', '<p class="help-block">:message</p>') !!}
     </div> --}}
 
-   {{--  <div class="form-group {{ $errors->has('distribuidor') ? 'has-error' : '' }}">
+    {{-- <div class="form-group {{ $errors->has('distribuidor') ? 'has-error' : '' }}">
         <label for="distribuidor" class="control-label">{{ 'Distribuidor' }}</label>
         <select name="distribuidor" class="form-control" id="distribuidor">
             @foreach (json_decode('{" distribuidor1":"distribuidor1","distribuidor2":"distribuidor 2","distribuidor3":"distribuidor 3"}', true) as $optionKey => $optionValue)
@@ -339,16 +361,16 @@
 
 {{-- <div class="form-group {{ $errors->has('celular11') ? 'has-error' : '' }}">
     <label for="celular11" class="control-label">{{ 'Celular' }}</label> --}}
-    {{-- <input class="celular form-control" name="celular11" type="text" id="celular11" value="{{ isset($cliente->celular11) ? $cliente->celular11 : ''}}" > --}}
-{{--     <input class="celular form-control" name="celular11" type="text" id="celular11"
+{{-- <input class="celular form-control" name="celular11" type="text" id="celular11" value="{{ isset($cliente->celular11) ? $cliente->celular11 : ''}}" > --}}
+{{-- <input class="celular form-control" name="celular11" type="text" id="celular11"
         value="{{ old('celular11', @$cliente->celular11) }}" placeholder="(00) 00000-0000">
     {!! $errors->first('celular11', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('telefone11') ? 'has-error' : '' }}">
     <label for="telefone11" class="control-label">{{ 'Telefone' }}</label> --}}
-    {{-- <input class="phone form-control" name="telefone11" type="text" id="telefone11" value="{{ isset($cliente->telefone11) ? $cliente->telefone11 : ''}}" > --}}
-{{--     <input class="phone form-control" name="telefone11" type="text" id="telefone11"
+{{-- <input class="phone form-control" name="telefone11" type="text" id="telefone11" value="{{ isset($cliente->telefone11) ? $cliente->telefone11 : ''}}" > --}}
+{{-- <input class="phone form-control" name="telefone11" type="text" id="telefone11"
         value="{{ old('telefone11', @$cliente->telefone11) }}" placeholder="(00) 0000-0000">
     {!! $errors->first('telefone11', '<p class="help-block">:message</p>') !!}
 </div> --}}
@@ -364,63 +386,60 @@
 
 {{-- <div class="form-group {{ $errors->has('cep2') ? 'has-error' : '' }}">
     <label for="cep2" class="control-label">{{ 'Cep' }}</label> --}}
-    {{-- <input class="cep form-control" name="cep2" type="text" id="cep2" value="{{ isset($cliente->cep2) ? $cliente->cep2 : ''}}" > --}}
-{{--     <input class="cep form-control" name="cep2" type="text" id="cep2" value="{{ old('cep2', @$cliente->cep2) }}">
+{{-- <input class="cep form-control" name="cep2" type="text" id="cep2" value="{{ isset($cliente->cep2) ? $cliente->cep2 : ''}}" > --}}
+{{-- <input class="cep form-control" name="cep2" type="text" id="cep2" value="{{ old('cep2', @$cliente->cep2) }}">
     {!! $errors->first('cep2', '<p class="help-block">:message</p>') !!}
 </div> --}}
-{{--
-<div class="form-group {{ $errors->has('rua2') ? 'has-error' : '' }}">
+{{-- <div class="form-group {{ $errors->has('rua2') ? 'has-error' : '' }}">
     <label for="rua2" class="control-label">{{ 'Rua' }}</label> --}}
-    {{-- <input class="form-control" rows="5" name="rua2" type="text" id="rua2" value="{{ isset($cliente->rua2) ? $cliente->rua2 : ''}}" > --}}
-{{--     <input class="form-control" rows="5" name="rua2" type="text" id="rua2"
+{{-- <input class="form-control" rows="5" name="rua2" type="text" id="rua2" value="{{ isset($cliente->rua2) ? $cliente->rua2 : ''}}" > --}}
+{{-- <input class="form-control" rows="5" name="rua2" type="text" id="rua2"
         value="{{ old('rua2', @$cliente->rua2) }}">
     {!! $errors->first('rua2', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('numero2') ? 'has-error' : '' }}">
     <label for="numero2" class="control-label">{{ 'Numero' }}</label> --}}
-    {{-- <input class="form-control" name="numero2" type="text" id="numero2" value="{{ isset($cliente->numero2) ? $cliente->numero2 : ''}}" > --}}
-  {{--   <input class="form-control" name="numero2" type="text" id="numero2"
+{{-- <input class="form-control" name="numero2" type="text" id="numero2" value="{{ isset($cliente->numero2) ? $cliente->numero2 : ''}}" > --}}
+{{-- <input class="form-control" name="numero2" type="text" id="numero2"
         value="{{ old('numero2', @$cliente->numero2) }}">
     {!! $errors->first('numero2', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('bairro2') ? 'has-error' : '' }}">
     <label for="bairro2" class="control-label">{{ 'Bairro' }}</label> --}}
-    {{-- <input class="form-control" name="bairro2" type="text" id="bairro2" value="{{ isset($cliente->bairro2) ? $cliente->bairro2 : ''}}" > --}}
- {{--    <input class="form-control" name="bairro2" type="text" id="bairro2"
+{{-- <input class="form-control" name="bairro2" type="text" id="bairro2" value="{{ isset($cliente->bairro2) ? $cliente->bairro2 : ''}}" > --}}
+{{-- <input class="form-control" name="bairro2" type="text" id="bairro2"
         value="{{ old('bairro2', @$cliente->bairro2) }}">
     {!! $errors->first('bairro2', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('cidade2') ? 'has-error' : '' }}">
     <label for="cidade2" class="control-label">{{ 'Cidade' }}</label> --}}
-    {{-- <input class="form-control" name="cidade2" type="text" id="cidade2" value="{{ isset($cliente->cidade2) ? $cliente->cidade2 : ''}}" > --}}
-  {{--   <input class="form-control" name="cidade2" type="text" id="cidade2"
+{{-- <input class="form-control" name="cidade2" type="text" id="cidade2" value="{{ isset($cliente->cidade2) ? $cliente->cidade2 : ''}}" > --}}
+{{-- <input class="form-control" name="cidade2" type="text" id="cidade2"
         value="{{ old('cidade2', @$cliente->estado2) }}">
     {!! $errors->first('cidade2', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('estado2') ? 'has-error' : '' }}">
     <label for="estado2" class="control-label">{{ 'Estado' }}</label> --}}
-    {{-- <input class="form-control" name="estado2" type="text" id="estado2" value="{{ isset($cliente->estado2) ? $cliente->estado2 : ''}}" > --}}
- {{--    <input class="form-control" name="estado2" type="text" id="estado2"
+{{-- <input class="form-control" name="estado2" type="text" id="estado2" value="{{ isset($cliente->estado2) ? $cliente->estado2 : ''}}" > --}}
+{{-- <input class="form-control" name="estado2" type="text" id="estado2"
         value="{{ old('estado2', @$cliente->estado2) }}">
     {!! $errors->first('estado2', '<p class="help-block">:message</p>') !!}
-</div>
- --}}
+</div> --}}
 {{-- <div class="form-group {{ $errors->has('celular21') ? 'has-error' : '' }}">
     <label for="celular21" class="control-label">{{ 'Celular' }}</label> --}}
-    {{-- <input class="celular form-control" name="celular21" type="text" id="celular21" value="{{ isset($cliente->celular21) ? $cliente->celular21 : ''}}" > --}}
- {{--    <input class="celular form-control" name="celular21" type="text" id="celular21"
+{{-- <input class="celular form-control" name="celular21" type="text" id="celular21" value="{{ isset($cliente->celular21) ? $cliente->celular21 : ''}}" > --}}
+{{-- <input class="celular form-control" name="celular21" type="text" id="celular21"
         value="{{ old('celular21', @$cliente->celular21) }}" placeholder="(00) 00000-0000">
     {!! $errors->first('celular21', '<p class="help-block">:message</p>') !!}
-</div>
- --}}
+</div> --}}
 {{-- <div class="form-group {{ $errors->has('telefone21') ? 'has-error' : '' }}">
     <label for="telefone21" class="control-label">{{ 'Telefone' }}</label> --}}
-    {{-- <input class="phone form-control" name="telefone21" type="text" id="telefone21" value="{{ isset($cliente->telefone21) ? $cliente->telefone21 : ''}}" > --}}
-   {{--  <input class="phone form-control" name="telefone21" type="text" id="telefone21"
+{{-- <input class="phone form-control" name="telefone21" type="text" id="telefone21" value="{{ isset($cliente->telefone21) ? $cliente->telefone21 : ''}}" > --}}
+{{-- <input class="phone form-control" name="telefone21" type="text" id="telefone21"
         value="{{ old('telefone21', @$cliente->telefone21) }}" placeholder="(00) 0000-0000">
     {!! $errors->first('telefone21', '<p class="help-block">:message</p>') !!}
 </div> --}}
@@ -436,63 +455,62 @@
 
 {{-- <div class="form-group {{ $errors->has('cep3') ? 'has-error' : '' }}">
     <label for="cep3" class="control-label">{{ 'Cep' }}</label> --}}
-    {{-- <input class="cep form-control" name="cep3" type="text" id="cep3" value="{{ isset($cliente->cep3) ? $cliente->cep3 : ''}}" > --}}
-{{--     <input class="cep form-control" name="cep3" type="text" id="cep3" value="{{ old('cep3', @$cliente->cep3) }}">
+{{-- <input class="cep form-control" name="cep3" type="text" id="cep3" value="{{ isset($cliente->cep3) ? $cliente->cep3 : ''}}" > --}}
+{{-- <input class="cep form-control" name="cep3" type="text" id="cep3" value="{{ old('cep3', @$cliente->cep3) }}">
     {!! $errors->first('cep3', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('rua3') ? 'has-error' : '' }}">
     <label for="rua3" class="control-label">{{ 'Rua' }}</label> --}}
-    {{-- <input class="form-control" rows="5" name="rua3" type="text" id="rua3" value="{{isset($cliente->rua3) ? $cliente->rua3 : ''}}"> --}}
- {{--    <input class="form-control" rows="5" name="rua3" type="text" id="rua3"
+{{-- <input class="form-control" rows="5" name="rua3" type="text" id="rua3" value="{{isset($cliente->rua3) ? $cliente->rua3 : ''}}"> --}}
+{{-- <input class="form-control" rows="5" name="rua3" type="text" id="rua3"
         value="{{ old('rua3', @$cliente->rua3) }}">
     {!! $errors->first('rua3', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('numero3') ? 'has-error' : '' }}">
     <label for="numero3" class="control-label">{{ 'Numero' }}</label> --}}
-    {{-- <input class="form-control" name="numero3" type="text" id="numero3" value="{{ isset($cliente->numero3) ? $cliente->numero3 : ''}}" > --}}
-{{--     <input class="form-control" name="numero3" type="text" id="numero3"
+{{-- <input class="form-control" name="numero3" type="text" id="numero3" value="{{ isset($cliente->numero3) ? $cliente->numero3 : ''}}" > --}}
+{{-- <input class="form-control" name="numero3" type="text" id="numero3"
         value="{{ old('numero3', @$cliente->numero3) }}">
     {!! $errors->first('numero3', '<p class="help-block">:message</p>') !!}
 </div --}}
 
 {{-- <div class="form-group {{ $errors->has('bairro3') ? 'has-error' : '' }}">
     <label for="bairro3" class="control-label">{{ 'Bairro' }}</label> --}}
-    {{-- <input class="form-control" name="bairro3" type="text" id="bairro3" value="{{ isset($cliente->bairro3) ? $cliente->bairro3 : ''}}" > --}}
-{{--     <input class="form-control" name="bairro3" type="text" id="bairro3"
+{{-- <input class="form-control" name="bairro3" type="text" id="bairro3" value="{{ isset($cliente->bairro3) ? $cliente->bairro3 : ''}}" > --}}
+{{-- <input class="form-control" name="bairro3" type="text" id="bairro3"
         value="{{ old('bairro3', @$cliente->bairro3) }}">
     {!! $errors->first('bairro3', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('cidade3') ? 'has-error' : '' }}">
     <label for="cidade3" class="control-label">{{ 'Cidade' }}</label> --}}
-    {{-- <input class="form-control" name="cidade3" type="text" id="cidade3" value="{{ isset($cliente->cidade3) ? $cliente->cidade3 : ''}}" > --}}
-  {{--   <input class="form-control" name="cidade3" type="text" id="cidade3"
+{{-- <input class="form-control" name="cidade3" type="text" id="cidade3" value="{{ isset($cliente->cidade3) ? $cliente->cidade3 : ''}}" > --}}
+{{-- <input class="form-control" name="cidade3" type="text" id="cidade3"
         value="{{ old('cidade3', @$cliente->cidade3) }}">
     {!! $errors->first('cidade3', '<p class="help-block">:message</p>') !!}
-</div>
- --}}
+</div> --}}
 {{-- <div class="form-group {{ $errors->has('estado3') ? 'has-error' : '' }}">
     <label for="estado3" class="control-label">{{ 'Estado' }}</label> --}}
-    {{-- <input class="form-control" name="estado3" type="text" id="estado3" value="{{ isset($cliente->estado3) ? $cliente->estado3 : ''}}" > --}}
- {{--    <input class="form-control" name="estado3" type="text" id="estado3"
+{{-- <input class="form-control" name="estado3" type="text" id="estado3" value="{{ isset($cliente->estado3) ? $cliente->estado3 : ''}}" > --}}
+{{-- <input class="form-control" name="estado3" type="text" id="estado3"
         value="{{ old('estado3', @$cliente->estado3) }}">
     {!! $errors->first('estado3', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('celular31') ? 'has-error' : '' }}">
     <label for="celular31" class="control-label">{{ 'Celular' }}</label> --}}
-    {{-- <input class="celular form-control" name="celular31" type="text" id="celular31" value="{{ isset($cliente->celular31) ? $cliente->celular31 : ''}}" > --}}
- {{--    <input class="celular form-control" name="celular31" type="text" id="celular31"
+{{-- <input class="celular form-control" name="celular31" type="text" id="celular31" value="{{ isset($cliente->celular31) ? $cliente->celular31 : ''}}" > --}}
+{{-- <input class="celular form-control" name="celular31" type="text" id="celular31"
         value="{{ old('celular31', @$cliente->celular31) }}" placeholder="(00) 00000-0000">
     {!! $errors->first('celular31', '<p class="help-block">:message</p>') !!}
 </div> --}}
 
 {{-- <div class="form-group {{ $errors->has('telefone31') ? 'has-error' : '' }}">
     <label for="telefone31" class="control-label">{{ 'Telefone' }}</label> --}}
-    {{-- <input class="phone form-control" name="telefone31" type="text" id="telefone31" value="{{ isset($cliente->telefone31) ? $cliente->telefone31 : ''}}" > --}}
-{{--     <input class="phone form-control" name="telefone31" type="text" id="telefone31"
+{{-- <input class="phone form-control" name="telefone31" type="text" id="telefone31" value="{{ isset($cliente->telefone31) ? $cliente->telefone31 : ''}}" > --}}
+{{-- <input class="phone form-control" name="telefone31" type="text" id="telefone31"
         value="{{ old('telefone31', @$cliente->telefone31) }}" placeholder="(00) 0000-0000">
     {!! $errors->first('telefone31', '<p class="help-block">:message</p>') !!}
 </div> --}}
