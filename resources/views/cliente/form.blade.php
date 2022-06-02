@@ -11,8 +11,56 @@ function selected($value, $selected)
 }
 ?>
 
+{{-- COMEÇA AQUI O IBGE MUNICIPIOS--}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    //JS app file
+
+    let url1 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios';
+
+    ///Requisição JSON
+    $.getJSON(url1, function(data) {
+        //
+        let conteudo1 = '<optiongroup>';
+        $.each(data, function(v, val) {
+            conteudo1 += '<option>' + val.nome + '</option>';
+        });
+        conteudo1 += '</optiongroup>';
+
+        $("#cidade1").html(conteudo1);
+    });
+</script>
+{{-- FIM DO IBGE MUNICIPIOS--}}
+
+{{-- COMEÇA AQUI O IBGE ESTADOS--}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    //JS app file
+
+    let url2 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
+
+    ///Requisição JSON
+    $.getJSON(url2, function(data) {
+        //
+        let conteudo2 = '<optiongroup>';
+        $.each(data, function(v, val) {
+            conteudo2 += '<option>' + val.sigla + '</option>';
+        });
+        conteudo2 += '</optiongroup>';
+
+        $("#estado1").html(conteudo2);
+    });
+</script>
+{{-- FIM DO IBGE ESTADOS--}}
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+{{-- COMEÇA AQUI O SELETOR FISICO/JURIDICO --}}
 <style>
     #pai div {
         display: none;
@@ -31,6 +79,8 @@ function selected($value, $selected)
         });
     });
 </script>
+{{-- FIM DO SELETOR FISICO/JURIDICO --}}
+
 
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="marca">Pessoa física ou jurídica</label>
@@ -183,17 +233,14 @@ function selected($value, $selected)
     </div>
 
 
-    
+
+
 
     <div class="form-group fisica juridica {{ $errors->has('estado1') ? 'has-error' : '' }}">
         <label for="estado1" class="control-label">{{ 'Estado*' }}</label>
         <select name="estado1" id="estado1" class="form-control @error('estado1') is-invalid @enderror"
             required="required">
-            <option value="">Selecione</option>
-            {{-- @foreach (estados() as $sigla => $nome)
-                <option {{ @$cliente->estado1 == $sigla ? 'selected' : '' }} value="{{ $sigla }}">
-                    {{ $nome }}</option>
-            @endforeach --}}
+
         </select>
         @error('estado1')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -201,13 +248,32 @@ function selected($value, $selected)
         {!! $errors->first('estado1', '<p class="help-block">:message</p>') !!}
     </div>
 
+    {{-- <select name="cidade1" id="cidade1">
+
+    </select> --}}
+
+
+
     <div class="form-group fisica juridica {{ $errors->has('cidade1') ? 'has-error' : '' }}">
-        <label for="cidade1" class="control-label">{{ 'Cidade*' }}</label>
-        {{-- <input class="form-control" name="cidade1" type="text" id="cidade1" requered value="{{ isset($cliente->cidade1) ? $cliente->cidade1 : ''}}" > --}}
-        <input class="form-control" name="cidade1" type="text" id="cidade1" requered
-            value="{{ old('cidade1', @$cliente->cidade1) }}">
+        <label for="cidade1" class="control-label">{{ 'Municipio*' }}</label>
+        <select name="cidade1" id="cidade1" class="form-control @error('cidade1') is-invalid @enderror"
+            required="required">
+
+        </select>
+        @error('cidade1')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         {!! $errors->first('cidade1', '<p class="help-block">:message</p>') !!}
     </div>
+
+    {{-- <div class="form-group fisica juridica {{ $errors->has('cidade1') ? 'has-error' : '' }}">
+        <label for="cidade1" class="control-label">{{ 'Cidade*' }}</label> --}}
+    {{-- <input class="form-control" name="cidade1" type="text" id="cidade1" requered value="{{ isset($cliente->cidade1) ? $cliente->cidade1 : ''}}" > --}}
+    {{-- <input class="form-control" name="cidade1" type="text" id="cidade1" requered
+            value="{{ old('cidade1', @$cliente->cidade1) }}">
+        {!! $errors->first('cidade1', '<p class="help-block">:message</p>') !!}
+    </div> --}}
+
 
 
 
@@ -301,7 +367,7 @@ function selected($value, $selected)
 
     <div class="form-group fisica juridica row">
         <label class="col-form-label col-sm-2" for="formapagamento">Forma de pagamento</label>
-        <div class="col-sm-3 fisica juridica" >
+        <div class="col-sm-3 fisica juridica">
             <select class="form-select" name="formapagamento" id="formapagamento">
                 <option value="">Selecione uma opção</option>
                 <option value="boleto" {{ <?php echo selected('boleto', @$cliente->formapagamento); ?> }}>Boleto</option>
