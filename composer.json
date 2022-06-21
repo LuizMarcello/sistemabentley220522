@@ -23,6 +23,7 @@
         "nunomaduro/collision": "^5.10",
         "phpunit/phpunit": "^9.5.10"
     },
+
     "autoload": {
         "psr-4": {
             "App\\": "app/",
@@ -60,6 +61,8 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
+
     "minimum-stability": "dev",
     "prefer-stable": true
 }
+

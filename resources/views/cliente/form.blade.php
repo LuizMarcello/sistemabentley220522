@@ -42,11 +42,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 <script type="text/javascript">
     //JS app file
 
-const select = document.getElementById('#formapagamento');
-const value = select.options[select.selectedIndex].value;
-console.log(value);
-
-    let url1 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/PR/municipios';
+    let url1 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/SP/municipios';
 
     //Requisição JSON
     $.getJSON(url1, function(data) {
