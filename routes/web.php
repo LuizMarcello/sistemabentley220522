@@ -45,9 +45,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* Declarando um único método de rota que vai criar todas as rotas que precisamos: */
 /* 1º parâmetro: O nome do recurso(no plural) e 2º parâmetro, o controler: */
 Route::middleware('auth')->group(function () {
-    Route::resource('empresas', 'EmpresaController');
+    Route::resource('antenas', 'AntenaController');
 
-    Route::resource('tecnicos', 'TecnicoController');
+    //Route::resource('empresas', 'EmpresaController');
+
+    //Route::resource('tecnicos', 'TecnicoController');
 
     Route::resource('historicos', 'HistoricoController');
 
@@ -61,9 +63,11 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('users', 'UsersController');
 
-    Route::resource('ferramentas', 'FerramentaController');
+    Route::resource('instaladores', 'InstaladorController');
 
-    Route::resource('equipamentos', 'EquipamentoController');
+    Route::resource('ferramentas', 'FerramentasController');
+
+    //Route::resource('equipamentos', 'EquipamentoController');
 
     Route::resource('designacoes', 'DesignacaoController');
 
@@ -72,8 +76,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('contratos', 'ContratoController');
 
     Route::resource('chamados', 'ChamadoController');
-
-    Route::resource('antenas', 'AntenaController');
 
     Route::resource('cabos', 'CaboController');
 

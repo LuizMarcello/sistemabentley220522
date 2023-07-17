@@ -266,7 +266,7 @@
                 <ul class="nav nav-treeview">
 
                     <li class="nav-item">
-                        {{-- <a href="{{ route('tecnicos.index') }}" class="nav-link"> --}}
+                        <a href="{{ route('tecnicos.index') }}" class="nav-link">
                             <i class="fas fa-chart-pie nav-icon"></i>
                             <p>Lista de Instaladores</p>
                         </a>
