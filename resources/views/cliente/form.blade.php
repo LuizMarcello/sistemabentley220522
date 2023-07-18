@@ -20,19 +20,19 @@ function selected($value, $selected)
 <script type="text/javascript">
     //JS app file
 
-    let url1 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/';
+    //let url1 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/';
 
     //Requisição JSON
-    $.getJSON(url1, function(data) {
-        //
-        let conteudo1 = '<optiongroup>';
-        $.each(data, function(v, val) {
-            conteudo1 += '<option>' + val.sigla + '</option>';
-        });
-        conteudo1 += '</optiongroup>';
+    //$.getJSON(url1, function(data) {
+    //
+    //  let conteudo1 = '<optiongroup>';
+    //$.each(data, function(v, val) {
+    //  conteudo1 += '<option>' + val.sigla + '</option>';
+    //});
+    //conteudo1 += '</optiongroup>';
 
-        $("#estado").html(conteudo1);
-    });
+    //$("#estado1").html(conteudo1);
+    //});
 </script>
 {{-- FIM DO IBGE ESTADOS --}}
 
@@ -44,19 +44,19 @@ function selected($value, $selected)
     //JS app file
 
 
-    let url2 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/SP/municipios/';
+    //let url2 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/SP/municipios/';
 
     //Requisição JSON
-    $.getJSON(url2, function(data) {
-        //
-        let conteudo2 = '<optiongroup>';
-        $.each(data, function(v, val) {
-            conteudo2 += '<option>' + val.nome + '</option>';
-        });
-        conteudo2 += '</optiongroup>';
+    //$.getJSON(url2, function(data) {
+    //
+    //  let conteudo2 = '<optiongroup>';
+    // $.each(data, function(v, val) {
+    //   conteudo2 += '<option>' + val.nome + '</option>';
+    //});
+    //conteudo2 += '</optiongroup>';
 
-        $("#cidade").html(conteudo2);
-    });
+    //$("#cidade1").html(conteudo2);
+    //});
 </script>
 {{-- FIM DO IBGE MUNICIPIOS --}}
 
@@ -170,7 +170,7 @@ function selected($value, $selected)
     </div>
 
     <div class="form-group fisica juridica {{ $errors->has('rua1') ? 'has-error' : '' }}">
-        <label for="rua1" class="control-label">{{ 'Rua*' }}</label>
+        <label for="rua1" class="control-label">{{ 'Rua1*' }}</label>
         {{-- <input class="form-control" rows="5" name="rua1" type="text" id="rua1" requered value="{{ isset($cliente->rua1) ? $cliente->rua1 : ''}}"> --}}
         <input class="form-control" rows="5" name="rua1" type="text" id="rua1" requered
             value="{{ old('rua1', @$cliente->rua1) }}">
@@ -193,28 +193,64 @@ function selected($value, $selected)
         {!! $errors->first('bairro1', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group fisica juridica {{ $errors->has('estado') ? 'has-error' : '' }}">
-        <label for="estado" class="control-label">{{ 'Estado*' }}</label>
-        <select name="estado" id="estado" class="form-control" @error('estado') is-invalid @enderror"
+    <div class="form-group fisica juridica {{ $errors->has('estado1') ? 'has-error' : '' }}">
+        <label for="estado1" class="control-label">{{ 'Estado*' }}</label>
+        <select name="estado1" id="estado1" class="form-control" @error('estado1') is-invalid @enderror"
             required="required">
-            <option></option>
+            {{-- <option></option> --}}
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+            <option value="EX">Estrangeiro</option>
         </select>
-        @error('estado')
+        @error('estado1')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        {!! $errors->first('estado', '<p class="help-block">:message</p>') !!}
+        {!! $errors->first('estado1', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group fisica juridica {{ $errors->has('cidade') ? 'has-error' : '' }}">
-        <label for="cidade" class="control-label">{{ 'Municipio*' }}</label>
-        <select name="cidade" id="cidade" class="form-control @error('cidade') is-invalid @enderror"
+    {{-- <div class="form-group fisica juridica {{ $errors->has('cidade1') ? 'has-error' : '' }}">
+        <label for="cidade1" class="control-label">{{ 'Municipio*' }}</label>
+        <select name="cidade1" id="cidade1" class="form-control @error('cidade1') is-invalid @enderror"
             required="required">
             <option></option>
         </select>
-        @error('cidade')
+        @error('cidade1')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        {!! $errors->first('cidade', '<p class="help-block">:message</p>') !!}
+        {!! $errors->first('cidade1', '<p class="help-block">:message</p>') !!}
+    </div> --}}
+
+    <div class="form-group fisica juridica {{ $errors->has('cidade1') ? 'has-error' : '' }}">
+        <label for="cidade1" class="control-label">{{ 'Municipio*' }}</label>
+        {{-- <input class="form-control" name="cidade1" type="text" id="cidade1" value="{{ isset($cliente->cidade1) ? $cliente->cidade1 : ''}}" > --}}
+        <input class="form-control" name="cidade1" type="text" id="cidade1"
+            value="{{ old('cidade1', @$cliente->cidade1) }}">
+        {!! $errors->first('cidade1', '<p class="help-block">:message</p>') !!}
     </div>
 
 
@@ -315,11 +351,18 @@ function selected($value, $selected)
         const cep = $(this).val();
         /* Ajax */
         $.ajax({
-            url: 'https://viacep.com.br/ws/'+cep+'/json',
+            url: 'https://viacep.com.br/ws/' + cep + '/json',
             method: 'GET',
             dataType: 'json',
             success: function(data) {
-                console.log(data);
+                if (data.erro) {
+                    alert('Endereço não encontrado');
+                }
+
+                $('#estado1').val(data.uf);
+                $('#cidade1').val(data.localidade);
+                $('#rua1').val(data.logradouro);
+                $('#bairro1').val(data.bairro);
             }
         })
     });
