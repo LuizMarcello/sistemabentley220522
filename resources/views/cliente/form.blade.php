@@ -1,3 +1,5 @@
+@csrf
+
 {{-- <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
     <label for="user_id" class="control-label">{{ 'User Id' }}</label>
     <input class="form-control" name="user_id" type="number" id="user_id" value="{{ isset($cliente->user_id) ? $cliente->user_id : ''}}" >
@@ -13,50 +15,52 @@ function selected($value, $selected)
 
 {{-- COMEÇA AQUI O IBGE ESTADOS --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
     //JS app file
 
-    let url2 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
-
-    //Requisição JSON
-    $.getJSON(url2, function(data) {
-        //
-        let conteudo2 = '<optiongroup>';
-        $.each(data, function(v, val) {
-            conteudo2 += '<option>' + val.sigla + '</option>';
-        });
-        conteudo2 += '</optiongroup>';
-
-        $("#estado1").html(conteudo2);
-    });
-</script>
-{{-- FIM DO IBGE ESTADOS --}}
-
-
-{{-- COMEÇA AQUI O IBGE MUNICIPIOS --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-    //JS app file
-
-    let url1 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/SP/municipios';
+    let url1 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/';
 
     //Requisição JSON
     $.getJSON(url1, function(data) {
         //
         let conteudo1 = '<optiongroup>';
         $.each(data, function(v, val) {
-            conteudo1 += '<option>' + val.nome + '</option>';
+            conteudo1 += '<option>' + val.sigla + '</option>';
         });
         conteudo1 += '</optiongroup>';
 
-        $("#cidade1").html(conteudo1);
+        $("#estado").html(conteudo1);
+    });
+</script>
+{{-- FIM DO IBGE ESTADOS --}}
+
+{{-- COMEÇA AQUI O IBGE MUNICIPIOS --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    //JS app file
+
+
+    let url2 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/SP/municipios/';
+
+    //Requisição JSON
+    $.getJSON(url2, function(data) {
+        //
+        let conteudo2 = '<optiongroup>';
+        $.each(data, function(v, val) {
+            conteudo2 += '<option>' + val.nome + '</option>';
+        });
+        conteudo2 += '</optiongroup>';
+
+        $("#cidade").html(conteudo2);
     });
 </script>
 {{-- FIM DO IBGE MUNICIPIOS --}}
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -65,7 +69,6 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
     #pai div {
         display: none;
     }
-
 </style>
 
 <script>
@@ -190,37 +193,43 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
         {!! $errors->first('bairro1', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group fisica juridica {{ $errors->has('estado1') ? 'has-error' : '' }}">
-        <label for="estado1" class="control-label">{{ 'Estado*' }}</label>
-        <select name="estado1" id="estado1" class="form-control" @error('estado1') is-invalid @enderror"
+    <div class="form-group fisica juridica {{ $errors->has('estado') ? 'has-error' : '' }}">
+        <label for="estado" class="control-label">{{ 'Estado*' }}</label>
+        <select name="estado" id="estado" class="form-control" @error('estado') is-invalid @enderror"
             required="required">
             <option></option>
         </select>
-        @error('estado1')
+        @error('estado')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        {!! $errors->first('estado1', '<p class="help-block">:message</p>') !!}
+        {!! $errors->first('estado', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group fisica juridica {{ $errors->has('cidade1') ? 'has-error' : '' }}">
-        <label for="cidade1" class="control-label">{{ 'Municipio*' }}</label>
-        <select name="cidade1" id="cidade1" class="form-control @error('cidade1') is-invalid @enderror"
+    <div class="form-group fisica juridica {{ $errors->has('cidade') ? 'has-error' : '' }}">
+        <label for="cidade" class="control-label">{{ 'Municipio*' }}</label>
+        <select name="cidade" id="cidade" class="form-control @error('cidade') is-invalid @enderror"
             required="required">
             <option></option>
         </select>
-        @error('cidade1')
+        @error('cidade')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        {!! $errors->first('cidade1', '<p class="help-block">:message</p>') !!}
+        {!! $errors->first('cidade', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group fisica juridica {{ $errors->has('cep1') ? 'has-error' : '' }}">
-        <label for="cep1" class="control-label">{{ 'CEP*' }}</label>
+
+
+    <div class="form-group fisica juridica {{ $errors->has('cep') ? 'has-error' : '' }}">
+        <label for="cep" class="control-label">{{ 'CEP*' }}</label>
         {{-- <input class="cep form-control" name="cep1" type="text" id="cep1" requered value="{{ isset($cliente->cep1) ? $cliente->cep1 : ''}}" > --}}
-        <input class="cep1 form-control" name="cep1" type="text" id="cep1" requered
-            value="{{ old('cep1', @$cliente->cep1) }}" placeholder="00000-000">
-        {!! $errors->first('cep1', '<p class="help-block">:message</p>') !!}
+        <input class="cep form-control" name="cep" type="text" id="cep" requered
+            value="{{ old('cep', @$cliente->cep1) }}" placeholder="00000-000">
+        {!! $errors->first('cep', '<p class="help-block">:message</p>') !!}
     </div>
+
+    <input class="cep form-control" name="cep" type="text" id="cep" requered />
+
+
 
     <div class="form-group fisica juridica{{ $errors->has('email') ? 'has-error' : '' }}">
         <label for="email" class="control-label">{{ 'Principal email*' }}</label>
@@ -252,8 +261,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
         "selecionadoparadesligamento":"Selecionado para desligamento","selecionadoparareligamento":"Selecionado para religamento","suspensaoadministrativa":"Suspens\u00e3o administrativa",
         "suspensaoporusoindevido":"Suspens\u00e3o por uso indevido","suspensaotemporaria":"Suspens\u00e3o tempor\u00e1ria"}',
         true,
-    )
-    as $optionKey => $optionValue)
+    ) as $optionKey => $optionValue)
                 <option value="{{ $optionKey }}"
                     {{ isset($cliente->status) && $cliente->status == $optionKey ? 'selected' : '' }}>
                     {{ $optionValue }}</option>
@@ -290,8 +298,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
     <div class="form-group fisica juridica {{ $errors->has('observacao') ? 'has-error' : '' }}">
         <label for="observacao" class="control-label">{{ 'Observação' }}</label>
-        <textarea class="form-control" rows="5" name="observacao" type="textarea"
-            id="observacao">{{ isset($cliente->observacao) ? $cliente->observacao : '' }}</textarea>
+        <textarea class="form-control" rows="5" name="observacao" type="textarea" id="observacao">{{ isset($cliente->observacao) ? $cliente->observacao : '' }}</textarea>
         {!! $errors->first('observacao', '<p class="help-block">:message</p>') !!}
     </div>
     <br>
@@ -300,3 +307,21 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Atualizar' : 'Criar' }}">
 </div>
+
+{{-- Aqui começa o CEP --}}
+<script>
+    /* JQuery */
+    $(document).on('blur', '#cep', function() {
+        const cep = $(this).val();
+        /* Ajax */
+        $.ajax({
+            url: 'https://viacep.com.br/ws/'+cep+'/json',
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+            }
+        })
+    });
+</script>
+{{-- Aqui termina o CEP --}}
