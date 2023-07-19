@@ -33,13 +33,6 @@ Route::get('/dashboard', function () {
     return view('home');
 })->middleware(['auth'])->name('dashboard');
 
-//"Injetando" aqui a classe php/serviço "CepService":
-Route::get('/cepservice', function (CepService $cepService) {
-$cepService->consultar('86037700');
-});
-
-Route::get('/cep/{cep}', 'CepController');
-
 Route::get('/register', 'App\Http\Controllers\UserController@register');
 
 Route::middleware('auth')->get('/dynamic-dropdown', '\App\Http\Controllers\DynamicDropdownController@index')->name('dynamic-dropdown');

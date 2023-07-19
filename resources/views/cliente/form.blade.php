@@ -60,8 +60,6 @@ function selected($value, $selected)
 </script>
 {{-- FIM DO IBGE MUNICIPIOS --}}
 
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 {{-- COMEÇA AQUI O SELETOR FISICO/JURIDICO --}}
@@ -345,26 +343,5 @@ function selected($value, $selected)
 </div>
 
 {{-- Aqui começa o CEP --}}
-<script>
-    /* JQuery */
-    $(document).on('blur', '#cep', function() {
-        const cep = $(this).val();
-        /* Ajax */
-        $.ajax({
-            url: 'https://viacep.com.br/ws/' + cep + '/json',
-            method: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                if (data.erro) {
-                    alert('Endereço não encontrado');
-                }
-
-                $('#estado1').val(data.uf);
-                $('#cidade1').val(data.localidade);
-                $('#rua1').val(data.logradouro);
-                $('#bairro1').val(data.bairro);
-            }
-        })
-    });
-</script>
+<script src="{{ asset('js/todosscripts.js') }}"></script>
 {{-- Aqui termina o CEP --}}
