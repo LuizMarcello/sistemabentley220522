@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers;
 
-/* namespace App\Http\Requests;
-*/
-use App\Http\Requests;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClienteRequest;
-use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
-
 class ClienteController extends Controller {
     /* Sobre middlewares: */
     /* Aplicando um middleware pelo controller: */

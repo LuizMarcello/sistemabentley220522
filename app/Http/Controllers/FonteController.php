@@ -6,9 +6,7 @@ use App\Models\Fonte;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\FonteRequest;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class FonteController extends Controller

@@ -1,16 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Models\Ferramenta;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-//use App\Http\Requests\HistoricoRequest;
-use Illuminate\Foundation\Http\FormRequest;
-use Symfony\Component\HttpFoundation\Response;
-
 class FerramentasController extends Controller
 {
     /**

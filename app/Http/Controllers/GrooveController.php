@@ -6,11 +6,8 @@ use App\Models\Groove;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\GrooveRequest;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-
 class GrooveController extends Controller
 {
     /**

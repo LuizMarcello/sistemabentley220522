@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\AntenaRequest;
-use Illuminate\Support\Facades\Validator;
+
 use Symfony\Component\HttpFoundation\Response;
 
 class AntenaController extends Controller

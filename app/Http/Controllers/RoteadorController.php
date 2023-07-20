@@ -6,11 +6,8 @@ use App\Models\Roteador;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\RoteadorRequest;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-
 class RoteadorController extends Controller
 {
     /**

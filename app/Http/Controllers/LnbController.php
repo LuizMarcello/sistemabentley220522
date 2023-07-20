@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Lnb;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Requests\LnbRequest;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-
 class LnbController extends Controller
 {
     /**

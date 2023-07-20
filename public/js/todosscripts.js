@@ -1,3 +1,4 @@
+/* Aqui começa o CEP */
 /* JQuery */
 $(document).on('blur', '#cep', function () {
     const cep = $(this).val();
@@ -18,3 +19,4 @@ $(document).on('blur', '#cep', function () {
         }
     })
 });
+/* Aqui termina o CEP */

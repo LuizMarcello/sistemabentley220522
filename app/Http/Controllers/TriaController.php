@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Tria;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Requests\TriaRequest;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-
 class TriaController extends Controller
 {
     /**

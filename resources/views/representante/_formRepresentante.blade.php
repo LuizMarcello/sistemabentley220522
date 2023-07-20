@@ -17,53 +17,6 @@ function selected($value, $selected)
 }
 ?>
 
-{{-- COMEÇA AQUI O IBGE ESTADOS --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-    //JS app file
-
-    //let url1 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/';
-
-    //Requisição JSON
-    //$.getJSON(url1, function(data) {
-    //
-    //  let conteudo1 = '<optiongroup>';
-    //$.each(data, function(v, val) {
-    //  conteudo1 += '<option>' + val.sigla + '</option>';
-    //});
-    //conteudo1 += '</optiongroup>';
-
-    //$("#estado1").html(conteudo1);
-    //});
-</script>
-{{-- FIM DO IBGE ESTADOS --}}
-
-{{-- COMEÇA AQUI O IBGE MUNICIPIOS --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-    //JS app file
-
-
-    //let url2 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/SP/municipios/';
-
-    //Requisição JSON
-    //$.getJSON(url2, function(data) {
-    //
-    //  let conteudo2 = '<optiongroup>';
-    // $.each(data, function(v, val) {
-    //   conteudo2 += '<option>' + val.nome + '</option>';
-    //});
-    //conteudo2 += '</optiongroup>';
-
-    //$("#cidade1").html(conteudo2);
-    //});
-</script>
-{{-- FIM DO IBGE MUNICIPIOS --}}
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <div class="form-group row">
@@ -203,8 +156,9 @@ function selected($value, $selected)
         </div>
     </div>
 
-    <div class="form-group{{ $errors->has('estado1') ? 'has-error' : '' }}">
-        <label for="estado1" class="control-label">{{ 'Estado*' }}</label>
+    <div class="form-group row{{ $errors->has('estado1') ? 'has-error' : '' }}">
+        <label for="estado1" class="col-form-label col-sm-2">{{ 'Estado*' }}</label>
+        <div class="col-sm-10">
         <select name="estado1" id="estado1" class="form-control" @error('estado1') is-invalid @enderror"
             required="required">
             {{-- <option></option> --}}

@@ -1,9 +1,6 @@
 <?php
-
 use App\Http\Controllers;
 use App\Http\Middleware\CheckTasks;
-use App\Http\Controllers\CepController;
-use App\Services\CepService;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;

@@ -4,14 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Plano;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Requests\PlanoRequest;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-
-
 class PlanoController extends Controller
 {
     /**

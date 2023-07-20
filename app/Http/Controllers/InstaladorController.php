@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Instalador;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\InstaladorRequest;
-use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-
 class InstaladorController extends Controller
 {
     /**

@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use App\Models\Representante;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\RepresentanteRequest;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -6,10 +6,8 @@ use App\Models\Cabo;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\CaboRequest;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\HttpFoundation\Response;
 
 class CaboController extends Controller
 {

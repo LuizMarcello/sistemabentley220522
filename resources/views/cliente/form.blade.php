@@ -13,53 +13,6 @@ function selected($value, $selected)
 }
 ?>
 
-{{-- COMEÇA AQUI O IBGE ESTADOS --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-    //JS app file
-
-    //let url1 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/';
-
-    //Requisição JSON
-    //$.getJSON(url1, function(data) {
-    //
-    //  let conteudo1 = '<optiongroup>';
-    //$.each(data, function(v, val) {
-    //  conteudo1 += '<option>' + val.sigla + '</option>';
-    //});
-    //conteudo1 += '</optiongroup>';
-
-    //$("#estado1").html(conteudo1);
-    //});
-</script>
-{{-- FIM DO IBGE ESTADOS --}}
-
-{{-- COMEÇA AQUI O IBGE MUNICIPIOS --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-    //JS app file
-
-
-    //let url2 = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/SP/municipios/';
-
-    //Requisição JSON
-    //$.getJSON(url2, function(data) {
-    //
-    //  let conteudo2 = '<optiongroup>';
-    // $.each(data, function(v, val) {
-    //   conteudo2 += '<option>' + val.nome + '</option>';
-    //});
-    //conteudo2 += '</optiongroup>';
-
-    //$("#cidade1").html(conteudo2);
-    //});
-</script>
-{{-- FIM DO IBGE MUNICIPIOS --}}
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 {{-- COMEÇA AQUI O SELETOR FISICO/JURIDICO --}}
@@ -96,16 +49,16 @@ function selected($value, $selected)
 
 <div id="pai">
 
-    <div class="form-group fisica {{ $errors->has('nome_razaosocial') ? 'has-error' : '' }}">
+    <div class="form-group fisica {{ $errors->has('nomepfisica') ? 'has-error' : '' }}">
         <label for="nomepfisica" class="control-label">{{ 'Nome*' }}</label>
         <input class="form-control" rows="5" name="nomepfisica" type="text" id="nomepfisica" required
-            value="{{ old('nome_razaosocial', @$cliente->nome_razaosocial) }}">
-        {!! $errors->first('nome_razaosocial', '<p class="help-block">:message</p>') !!}
+            value="{{ old('nomepfisica', @$cliente->nomepfisica) }}">
+        {!! $errors->first('nomepfisica', '<p class="help-block">:message</p>') !!}
     </div>
 
     <div class="form-group juridica {{ $errors->has('nome_razaosocial') ? 'has-error' : '' }}">
-        <label for="razaosocial" class="control-label">{{ 'Razão social*' }}</label>
-        <input class="form-control" rows="5" name="razaosocial" type="text" id="razaosocial" required
+        <label for="nome_razaosocial" class="control-label">{{ 'Razão social*' }}</label>
+        <input class="form-control" rows="5" name=nome_razaosocial" type="text" id="nome_razaosocial"
             value="{{ old('nome_razaosocial', @$cliente->nome_razaosocial) }}">
         {!! $errors->first('nome_razaosocial', '<p class="help-block">:message</p>') !!}
     </div>
@@ -117,17 +70,31 @@ function selected($value, $selected)
         {!! $errors->first('ie_rg', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group fisica {{ $errors->has('documento') ? 'has-error' : '' }}">
+    {{-- <div class="form-group fisica {{ $errors->has('documento') ? 'has-error' : '' }}">
         <label for="doccpf" class="control-label">{{ 'CPF*' }}</label>
         <input class="documento form-control" name="doccpf" type="text" id="doccpf"
             value="{{ old('documento', @$cliente->documento) }}" required>
         {!! $errors->first('documento', '<p class="help-block">:message</p>') !!}
+    </div> --}}
+
+    <div class="form-group fisica {{ $errors->has('documento') ? 'has-error' : '' }}">
+        <label for="documento" class="control-label">{{ 'CPF*' }}</label>
+        <input class="documento form-control" name="documento" type="text" id="documento"
+            value="{{ old('documento', @$cliente->documento) }}" required>
+        {!! $errors->first('documento', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group juridica {{ $errors->has('documento') ? 'has-error' : '' }}">
+    {{-- <div class="form-group juridica {{ $errors->has('documento') ? 'has-error' : '' }}">
         <label for="doccnpj" class="control-label">{{ 'CNPJ*' }}</label>
         <input class="documento form-control" name="doccnpj" type="text" id="doccnpj"
-            value="{{ old('documento', @$cliente->documento) }}" required>
+            value="{{ old('documento', @$cliente->documento) }}">
+        {!! $errors->first('documento', '<p class="help-block">:message</p>') !!}
+    </div> --}}
+
+    <div class="form-group juridica {{ $errors->has('documento') ? 'has-error' : '' }}">
+        <label for="documento" class="control-label">{{ 'CNPJ*' }}</label>
+        <input class="documento form-control" name="documento" type="text" id="documento"
+            value="{{ old('documento', @$cliente->documento) }}">
         {!! $errors->first('documento', '<p class="help-block">:message</p>') !!}
     </div>
 
@@ -251,19 +218,13 @@ function selected($value, $selected)
         {!! $errors->first('cidade1', '<p class="help-block">:message</p>') !!}
     </div>
 
-
-
-    <div class="form-group fisica juridica {{ $errors->has('cep') ? 'has-error' : '' }}">
-        <label for="cep" class="control-label">{{ 'CEP*' }}</label>
+    <div class="form-group fisica juridica {{ $errors->has('cep1') ? 'has-error' : '' }}">
+        <label for="cep1" class="control-label">{{ 'CEP*' }}</label>
         {{-- <input class="cep form-control" name="cep1" type="text" id="cep1" requered value="{{ isset($cliente->cep1) ? $cliente->cep1 : ''}}" > --}}
-        <input class="cep form-control" name="cep" type="text" id="cep" requered
-            value="{{ old('cep', @$cliente->cep1) }}" placeholder="00000-000">
-        {!! $errors->first('cep', '<p class="help-block">:message</p>') !!}
+        <input class="form-control" name="cep1" type="text" id="cep" requered
+            value="{{ old('cep1', @$cliente->cep1) }}" placeholder="00000-000">
+        {!! $errors->first('cep1', '<p class="help-block">:message</p>') !!}
     </div>
-
-    <input class="cep form-control" name="cep" type="text" id="cep" requered />
-
-
 
     <div class="form-group fisica juridica{{ $errors->has('email') ? 'has-error' : '' }}">
         <label for="email" class="control-label">{{ 'Principal email*' }}</label>
