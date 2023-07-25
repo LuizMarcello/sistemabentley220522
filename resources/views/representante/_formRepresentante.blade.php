@@ -17,6 +17,7 @@ function selected($value, $selected)
 }
 ?>
 
+{{-- O cep usa este ajax --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <div class="form-group row">
@@ -39,6 +40,7 @@ function selected($value, $selected)
         @enderror
     </div>
 </div>
+
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="documento">CPF</label>
     <div class="col-sm-10">
@@ -49,6 +51,7 @@ function selected($value, $selected)
         @enderror
     </div>
 </div>
+
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="ie_rg">IE/RG</label>
     <div class="col-sm-10">
@@ -116,7 +119,7 @@ function selected($value, $selected)
     <div class="form-group row">
         <label class="col-form-label col-sm-2" for="rua1">Rua</label>
         <div class="col-sm-10">
-            <input value="{{ old('rua1', @$representante->rua1) }}" type="text" id="rua1" name="rua1"
+            <input value="{{ old('rua1', @$representante->rua) }}" type="text" id="rua1" name="rua1"
                 maxlength="150" class="form-control @error('rua1') is-invalid @enderror">
             @error('rua1')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -212,20 +215,20 @@ function selected($value, $selected)
     </div>
 </div>
 
-<div class="form-group row">
-    <label class="col-form-label col-sm-2" for="situacao">Situação atual</label>
-    <div class="col-sm-3">
-        <input value="{{ old('situacao', @$representante->situacao) }}" type="text" id="situacao"
-            name="situacao" class="form-control">
-        <select class="form-control" name="situacao" id="situacao">
-            <option value="{{ @$representante->situacao }}">Alterar situação</option>
-            <option>Ativo</option>
-            <option>Em espera</option>
-            <option>Suspenso</option>
-            <option>Inativo</option>
-        </select>
+<div class="form-group row{{ $errors->has('situacao') ? 'has-error' : '' }}">
+        <label for="situacao" class="col-form-label col-sm-2">{{ 'Situação Atual' }}</label>
+        <div class="col-sm-10">
+            <select name="situacao" id="situacao" class="form-control" @error('situacao') is-invalid @enderror"
+                required="required">
+                {{-- <option></option> --}}
+                <option value="{{ @$representante->situacao }}">Alterar situação</option>
+                <option>Ativo</option>
+                <option>Em espera</option>
+                <option>Suspenso</option>
+                <option>Inativo</option>
+            </select>
+        </div>
     </div>
-</div>
 
 <button class="btn btn-primary" name="submit" value="" type="submit">Salvar</button>
 

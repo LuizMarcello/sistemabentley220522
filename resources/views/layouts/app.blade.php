@@ -59,9 +59,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div id="app" class="wrapper">
 
+        {{-- Incluindo uma página inteira aqui --}}
         @include('layouts.menu-lateral');
 
-       {{--  @include('auth.login') --}}
+        {{--  @include('auth.login') --}}
 
         <div class="content-wrapper">
             <div class="col-sm-12">

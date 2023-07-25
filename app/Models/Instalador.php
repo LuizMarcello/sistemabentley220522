@@ -15,6 +15,15 @@ class Instalador extends Model
 
     use SoftDeletes;
 
+    use HasFactory;
+
+     /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+     protected $table = 'instaladores';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,4 +34,6 @@ class Instalador extends Model
         'email', 'telefone', 'cep', 'bairro', 'cidade', 'estado',
         'observacao', 'situacao', 'rua', 'numero', 'dataNascimento'
     ];
+
+
 }

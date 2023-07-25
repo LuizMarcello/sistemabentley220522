@@ -10,7 +10,7 @@ $('.cep').mask('99999-999');
 //.documento
 $('.documento').mask('999.999.999-99');
 //.cpf_cnpj
-/* $('.cpf_cnpj').mask('999.999.999-99'); */
+$('.cpf_cnpj').mask('999.999.999-99');
 //.datanota */
 $('.datanota').mask('99/99/9999');
 //.macaddress

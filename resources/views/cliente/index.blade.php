@@ -92,6 +92,7 @@
                                         <th>Id</th>
                                         <th>Nome/Razão social</th>
                                         <th>Cidade</th>
+                                        <th>Fisica/Juridica</th>
                                         <th>Estado</th>
                                         <th>Actions</th>
                                     </tr>
@@ -102,7 +103,14 @@
                                             {{-- <td>{{ $loop->iteration }}</td> --}}
                                             <td>{{ $cliente->id }}</td>
                                             <td>{{ $cliente->nome_razaosocial }}</td>
-                                            <td>{{ $cliente->cidade1 }}</td>
+                                            <td>{{ $cliente->cidade }}</td>
+                                            @if ($cliente->cpf)
+                                                <td>Pessoa Física</td>
+                                            @endif
+                                             @if ($cliente->cnpj)
+                                                <td>Pessoa Jurídica</td>
+                                            @endif
+
                                             <td>{{ $cliente->estado1 }}</td>
                                             <td>
                                                 <a href="{{ url('/clientes/' . $cliente->id) }}" title="View Cliente">

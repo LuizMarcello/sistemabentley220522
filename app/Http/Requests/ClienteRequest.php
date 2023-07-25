@@ -8,7 +8,7 @@ namespace App\Http\Requests;
 
 //use App\Services\CepService;
 //use App\Rules\CepRule;
-use Illuminate\Validation\Rule;
+//use Illuminate\Validation\Rule;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -48,17 +48,17 @@ class ClienteRequest extends FormRequest
         return [
             //'nome_razaosocial' => ['required'],
             //'razao_social' => ['required'],
-            'documento' => ['required'],
+            //'documento' => ['required'],
             //'plano' => ['required'],
             //'documento' => $this->tipoValidacaoDocumento(),
-            'celular1' => ['required'],
+            //'celular1' => ['required'],
             //'banda' => ['required'],
-            'email' => ['required'],
-            'telefone1' => ['required'],
-            'cep1' => ['required'],
-            'rua1' => ['required'],
-            'cidade1' => ['required'],
-            'estado1' => ['required'],
+            //'email' => ['required'],
+            //'telefone1' => ['required'],
+            //'cep1' => ['required'],
+            //'rua1' => ['required'],
+            //'cidade1' => ['required'],
+            //'estado1' => ['required'],
             //'dataadesao' => ['required', 'max:10', 'date_format:d/m/Y'],
             //'datacadastro' => ['required', 'max:10', 'date_format:d/m/Y']
        ];
