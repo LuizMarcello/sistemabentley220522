@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClienteRequest;
 use Symfony\Component\HttpFoundation\Response;
+
 class ClienteController extends Controller {
     /* Sobre middlewares: */
     /* Aplicando um middleware pelo controller: */
@@ -175,10 +176,9 @@ class ClienteController extends Controller {
 
         /* Para permissão/autorização do 'update()' deste controller. */
         /* Parâmetros: Nome do gate e instância do cliente */
-        $this->authorize( 'update-client', $cliente );
+        //$this->authorize( 'update-client', $cliente );
 
-        /* $cliente->update( $requestData );
-        */
+        $cliente->update( $requestData );
 
         if ( $cliente->update( $requestData ) ) {
             $request->session()->flash( 'success', 'Cliente atualizado com sucesso!!' );
@@ -204,7 +204,7 @@ class ClienteController extends Controller {
         $cliente = Cliente::findOrfail( $id );
         /* Para permissão/autorização do 'destroy()' deste controller. */
         /* Parâmetros: Nome do gate e instância do cliente. */
-        $this->authorize( 'update-client', $cliente );
+        //$this->authorize( 'update-client', $cliente );
 
         if ( Cliente::destroy( $id ) ) {
             $request->session()->flash( 'success', 'Cliente deletado com sucesso!!' );

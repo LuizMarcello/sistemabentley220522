@@ -14,7 +14,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ClienteRequest extends FormRequest
 {
-    public $cepService;
+    //public $cepService;
 
     /**
      * Create a new rule instance.

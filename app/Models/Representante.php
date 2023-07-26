@@ -21,7 +21,7 @@ class Representante extends Model
      * @var array
      */
     protected $fillable = [
-        'responsavel', 'razao_social', 'documento', 'ie_rg', 'estado',
+        'responsável', 'razao_social', 'documento', 'ie_rg', 'estado',
         'celular', 'email', 'telefone', 'cep', 'bairro', 'cidade',
         'observacao', 'situacao', 'numero', 'rua'
     ];

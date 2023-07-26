@@ -24,10 +24,10 @@ class RepresentanteRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => ['required', 'max:255'],
+            //'nome' => ['required', 'max:255'],
             'razao_social' => ['max:255'],
-            'documento' => $this->tipoValidacaoDocumento(),
-            'nome_contato' => ['required', 'max:255'],
+            //'documento' => $this->tipoValidacaoDocumento(),
+            //'nome_contato' => ['required', 'max:255'],
             'celular' => ['required', 'max:11'],
             'email' => ['required', 'email'],
             'telefone' => ['size:10'],
@@ -66,8 +66,8 @@ class RepresentanteRequest extends FormRequest
     private function tipoValidacaoDocumento()
     {
         if (\strlen($this->documento) === 11) {
-            return ['required', 'cpf'];
-        }
+           return ['required', 'cpf'];
+      }
         return ['required', 'cnpj'];
     }
 }

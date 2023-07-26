@@ -23,9 +23,9 @@ function selected($value, $selected)
 <div class="form-group row">
     <label for="nome" class="col-form-label col-sm-2 required">Nome</label>
     <div class="col-sm-10">
-        <input value="{{ old('nome', @$representante->nome) }}" type="text" name="nome" maxlength="255"
-            class="form-control @error('nome') is-invalid @enderror">
-        @error('nome')
+        <input value="{{ old('responsável', @$representante->responsável) }}" type="text" name="responsável" maxlength="255"
+            class="form-control @error('responsável') is-invalid @enderror">
+        @error('responsável')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
@@ -50,7 +50,14 @@ function selected($value, $selected)
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
+
 </div>
+{{-- <div class="form-group fisica {{ $errors->has('documento') ? 'has-error' : '' }}">
+        <label for="documento" class="control-label">{{ 'CPF*' }}</label>
+        <input class="cpf form-control" name="documento" type="text" id="documento"
+            value="{{ old('documento', @$representante->documento) }}">
+        {!! $errors->first('documento', '<p class="help-block">:message</p>') !!}
+    </div> --}}
 
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="ie_rg">IE/RG</label>
@@ -63,7 +70,7 @@ function selected($value, $selected)
     </div>
 </div>
 <div id="cliente">
-    <div class="form-group row">
+    {{-- <div class="form-group row">
         <label class="col-form-label col-sm-2 required" for="nome_contato">Nome Contato</label>
         <div class="col-sm-10">
             <input value="{{ old('nome_contato', @$representante->nome_contato) }}" type="text" id="nome_contato"
@@ -73,7 +80,7 @@ function selected($value, $selected)
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-    </div>
+    </div> --}}
     <div class="form-group row">
         <label class="col-form-label col-sm-2 required" for="celular">Celular</label>
         <div class="col-sm-10">
@@ -117,11 +124,11 @@ function selected($value, $selected)
     </div>
 
     <div class="form-group row">
-        <label class="col-form-label col-sm-2" for="rua1">Rua</label>
+        <label class="col-form-label col-sm-2" for="rua">Rua</label>
         <div class="col-sm-10">
-            <input value="{{ old('rua1', @$representante->rua) }}" type="text" id="rua1" name="rua1"
-                maxlength="150" class="form-control @error('rua1') is-invalid @enderror">
-            @error('rua1')
+            <input value="{{ old('rua', @$representante->rua) }}" type="text" id="rua1" name="rua"
+                maxlength="150" class="form-control @error('rua') is-invalid @enderror">
+            @error('rua')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
@@ -138,70 +145,70 @@ function selected($value, $selected)
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-form-label col-sm-2" for="bairro1">Bairro</label>
+        <label class="col-form-label col-sm-2" for="bairro">Bairro</label>
         <div class="col-sm-10">
-            <input value="{{ old('bairro1', @$representante->bairro1) }}" type="text" id="bairro1"
-                name="bairro1" maxlength="100" class="form-control @error('bairro1') is-invalid @enderror">
-            @error('bairro1')
+            <input value="{{ old('bairro', @$representante->bairro) }}" type="text" id="bairro1"
+                name="bairro" maxlength="100" class="form-control @error('bairro') is-invalid @enderror">
+            @error('bairro')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
     </div>
 
     <div class="form-group row">
-        <label class="col-form-label col-sm-2" for="cidade1">Cidade</label>
+        <label class="col-form-label col-sm-2" for="cidade">Cidade</label>
         <div class="col-sm-10">
-            <input value="{{ old('cidade1', @$representante->cidade1) }}" type="text" id="cidade1"
-                name="cidade1" maxlength="100" class="form-control @error('cidade1') is-invalid @enderror">
-            @error('cidade1')
+            <input value="{{ old('cidade', @$representante->cidade) }}" type="text" id="cidade1"
+                name="cidade" maxlength="100" class="form-control @error('cidade') is-invalid @enderror">
+            @error('cidade')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
     </div>
 
-    <div class="form-group row{{ $errors->has('estado1') ? 'has-error' : '' }}">
-        <label for="estado1" class="col-form-label col-sm-2">{{ 'Estado*' }}</label>
+    <div class="form-group row{{ $errors->has('estado') ? 'has-error' : '' }}">
+        <label for="estado" class="col-form-label col-sm-2">{{ 'Estado*' }}</label>
         <div class="col-sm-10">
-        <select name="estado1" id="estado1" class="form-control" @error('estado1') is-invalid @enderror"
-            required="required">
-            {{-- <option></option> --}}
+            <select name="estado" id="estado1" class="form-control" @error('estado') is-invalid @enderror"
+                required="required">
+                {{-- <option></option> --}}
 
-            <option value="AC">Acre</option>
-            <option value="AL">Alagoas</option>
-            <option value="AP">Amapá</option>
-            <option value="AM">Amazonas</option>
-            <option value="BA">Bahia</option>
-            <option value="CE">Ceará</option>
-            <option value="DF">Distrito Federal</option>
-            <option value="ES">Espírito Santo</option>
-            <option value="GO">Goiás</option>
-            <option value="MA">Maranhão</option>
-            <option value="MT">Mato Grosso</option>
-            <option value="MS">Mato Grosso do Sul</option>
-            <option value="MG">Minas Gerais</option>
-            <option value="PA">Pará</option>
-            <option value="PB">Paraíba</option>
-            <option value="PR">Paraná</option>
-            <option value="PE">Pernambuco</option>
-            <option value="PI">Piauí</option>
-            <option value="RJ">Rio de Janeiro</option>
-            <option value="RN">Rio Grande do Norte</option>
-            <option value="RS">Rio Grande do Sul</option>
-            <option value="RO">Rondônia</option>
-            <option value="RR">Roraima</option>
-            <option value="SC">Santa Catarina</option>
-            <option value="SP">São Paulo</option>
-            <option value="SE">Sergipe</option>
-            <option value="TO">Tocantins</option>
-            <option value="EX">Estrangeiro</option>
-        </select>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+                <option value="EX">Estrangeiro</option>
+            </select>
+        </div>
     </div>
-</div>
-</select>
-@error('estado1')
-    <div class="alert alert-danger">{{ $message }}</div>
-@enderror
-{!! $errors->first('estado1', '<p class="help-block">:message</p>') !!}
+    </select>
+    @error('estado1')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    {!! $errors->first('estado1', '<p class="help-block">:message</p>') !!}
 </div>
 
 <div class="form-group row">
@@ -216,22 +223,26 @@ function selected($value, $selected)
 </div>
 
 <div class="form-group row{{ $errors->has('situacao') ? 'has-error' : '' }}">
-        <label for="situacao" class="col-form-label col-sm-2">{{ 'Situação Atual' }}</label>
-        <div class="col-sm-10">
-            <select name="situacao" id="situacao" class="form-control" @error('situacao') is-invalid @enderror"
-                required="required">
-                {{-- <option></option> --}}
-                <option value="{{ @$representante->situacao }}">Alterar situação</option>
-                <option>Ativo</option>
-                <option>Em espera</option>
-                <option>Suspenso</option>
-                <option>Inativo</option>
-            </select>
-        </div>
+    <label for="situacao" class="col-form-label col-sm-2">{{ 'Situação Atual' }}</label>
+    <div class="col-sm-10">
+        <select name="situacao" id="situacao" class="form-control" @error('situacao') is-invalid @enderror"
+            required="required">
+            {{-- <option></option> --}}
+            <option value="{{ @$representante->situacao }}">Alterar situação</option>
+            <option>Ativo</option>
+            <option>Em espera</option>
+            <option>Suspenso</option>
+            <option>Inativo</option>
+        </select>
     </div>
+</div>
 
 <button class="btn btn-primary" name="submit" value="" type="submit">Salvar</button>
 
 {{-- Aqui começa o CEP --}}
 <script src="{{ asset('js/todosscripts.js') }}"></script>
 {{-- Aqui termina o CEP --}}
+
+{{-- Aqui começam as máscaras --}}
+<script src="{{ asset('js/mascaras.js') }}"></script>
+{{-- Aqui terminam as máscaras --}}

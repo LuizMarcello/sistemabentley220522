@@ -89,10 +89,10 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <strong>Nome</strong>: {{ $representante->nome }} <br>
+                                <strong>Nome</strong>: {{ $representante->responsável }} <br>
                                 <strong>Razão Social</strong>: {{ $representante->razao_social }} <br>
                                 <strong>CNPJ/CPF</strong>: {{ $representante->documento }} <br>
-                                <strong>IE/RG</strong>: {{ mascara($representante->ie_rg, '#.###.###-2') }} <br>
+                                <strong>IE/RG</strong>: {{ $representante->ie_rg }} <br>
                                 <strong>Data do cadastro</strong>: {{ $representante->created_at }} <br>
                                 <strong>Data da última alteração</strong>: {{ $representante->updated_at }} <br>
 
@@ -101,10 +101,12 @@
                             </div>
                             <div class="col-sm-6">
                                 <address>
-                                    {{ $representante->rua }}, {{ $representante->numero }} <br>
-                                    {{ $representante->bairro }}, {{ $representante->cidade }} -
-                                    {{ $representante->estado }}<br>
-                                    {{ $representante->cep }} <br>
+                                    Rua: {{ $representante->rua }} <br>
+                                    Número: {{ $representante->numero }} <br>
+                                    Bairro: {{ $representante->bairro }} <br>
+                                    Cidade: {{ $representante->cidade }} <br>
+                                    Estado: {{ $representante->estado }}<br>
+                                    Cep: {{ $representante->cep }}
                                 </address>
                                 {{-- <strong>Data de nascimento</strong>: {{ $representante->dataNascimento }} <br> --}}
                                 <strong>Celular:</strong> {{ $representante->celular }} <br>

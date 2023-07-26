@@ -87,8 +87,8 @@
                                     <th style="width: 10px"></th>
                                     <th>Id</th>
                                     <th>Nome da empresa</th>
-                                    <th>Nome do contato</th>
-                                    <th>Celular</th>
+                                    <th>Cidade</th>
+                                    <th>Estado</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -98,9 +98,9 @@
                                     <tr>
                                         <td></td>
                                         <td>{{ $registro->id }}</td>
-                                        <td>{{ $registro->nome }}</td>
-                                        <td>{{ $registro->nome_contato }}</td>
-                                        <td>{{ $registro->celular }}</td>
+                                        <td>{{ $registro->razao_social }}</td>
+                                        <td>{{ $registro->cidade }}</td>
+                                        <td>{{ $registro->estado }}</td>
                                         <td><a href="{{ route('representantes.show', $registro) }}"
                                                 class="btn btn-primary btn-sm">Detalhes</a>
                                             <a href="{{ route('representantes.edit', $registro) }}"
