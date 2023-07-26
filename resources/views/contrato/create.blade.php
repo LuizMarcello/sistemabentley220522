@@ -24,7 +24,7 @@
                          class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('contratos.form', ['formMode' => 'create'])
+                            @include ('contrato.form', ['formMode' => 'create'])
 
                         </form>
 

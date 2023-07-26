@@ -35,7 +35,7 @@ class ContratoController extends Controller
             $contratos = Contrato::latest()->paginate(3);
         }
 
-        return view('contratos.index', compact('contratos'));
+        return view('contrato.index', compact('contratos'));
     }
 
     /**
@@ -45,7 +45,7 @@ class ContratoController extends Controller
      */
     public function create()
     {
-        return view('contratos.create');
+        return view('contrato.create');
     }
 
     /**

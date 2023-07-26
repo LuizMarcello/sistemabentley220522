@@ -76,7 +76,7 @@
                     </form>
                     <br>
                     <div class="col">
-                        <a href="{{ url('/contratos/create') }}" class="btn btn-success btn-md" title="Adicionar novo contrato" data-toggle="modal" data-target="#modelcontrato">
+                        <a href="{{ url('/contrato/create') }}" class="btn btn-success btn-md" title="Adicionar novo contrato" data-toggle="modal" data-target="#modelcontrato">
                             <i class="fa fa-plus" aria-hidden="true"></i> Novo contrato
                         </a>
                     </div>
@@ -135,7 +135,7 @@
                                     <td>{{ $contrato->dias_para_pendencia }}</td>
 
                                     <td>
-                                        <a href="{{ url('/contratos/' . $contrato->id) }}" title="View contrato">
+                                        <a href="{{ url('/contrato/' . $contrato->id) }}" title="View contrato">
                                             <button class="btn btn-info btn-sm">
                                                 <i class="fa fa-eye" aria-hidden="true"></i> Detalhes
                                             </button></a>

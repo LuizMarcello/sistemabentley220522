@@ -155,7 +155,7 @@
                 <ul class="nav nav-treeview">
 
                     <li class="nav-item">
-                        <a href="{{ route('contratos.index') }}" class="nav-link">
+                        <a href="{{ route('contrato.index') }}" class="nav-link">
                             <i class="fas fa-list-alt nav-icon"></i>
                             <p>Contratos</p>
                         </a>
