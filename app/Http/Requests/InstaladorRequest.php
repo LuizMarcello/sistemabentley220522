@@ -29,15 +29,15 @@ class InstaladorRequest extends FormRequest
              */
             'nome' => ['required', 'max:255'],
             'razao_social' => ['max:255'],
-            'documento' => $this->tipoValidacaoDocumento(),
+            //'documento' => $this->tipoValidacaoDocumento(),
             'nome_contato' => ['required', 'max:255'],
             'celular' => ['required', 'size:11'],
             'email' => ['required', 'email'],
             'telefone' => ['size:10'],
             'cep' => ['required', 'size:8'],
-            'rua' => ['required'],
+            //'rua' => ['required'],
             'bairro' => ['required', 'max:50'],
-            'cidade' => ['required', 'max:50'],
+            //'cidade' => ['required', 'max:50'],
             'estado' => ['required', 'max:2'],
 
         ];

@@ -54,17 +54,27 @@
         @enderror
     </div>
 </div>
-<div class="form-group row">
+{{-- <div class="form-group row">
     <label class="col-form-label col-sm-2" for="dataNascimento">Data de nascimento</label>
     <div class="col-sm-10">
-        <input value="{{ old('dataNascimento', @$instalador->dataNascimento) }}" type="text" id="dataNascimento"
+        <input value="{{ old('dataNascimento', @$instalador->dataNascimento) }}" type="date" id="dataNascimento"
             name="dataNascimento" maxlength="15"
             class="dataNascimento form-control @error('dataNascimento') is-invalid @enderror">
         @error('dataNascimento')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
+</div> --}}
+
+
+<div class="form-group row{{ $errors->has('dataNascimento') ? 'has-error' : '' }}">
+    <label for="dataNascimento" class="col-form-label col-sm-2">{{ 'Data de Nascimento' }}</label>
+    <input style="margin-left: 1.3%" class="form-control col-form-label col-sm-4" name="dataNascimento" type="date"
+        id="dataNascimento" required value="{{ old('dataNascimento', @$instalador->dataNascimento) }}">
+    {!! $errors->first('dataNascimento', '<p class="help-block">:message</p>') !!}
 </div>
+
+
 <div id="cliente">
     <div class="form-group row">
         <label class="col-form-label col-sm-2 required" for="nome_contato">Nome Contato*</label>
@@ -248,8 +258,6 @@
     @enderror
     {!! $errors->first('situacao', '<p class="help-block">:message</p>') !!}
 </div>
-
-
 
 <button class="btn btn-primary" name="submit" value="" type="submit">Salvar</button>
 

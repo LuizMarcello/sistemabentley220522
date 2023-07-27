@@ -65,9 +65,12 @@
                         <h4> Clientes</h4>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/clientes/create') }}" class="btn btn-success btn-sm" title="Add New Cliente">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Novo cliente
-                        </a>
+
+                        @can('admin', $clientes)
+                            <a href="{{ url('/clientes/create') }}" class="btn btn-success btn-sm" title="Add New Cliente">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Novo cliente
+                            </a>
+                        @endcan
 
                         <form method="GET" action="{{ url('/clientes') }}" accept-charset="UTF-8"
                             class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -107,7 +110,7 @@
                                             @if ($cliente->cpf)
                                                 <td>Pessoa Física</td>
                                             @endif
-                                             @if ($cliente->cnpj)
+                                            @if ($cliente->cnpj)
                                                 <td>Pessoa Jurídica</td>
                                             @endif
 
@@ -120,23 +123,27 @@
 
                                                 {{-- can(): Diretiva do blade que verifica se tem permissão ou não --}}
                                                 {{-- Parâmetros: Nome do gate e instância do cliente, o qual terá ou não permissão. --}}
-                                                @can('update-client', $cliente)
-                                                    <a href="{{ url('/clientes/' . $cliente->id . '/edit') }}"
-                                                        title="Edit Cliente">
+                                                {{--  @can('update-client', $cliente) --}}
+                                                <a href="{{ url('/clientes/' . $cliente->id . '/edit') }}"
+                                                    title="Edit Cliente">
+                                                    @can('admin', $cliente)
                                                         <button class="btn btn-primary btn-sm">
                                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar
                                                         </button></a>
+                                                @endcan
 
-                                                    <form method="POST" action="{{ url('/clientes' . '/' . $cliente->id) }}"
-                                                        accept-charset="UTF-8" style="display:inline">
-                                                        {{ method_field('DELETE') }}
-                                                        {{ csrf_field() }}
+                                                <form method="POST" action="{{ url('/clientes' . '/' . $cliente->id) }}"
+                                                    accept-charset="UTF-8" style="display:inline">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                    @can('admin', $cliente)
                                                         <button type="submit" class="btn btn-danger btn-sm"
                                                             title="Delete Cliente"
                                                             onclick="return confirm(&quot;Confirm delete?&quot;)"><i
                                                                 class="fa fa-trash-o" aria-hidden="true"></i> Deletar</button>
-                                                    </form>
-                                                @endcan
+                                                    @endcan
+                                                </form>
+                                                {{-- @endcan --}}
                                             </td>
                                         </tr>
                                     @endforeach

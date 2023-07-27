@@ -54,11 +54,13 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('planos', 'PlanoController');
 
+
     Route::resource('clientes', 'ClienteController');
+    Route::delete('clientes', [ClienteController::class, 'destroy'])->name('clientes.destroy')->middleware('can:admin');
 
     Route::resource('representantes', 'RepresentanteController');
 
-    Route::resource('migracoes', 'MigracaoController');
+    //Route::resource('migracoes', 'MigracaoController');
 
     Route::resource('users', 'UsersController');
 
@@ -92,7 +94,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('trias', 'TriaController');
 
-    Route::resource('instalacoes', 'InstalacaoController');
+    //Route::resource('instalacoes', 'InstalacaoController');
 
     Route::resource('medirvelocidades', 'MedirVelocidadeController');
 });

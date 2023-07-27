@@ -49,7 +49,7 @@ function selected($value, $selected)
 
 <div id="pai">
 
-{{--     <div class="form-group fisica {{ $errors->has('nomepfisica') ? 'has-error' : '' }}">
+    {{--     <div class="form-group fisica {{ $errors->has('nomepfisica') ? 'has-error' : '' }}">
         <label for="nomepfisica" class="control-label">{{ 'Nome*' }}</label>
         <input class="form-control" rows="5" name="nomepfisica" type="text" id="nomepfisica" required
             value="{{ old('nomepfisica', @$cliente->nomepfisica) }}">
@@ -260,9 +260,9 @@ function selected($value, $selected)
     <br>
 </div> {{-- Fim da div "pai --}}
 
-<div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Atualizar' : 'Criar' }}">
-</div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Atualizar' : 'Criar' }}">
+    </div>
 
 {{-- Aqui começa o CEP --}}
 <script src="{{ asset('js/todosscripts.js') }}"></script>

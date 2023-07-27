@@ -96,7 +96,7 @@
                                         <td>{{ $registro->id }}</td>
                                         <td>{{ $registro->nome }}</td>
                                         <td>{{ $registro->nome_contato }}</td>
-                                        <td>{{ mascara($registro->celular, '(##) #####-####') }}</td>
+                                        <td>{{ $registro->celular }}</td>
                                         <td><a href="{{ route('instaladores.show', $registro) }}"
                                                 class="btn btn-primary btn-sm">Detalhes</a>
                                             <a href="{{ route('instaladores.edit', $registro) }}"
