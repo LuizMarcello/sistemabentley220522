@@ -17,7 +17,7 @@ class InstaladorController extends Controller
      */
     public function index(): View
     {
-        $registros = Instalador::paginate(1);
+        $registros = Instalador::paginate(7);
         return view('instalador.indexInstalador', \compact('registros'));
     }
 
@@ -52,8 +52,15 @@ class InstaladorController extends Controller
      *
      * Também usando "Route Model Binding", como no "edit" e "upgrade".
      */
+    //public function show( $Instaladorinstalador): View
+    //{
+        //return view('instalador.showInstalador', \compact('instalador'));
+    //}
+
+    //public function show($id)
     public function show(Instalador $instalador): View
     {
+       // $instalador = Instalador::findOrFail();
         return view('instalador.showInstalador', \compact('instalador'));
     }
 
@@ -70,8 +77,9 @@ class InstaladorController extends Controller
      * Isto já vai tornar meu Model "empresa" filtrado
      * e dísponivel dentro da view retornada.
      */
-    public function edit(Instalador $instalador): View
+    public function edit(Instalador $instalador, $id): View
     {
+        $instalador = Instalador::findOrFail($id);
         return view('instalador.editInstalador', \compact('instalador'));
     }
 
@@ -101,10 +109,9 @@ class InstaladorController extends Controller
      *
      * Também usando "Route Model Binding", como no "edit" acima.
      */
-    public function destroy(Instalador $instalador): Response
+    public function destroy(Instalador $instalador, $id): Response
     {
-        $instalador->delete();
-
+        $instalador->delete($id);
         return \redirect()->route('instaladores.index');
     }
 }

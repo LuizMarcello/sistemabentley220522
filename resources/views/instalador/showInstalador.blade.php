@@ -3,8 +3,12 @@
 @section('title')
     <h4>Detalhes do instalador {{ $instalador->nome }} - ID {{ $instalador->id }}</h4>
 
-    <a href="{{ url('/instaladores') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left"
-                aria-hidden="true"></i> Voltar</button></a>
+    {{-- <a href="{{ url('/instaladores') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left"
+                aria-hidden="true"></i> Voltar</button></a> --}}
+
+    <div class="card-tools">
+        <a href="{{ route('instaladores.index', $instalador) }}" class="btn btn-success">Voltar</a>
+    </div>
 @endsection
 
 
@@ -93,12 +97,12 @@
                                 <strong>Nome</strong>: {{ $instalador->nome }} <br>
                                 <strong>CNPJ/CPF</strong>:
                                 @if (strlen($instalador->documento) === 11)
-                                    {{ mascara($instalador->documento, '###.###.###-##') }}
+                                    {{ $instalador->documento }}
                                 @else
-                                    {{ mascara($instalador->documento, '##.###.###/####-##') }}
+                                    {{ $instalador->documento }}
                                 @endif
                                 <br>
-                                <strong>IE/RG</strong>: {{ mascara($instalador->ie_rg, '#.###.###-#') }} <br>
+                                <strong>IE/RG</strong>: {{ $instalador->ie_rg }} <br>
                                 <strong>Data do cadastro</strong>: {{ $instalador->created_at }} <br>
                                 <strong>Data da última alteração</strong>: {{ $instalador->updated_at }} <br>
                                 <strong>Observações</strong>: {{ $instalador->observacao }} <br>
@@ -107,13 +111,16 @@
                             </div>
                             <div class="col-sm-6">
                                 <address>
-                                    {{ $instalador->rua }}, {{ $instalador->numero }} <br>
-                                    {{ $instalador->bairro }}, {{ $instalador->cidade }} - {{ $instalador->estado }}<br>
-                                    {{ mascara($instalador->cep, '#####-###') }} <br>
+                                    {{ $instalador->rua }} <br>
+                                    <strong>Número:</strong> {{ $instalador->numero }} <br>
+                                    <strong>Bairro:</strong> {{ $instalador->bairro }} <br>
+                                    <strong>Cidade:</strong> {{ $instalador->cidade }} <br>
+                                    <strong>Estado:</strong> {{ $instalador->estado }}<br>
+                                    <strong>Cep:</strong> {{ $instalador->cep }}
                                 </address>
                                 <strong>Data de nascimento</strong>: {{ $instalador->dataNascimento }} <br>
-                                <strong>Celular:</strong>: {{ mascara($instalador->celular, '(##) #####-####') }} <br>
-                                <strong>Telefone:</strong>: {{ mascara($instalador->telefone, '(##) ####-####') }} <br>
+                                <strong>Celular:</strong>: {{ $instalador->celular }} <br>
+                                <strong>Telefone:</strong>: {{ $instalador->telefone }} <br>
                                 <strong>Email:</strong>: {{ $instalador->email }}
                             </div>
                         </div>

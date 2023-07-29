@@ -20,8 +20,8 @@
     <!-- Navbar -->
     {{-- <nav class="main-header navbar navbar-expand navbar-white navbar-light"> --}}{{-- Original --}}
     <nav class="navbar navbar-expand navbar-white navbar-light">
-         <!-- Left navbar links -->
-         <ul class="navbar-nav">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
@@ -76,6 +76,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Altere os dados necessários</h3>
+                        <div class="card-tools">
+                            <a href="{{ route('instaladores.index', $instalador) }}" class="btn btn-success">Voltar</a>
+                        </div>
                     </div>
 
                     {{-- O corpo --}}

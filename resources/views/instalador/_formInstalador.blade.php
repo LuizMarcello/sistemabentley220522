@@ -132,9 +132,9 @@
     <div class="form-group row">
         <label class="col-form-label col-sm-2" for="rua1">Rua</label>
         <div class="col-sm-10">
-            <input value="{{ old('rua1', @$instalador->rua) }}" type="text" id="rua1" name="rua1"
-                maxlength="150" class="form-control @error('rua1') is-invalid @enderror">
-            @error('rua1')
+            <input value="{{ old('rua', @$instalador->rua) }}" type="text" id="rua1" name="rua"
+                maxlength="150" class="form-control @error('rua') is-invalid @enderror">
+            @error('rua')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
@@ -163,7 +163,7 @@
     <div class="form-group row">
         <label class="col-form-label col-sm-2" for="cidade1">Cidade*</label>
         <div class="col-sm-10">
-            <input value="{{ old('cidade', @$instalador->cidade) }}" type="text" id="cidade1" name="cidade1"
+            <input value="{{ old('cidade', @$instalador->cidade) }}" type="text" id="cidade1" name="cidade"
                 maxlength="100" class="form-control @error('cidade') is-invalid @enderror">
             @error('cidade')
                 <div class="alert alert-danger">{{ $message }}</div>

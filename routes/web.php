@@ -56,7 +56,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('clientes', 'ClienteController');
-    Route::delete('clientes', [ClienteController::class, 'destroy'])->name('clientes.destroy')->middleware('can:admin');
+    //Route::delete('clientes', [ClienteController::class, 'destroy'])->name('clientes.destroy')->middleware('can:admin');
 
     Route::resource('representantes', 'RepresentanteController');
 
