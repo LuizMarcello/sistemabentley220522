@@ -14,6 +14,22 @@ class Antena extends Model
        tentar inspecionar e injetar algum campo a mais, lá no front. */
 
        use SoftDeletes;
+       use HasFactory;
+
+         /**
+         * The database table used by the model.
+         *
+         * @var string
+         */
+         protected $table = 'antenas';
+
+         /**
+         * The database primary key value.
+         *
+         * @var string
+         */
+         protected $primaryKey = 'id';
+
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +38,6 @@ class Antena extends Model
      */
     protected $fillable = [
         'banda', 'datanota', 'marca', 'modelo', 'notafiscal',
-        'situacao', 'diametro', 'situacao', 'observacao'
+        'diametro', 'situacao', 'observacao'
     ];
 }

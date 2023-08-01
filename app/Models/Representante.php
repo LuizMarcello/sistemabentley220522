@@ -13,7 +13,22 @@ class Representante extends Model
        os únicos campos que serão aceitos pelo model. O usuário poderia
        tentar inspecionar e injetar algum campo a mais, lá no front. */
 
-    use SoftDeletes;
+       use HasFactory;
+       use SoftDeletes;
+
+       /**
+       * The database table used by the model.
+       *
+       * @var string
+       */
+       protected $table = 'representantes';
+
+       /**
+       * The database primary key value.
+       *
+       * @var string
+       */
+       protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.

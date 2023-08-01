@@ -27,26 +27,21 @@ function selected($value, $selected)
     </div>
 </div>
 
-<div class="form-group row">
-    <label class="col-form-label col-sm-2 required" for="datanota">Data da Nota*</label>
-    <div class="col-sm-10">
-        <input value="{{ old('datanota', @$antena->datanota) }}" type="text" id="datanota" name="datanota"
-            required="required" maxlength="18" class="datanota form-control @error('banda') is-invalid @enderror">
-        @error('datanota')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
+<div class="form-group row{{ $errors->has('datanota') ? 'has-error' : '' }}">
+    <label for="datanota" class="col-form-label col-sm-2 required">{{ 'Data da Nota' }}</label>
+    <input style="margin-left: 1.3%" class="form-control col-form-label col-sm-3" rows="5" name="datanota" type="date" id="datanota"
+        required value="{{ old('datanota', @$antena->datanota) }}">
+    {!! $errors->first('datanota', '<p class="help-block">:message</p>') !!}
 </div>
+
 
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="banda">Banda</label>
-    <div class="col-sm-3">
-
+    <div class="col-sm-4">
         <select class="form-select" name="banda" id="banda">
             <option value="">Selecione uma opção</option>
             <option value="ka" {{ <?php echo selected('ka', @$antena->banda); ?> }}>KA</option>
             <option value="ku" {{ <?php echo selected('ku', @$antena->banda); ?> }}>KU</option>
-
         </select>
     </div>
 </div>
@@ -59,8 +54,8 @@ function selected($value, $selected)
             <option value="cisco" {{ <?php echo selected('cisco', @$antena->marca); ?> }}>Cisco</option>
             <option value="gigabyte" {{ <?php echo selected('gigabyte', @$antena->marca); ?> }}>Gigabyte</option>
             <option value="encore" {{ <?php echo selected('encore', @$antena->marca); ?> }}>Encore</option>
-            <option value="tp-link" {{ <?php echo selected('tp-link', @$antena->marca); ?> }}>Tp-Link</option>
-            <option value="d-link" {{ <?php echo selected('d-link', @$antena->marca); ?> }}>D-Link</option>
+            <option value="tp-link" {{ <?php echo selected('tp-link', @$antena->marca); ?> }}>TpLink</option>
+            <option value="d-link" {{ <?php echo selected('d-link', @$antena->marca); ?> }}>DLink</option>
         </select>
     </div>
 </div>

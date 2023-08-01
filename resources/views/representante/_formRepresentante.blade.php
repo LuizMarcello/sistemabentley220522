@@ -52,12 +52,6 @@ function selected($value, $selected)
     </div>
 
 </div>
-{{-- <div class="form-group fisica {{ $errors->has('documento') ? 'has-error' : '' }}">
-        <label for="documento" class="control-label">{{ 'CPF*' }}</label>
-        <input class="cpf form-control" name="documento" type="text" id="documento"
-            value="{{ old('documento', @$representante->documento) }}">
-        {!! $errors->first('documento', '<p class="help-block">:message</p>') !!}
-    </div> --}}
 
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="ie_rg">IE/RG</label>
@@ -70,17 +64,7 @@ function selected($value, $selected)
     </div>
 </div>
 <div id="cliente">
-    {{-- <div class="form-group row">
-        <label class="col-form-label col-sm-2 required" for="nome_contato">Nome Contato</label>
-        <div class="col-sm-10">
-            <input value="{{ old('nome_contato', @$representante->nome_contato) }}" type="text" id="nome_contato"
-                name="nome_contato" required="required" maxlength="255"
-                class="form-control @error('nome_contato') is-invalid @enderror">
-            @error('nome_contato')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-    </div> --}}
+    
     <div class="form-group row">
         <label class="col-form-label col-sm-2 required" for="celular">Celular</label>
         <div class="col-sm-10">

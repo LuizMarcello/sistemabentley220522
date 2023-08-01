@@ -12,12 +12,17 @@ class RepresentanteController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * Aplicando o "Route Model Binding" do laravel,
+     * que está injetando uma instância do Model como
+     * parâmetro.
+     * Isto já vai tornar meu Model "antena" filtrado
+     * e dísponivel dentro da view retornada.
      *
      * @return View
      */
-    public function index(): View
+    public function index(Representante $representante): View
     {
-        $registros = Representante::paginate(4);
+        $registros = Representante::paginate(5);
         return view('representante.indexRepresentante', \compact('registros'));
     }
 
@@ -34,24 +39,21 @@ class RepresentanteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param RepresentanteRequest $request
+     * @param \App\Http\Requests\RepresentanteRequest $request
      * @return Response
      */
     public function store(RepresentanteRequest $request): Response
     {
         $registro = Representante::create($request->all());
-
-
-        return \redirect()->route('representantes.show', $registro->id);
+        return \redirect()->route('representantes.index', $registro->id);
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param Representante $representante
+     * Aplicando o "Route Model Binding" do laravel
+     * @param \App\Models\Representante $representante
      * @return View
      *
-     * Também usando "Route Model Binding", como no "edit" e "upgrade".
      */
     public function show(Representante $representante): View
     {
@@ -60,15 +62,11 @@ class RepresentanteController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param Representante $representante
+     * Aplicando o "Route Model Binding" do laravel
+     * @param \App\Models\Representante $representante
      * @return View
      *
-     * Aplicando o "Route Model Binding" do laravel,
-     * que está injetando uma instância do Model como
-     * parâmetro.
-     * Isto já vai tornar o Model "Representante" filtrado
-     * e dísponivel dentro da view retornada.
+     *
      * O método edit() serve somente para retornar o formulário
      * preenchido com os dados para serem editados, como create() e store().
      */
@@ -79,31 +77,30 @@ class RepresentanteController extends Controller
 
      /**
       * Update the specified resource in storage.
-      *
-      * @param RepresentanteRequest $request
-      * @param Representante $representante
-      * @return Response
+
+      * Aplicando o "Route Model Binding" do laravel
+      * @param \App\Models\Representante $representante
+      * @param \App\Http\Request\RepresentanteRequest
+      * @return \Illuminate\Http\Response
       *
       * Usando a classe "RepresentanteRequest" para validar.
-      * Também usando "Route Model Binding", como no "edit" acima.
       * o método update() serve para receber esses dados e atualizar
       * no banco de dados, como create() e store().
       */
     public function update(RepresentanteRequest $request, Representante $representante): Response
     {
-
         $representante->update($request->all());
-
-        return \redirect()->route('representantes.show', $representante);
+        return \redirect()->route('representantes.index', $representante);
     }
 
      /**
       * Remove the specified resource from storage.
       *
-      * @param Representante $representante
+      * Aplicando o "Route Model Binding" do laravel
+      * @param \App\Models\Representante $representante
       * @return Response
-
-      * Também usando "Route Model Binding", como no "edit" acima.
+      *
+      *
       */
     public function destroy(Representante $representante): Response
     {

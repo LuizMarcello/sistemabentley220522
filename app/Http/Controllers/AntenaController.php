@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Antena;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\AntenaRequest;
-
 use Symfony\Component\HttpFoundation\Response;
 
 class AntenaController extends Controller
@@ -17,44 +14,47 @@ class AntenaController extends Controller
      * Display a listing of the resource.
      *
      * @return View
+     *
+     * Aplicando o "Route Model Binding" do laravel,
+     * que está injetando uma instância do Model como
+     * parâmetro.
+     * Isto já vai tornar meu Model "antena" filtrado
+     * e dísponivel dentro da view retornada.
+     *
      */
-    public function index(): View
+    public function index(Antena $antena): View
     {
-        $registros = Antena::paginate(10);
-        return view('antena.indexAntena', \compact('registros'));
+       $registros = Antena::paginate(5);
+       return view('antena.indexAntena', \compact('registros'));
     }
 
     /**
-     *  Show the form for creating a new resource.
+     * Show the form for creating a new resource.
      *
-     * @param Request $request
      * @return View
      */
-    public function create(Request $request): View
+    public function create(): View
     {
-        return view('antena.createAntena');
+        return view('antena.CreateAntena');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param AntenaRequest $request
+     * @param \App\Http\Requests\AntenaRequest
      * @return Response
      */
     public function store(AntenaRequest $request): Response
     {
         $registro = Antena::create($request->all());
-
-        return \redirect()->route('antenas.show', $registro->id);
+         return \redirect()->route('antenas.index', $registro->id);
     }
 
     /**
-     *  Display the specified resource.
-     *
-     * @param Antena $antena
+     * Display the specified resource.
+     * Aplicando o "Route Model Binding" do laravel
+     * @param  \App\Models\Antena $antena
      * @return View
-     *
-     * Também usando "Route Model Binding", como no "edit" e "upgrade".
      */
     public function show(Antena $antena): View
     {
@@ -64,14 +64,12 @@ class AntenaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Antena $antena
+     * Aplicando o "Route Model Binding" do laravel
+     * @param  \App\Models\Antena $antena
      * @return View
      *
-     * Aplicando o "Route Model Binding" do laravel,
-     * que está injetando uma instância do Model como
-     * parâmetro.
-     * Isto já vai tornar meu Model "Antena" filtrado
-     * e dísponivel dentro da view retornada.
+     * O método edit() serve somente para retornar o formulário
+     * preenchido com os dados para serem editados, como create() e store().
      */
     public function edit(Antena $antena): View
     {
@@ -81,32 +79,33 @@ class AntenaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param AntenaRequest $request
-     * @param Antena $antena
-     * @return Response
+     * Aplicando o "Route Model Binding" do laravel
+     * @param  \App\Models\Antena  $antena
+     * @param \App\Http\Request\AntenaRequest
+     * @return \Illuminate\Http\Response
      *
      * Usando a classe "AntenaRequest" para validar.
-     * Também usando "Route Model Binding", como no "edit" acima.
+     * o método update() serve para receber esses dados e atualizar
+     * no banco de dados, como create() e store().
+     *
      */
     public function update(AntenaRequest $request, Antena $antena): Response
     {
         $antena->update($request->all());
-
-        return \redirect()->route('antenas.show', $antena);
+        return \redirect()->route('antenas.index', $antena);
     }
 
     /**
-     *  Remove the specified resource from storage.
+     * Remove the specified resource from storage.
      *
-     * @param Antena $antena
-     * @return Response
-     *
-     * Também usando "Route Model Binding", como no "edit" acima.
+     * Aplicando o "Route Model Binding" do laravel
+     * @param  \App\Models\Antena  $antena
+     * @return \Illuminate\Http\Response
+     * A
      */
     public function destroy(Antena $antena): Response
     {
         $antena->delete();
-
         return \redirect()->route('antenas.index');
     }
 }

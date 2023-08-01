@@ -25,7 +25,6 @@
         </ul>
 
         <!-- Right navbar links -->
-        <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <!-- Navbar Search -->
             <li class="nav-item">
@@ -89,10 +88,7 @@
                                         <th>ID</th>
                                         <td>{{ $cliente->id }}</td>
                                     </tr>
-                                    {{-- <tr>
-                                        <th> User Id </th>
-                                        <td> {{ $cliente->user_id }} </td>
-                                    </tr> --}}
+
                                     <tr>
                                         <th> Nome/Razão social </th>
                                         <td> {{ $cliente->nome_razaosocial }} </td>
@@ -103,54 +99,23 @@
                                         <td> {{ $cliente->ie_rg }} </td>
                                     </tr>
                                     <tr>
-                                        {{-- <th> CPF/CNPJ </th>
-                                        @if (strlen($cliente->documento) === 11) --}}
-                                        {{--  <td> {{ mascara($cliente->documento, '###.###.###-##') }} </td> --}}
-                                        {{-- <td> {{ $cliente->cpf }} </td>
-                                        @else --}}
-                                        {{-- <td> {{ mascara($cliente->documento, '##.###.###/####-##') }} </td> --}}
-                                        {{-- <td> {{ $cliente->cnpj }} </td>
-                                        @endif --}}
+
                                     </tr>
                                     <tr>
                                         <th>CPF</th>
                                         <td> {{ $cliente->cpf }} </td>
                                     </tr>
 
-                                     <tr>
+                                    <tr>
                                         <th>CNPJ</th>
                                         <td> {{ $cliente->cnpj }} </td>
                                     </tr>
-                                    {{-- <tr>
-                                        <th> Banda </th>
-                                        <td> {{ $cliente->banda }} </td>
-                                    </tr> --}}
-                                    {{-- <tr>
-                                        <th> Plano </th>
-                                        <td> {{ $cliente->plano }} </td>
-                                    </tr> --}}
-                                    {{-- <tr>
-                                        <th> Data de cadastro </th>
-                                        <td> {{ $cliente->created_at }} </td>
-                                    </tr> --}}
-                                    {{--  <tr>
-                                        <th> Data da ultima alteração </th>
-                                        <td> {{ $cliente->updated_at }} </td>
-                                    </tr> --}}
-                                    {{--  <tr>
-                                        <th> Data de adesão </th> --}}
-                                    {{-- <td> {{ mascara($cliente->dataadesao, '### ### #####') }} </td> --}}
-                                    {{-- <td> {{ $cliente->dataadesao }} </td>
-                                    </tr> --}}
+
                                     <tr>
                                         <th> Inscrição municipal </th>
                                         <td> {{ $cliente->inscricaomunicipal }} </td>
                                     </tr>
-                                    {{-- <tr>
-                                        <th> Data de nascimento </th> --}}
-                                    {{-- <td> {{ mascara($cliente->datanascimento, '### ### #####') }} </td> --}}
-                                    {{-- <td> {{ $cliente->datanascimento }} </td>
-                                    </tr> --}}
+
                                     <tr>
                                         <th> Nome do contato </th>
                                         <td> {{ $cliente->nome_contato }} </td>
@@ -160,20 +125,13 @@
                                         {{-- <td> {{ mascara($cliente->telefone1, '(##) ####-####') }} </td> --}}
                                         <td> {{ $cliente->telefone1 }} </td>
                                     </tr>
-                                    {{-- <tr>
-                                        <th> Telefone 2 </th> --}}
-                                    {{-- <td> {{ mascara($cliente->telefone2, '(##) ####-####') }} </td> --}}
-                                    {{-- <td> {{ $cliente->telefone2 }} </td>
-                                    </tr> --}}
+
                                     <tr>
                                         <th> Celular 1 </th>
                                         {{-- <td> {{ mascara($cliente->celular1, '(##) #####-####') }} </td> --}}
                                         <td> {{ $cliente->celular1 }} </td>
                                     </tr>
-                                    {{--  <tr>
-                                        <th> Celular 2 </th>
-                                        <<td> {{ mascara($cliente->celular2, '(##) #####-####') }} </td>
-                                    </tr> --}}
+
                                     <tr>
                                         <th> Email </th>
                                         <td> {{ $cliente->email }} </td>
@@ -182,10 +140,7 @@
                                         <th> Chave </th>
                                         <td> {{ $cliente->chave }} </td>
                                     </tr>
-                                    {{--  <tr>
-                                        <th> Equipamento </th>
-                                        <td> {{ $cliente->equipamento }} </td>
-                                    </tr> --}}
+
 
                                     <tr>
                                         <th> Status </th>
@@ -195,18 +150,7 @@
                                         <th> Forma de pagamento </th>
                                         <td> {{ $cliente->formapagamento }} </td>
                                     </tr>
-                                    {{-- <tr>
-                                        <th> Instalador </th>
-                                        <td> {{ $cliente->instalador }} </td>
-                                    </tr> --}}
-                                    {{--  <tr>
-                                        <th> Distribuidor </th>
-                                        <td> {{ $cliente->distribuidor }} </td>
-                                    </tr> --}}
-                                    {{-- <tr>
-                                        <th> Representante </th>
-                                        <td> {{ $cliente->representante }} </td>
-                                    </tr> --}}
+
                                     <tr>
                                         <th> Observação </th>
                                         <td> {{ $cliente->observacao }} </td>
@@ -244,96 +188,12 @@
                                         <th> Estado </th>
                                         <td> {{ $cliente->estado1 }} </td>
                                     </tr>
-                                    {{-- <tr>
-                                        <th> Celular </th>
-                                        <td> {{ mascara($cliente->celular11, '(##) #####-####') }} </td>
-                                    </tr> --}}
-                                    {{--  <tr>
-                                        <th> Telefone </th>
-                                         <td> {{ mascara($cliente->telefone11, '(##) ####-####') }} </td>
-                                    </tr> --}}
+
                                 </tbody>
                             </table>
                             <br>
-                            {{-- <div>
-                                <h4>Endereço de instalação</h4>
-                            </div>
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th> Cep </th>
-                                        <td> {{ mascara($cliente->cep2, '#####-###') }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Rua </th>
-                                        <td> {{ $cliente->rua2 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Numero </th>
-                                        <td> {{ $cliente->numero2 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Bairro</th>
-                                        <td> {{ $cliente->bairro2 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Cidade </th>
-                                        <td> {{ $cliente->cidade2 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Estado </th>
-                                        <td> {{ $cliente->estado2 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Celular </th>
-                                         <td> {{ mascara($cliente->celular21, '(##) #####-####') }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Telefone </th>
-                                        <td> {{ mascara($cliente->telefone21, '(##) ####-####') }} </td>
-                                    </tr>
-                                </tbody>
-                            </table> --}}
-                            <br>
-                            {{-- <div>
-                                <h4>Endereço de cobrança</h4>
-                            </div>
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th> Cep </th>
-                                        <td> {{ mascara($cliente->cep3, '#####-###') }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Rua </th>
-                                        <td> {{ $cliente->rua3 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Numero </th>
-                                        <td> {{ $cliente->numero3 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Bairro</th>
-                                        <td> {{ $cliente->bairro3 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Cidade </th>
-                                        <td> {{ $cliente->cidade3 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Estado </th>
-                                        <td> {{ $cliente->estado3 }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Celular </th>
-                                        <td> {{ mascara($cliente->celular31, '(##) #####-####') }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Telefone </th>
-                                        <td> {{ mascara($cliente->telefone31, '(##) ####-####') }} </td>
-                                    </tr>
-                                </tbody>
-                            </table> --}}
+
+
 
                         </div>
                     </div>

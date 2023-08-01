@@ -1,11 +1,5 @@
 @csrf
 
-{{-- <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-    <label for="user_id" class="control-label">{{ 'User Id' }}</label>
-    <input class="form-control" name="user_id" type="number" id="user_id" value="{{ isset($cliente->user_id) ? $cliente->user_id : ''}}" >
-    {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
-</div> --}}
-
 <?php
 function selected($value, $selected)
 {
@@ -48,13 +42,6 @@ function selected($value, $selected)
 </div>
 
 <div id="pai">
-
-    {{--     <div class="form-group fisica {{ $errors->has('nomepfisica') ? 'has-error' : '' }}">
-        <label for="nomepfisica" class="control-label">{{ 'Nome*' }}</label>
-        <input class="form-control" rows="5" name="nomepfisica" type="text" id="nomepfisica" required
-            value="{{ old('nomepfisica', @$cliente->nomepfisica) }}">
-        {!! $errors->first('nomepfisica', '<p class="help-block">:message</p>') !!}
-    </div> --}}
 
     <div class="form-group fisica juridica {{ $errors->has('nome_razaosocial') ? 'has-error' : '' }}">
         <label for="nome_razaosocial" class="control-label">{{ 'Nome/Razão social*' }}</label>

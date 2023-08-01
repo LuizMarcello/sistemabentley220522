@@ -28,7 +28,7 @@ class AntenaRequest extends FormRequest
             'diametro' => ['required', 'max:6', 'min:2'],
             'notafiscal' => ['required', 'integer'],
             'banda' => ['required', 'max:7', 'min:2'],
-            'datanota' => ['required', 'date_format:d/m/Y'],
+            'datanota' => ['required'],
             'marca' => ['required', 'alpha_num', 'max:50', 'min:2']
         ];
     }

@@ -14,19 +14,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ClienteRequest extends FormRequest
 {
-    //public $cepService;
-
-    /**
-     * Create a new rule instance.
-     *
-     * @return void
-     * Injetando uma instancia da classe/serviço CepService
-     */
-    //public function __construct(CepService $cepService)
-    //{
-        //$this->cepService = $cepService;
-    //}
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -46,25 +33,28 @@ class ClienteRequest extends FormRequest
     {
 
         return [
-            //'nome_razaosocial' => ['required'],
-            //'razao_social' => ['required'],
-            //'documento' => ['required'],
-            //'plano' => ['required'],
-            //'documento' => $this->tipoValidacaoDocumento(),
-            //'celular1' => ['required'],
-            //'banda' => ['required'],
-            //'email' => ['required'],
-            //'telefone1' => ['required'],
-            //'cep1' => ['required'],
-            //'rua1' => ['required'],
-            //'cidade1' => ['required'],
-            //'estado1' => ['required'],
+            'nome_razaosocial' => ['required'],
+            'ie_rg' => ['required'],
+            'inscricaomunicipal' => ['required'],
+            'nome_contato' => ['required'],
+            'chave' => ['required'],
+            'observacao' => ['required'],
+            'numero1' => ['required'],
+            'bairro1' => ['required'],
+            'status' => ['required'],
+            'formapagamento' => ['required'],
+            'celular1' => ['required'],
+            'email' => ['required'],
+            'telefone1' => ['required'],
+            'cep1' => ['required'],
+            'rua1' => ['required'],
+            'cidade' => ['required'],
+            'estado1' => ['required'],
+            'cpf' => ['required'],
+            'cnpj' => ['required'],
             //'dataadesao' => ['required', 'max:10', 'date_format:d/m/Y'],
-            //'datacadastro' => ['required', 'max:10', 'date_format:d/m/Y']
        ];
    }
-
-
 
     /**
     * Limpar os valores
@@ -76,23 +66,11 @@ class ClienteRequest extends FormRequest
        $campos = $this->all();
 
        //$campos['documento'] = \str_replace(['.', '-', '/'], '', $campos['documento']);
-       //$campos['celular1'] = \str_replace([' ', '(', ')', '-'], '', $campos['celular1']);
-       //$campos['celular2'] = \str_replace([' ', '(', ')', '-'], '', $campos['celular2']);
-       //$campos['celular11'] = \str_replace([' ', '(', ')', '-'], '', $campos['celular11']);
-       //$campos['celular21'] = \str_replace([' ', '(', ')', '-'], '', $campos['celular21']);
-       //$campos['celular31'] = \str_replace([' ', '(', ')', '-'], '', $campos['celular31']);
-       //$campos['telefone1'] = \str_replace([' ', '(', ')', '-'], '', $campos['telefone1']);
-       //$campos['telefone2'] = \str_replace([' ', '(', ')', '-'], '', $campos['telefone2']);
-       //$campos['telefone11'] = \str_replace([' ', '(', ')', '-'], '', $campos['telefone11']);
-       //$campos['telefone21'] = \str_replace([' ', '(', ')', '-'], '', $campos['telefone21']);
-       //$campos['telefone31'] = \str_replace([' ', '(', ')', '-'], '', $campos['telefone31']);
-       //$campos['cep1'] = \str_replace(['.', '-'], '', $campos['cep1']);
-       //$campos['cep2'] = \str_replace(['.', '-'], '', $campos['cep2']);
-       //$campos['cep3'] = \str_replace(['.', '-'], '', $campos['cep3']);
-       //$campos['ie_rg'] = \str_replace(['.', '-'], '', $campos['ie_rg']);
-
+       $campos['celular1'] = \str_replace([' ', '(', ')', '-'], '', $campos['celular1']);
+       $campos['telefone1'] = \str_replace([' ', '(', ')', '-'], '', $campos['telefone1']);
+       $campos['cep1'] = \str_replace(['.', '-'], '', $campos['cep1']);
+       $campos['ie_rg'] = \str_replace(['.', '-'], '', $campos['ie_rg']);
        $this->replace($campos);
-
        return $campos;
    }
 
