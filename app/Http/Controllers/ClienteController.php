@@ -21,42 +21,19 @@ class ClienteController extends Controller {
     * Isto já vai tornar meu Model "antena" filtrado
     * e dísponivel dentro da view retornada.
     *
+    * @param \App\Models\Cliente $clientes
+    * @param \App\Http\Requests\ClienteRequest
+    *
     */
 
-    public function index(Cliente $request)
+    public function index(ClienteRequest $request, Cliente $clientes): View
     {
          $keyword = $request->get( 'search' );
          $perPage = 25;
 
-         if ( !empty( $keyword ) ) {
-         $clientes = Cliente::where( 'user_id', 'LIKE', "%$keyword%" )
-         ->orWhere( 'nome_razaosocial', 'LIKE', "%$keyword%" )
-         ->orWhere( 'ie_rg', 'LIKE', "%$keyword%" )
-         ->orWhere( 'inscricaomunicipal', 'LIKE', "%$keyword%" )
-         ->orWhere( 'nome_contato', 'LIKE', "%$keyword%" )
-         ->orWhere( 'celular1', 'LIKE', "%$keyword%" )
-         ->orWhere( 'cpf', 'LIKE', "%$keyword%" )
-         ->orWhere( 'cnpj', 'LIKE', "%$keyword%" )
-         ->orWhere( 'telefone1', 'LIKE', "%$keyword%" )
-         ->orWhere( 'email', 'LIKE', "%$keyword%" )
-         ->orWhere( 'chave', 'LIKE', "%$keyword%" )
-         ->orWhere( 'observacao', 'LIKE', "%$keyword%" )
-         ->orWhere( 'cep1', 'LIKE', "%$keyword%" )
-         ->orWhere( 'rua1', 'LIKE', "%$keyword%" )
-         ->orWhere( 'numero1', 'LIKE', "%$keyword%" )
-         ->orWhere( 'bairro1', 'LIKE', "%$keyword%" )
-         ->orWhere( 'cidade', 'LIKE', "%$keyword%" )
-         ->orWhere( 'estado1', 'LIKE', "%$keyword%" )
-         ->orWhere( 'status', 'LIKE', "%$keyword%" )
-         ->orWhere( 'formapagamento', 'LIKE', "%$keyword%" )
-         ->latest()->paginate( $perPage );
-         } else {
-         //$clientes = Cliente::latest()->paginate( $perPage );
-         $clientes = Cliente::latest()->paginate( 3 );
+         $clientes = Cliente::paginate(5);
+         return view('cliente.index', \compact('clientes'));
          }
-         return view( 'cliente.index', compact( 'clientes' ) );
-
-    }
 
     /**
     * Show the form for creating a new resource.
@@ -136,7 +113,7 @@ class ClienteController extends Controller {
     * Aplicando o "Route Model Binding" do laravel
     * @param \App\Models\Antena $antena
     * @return \Illuminate\Http\Response
-    * A
+    * 
     */
 
     public function destroy(Cliente $cliente) {

@@ -55,9 +55,9 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
                 {{-- <a href="{{ route('empresa.relatorios.clientes') }}" class="btn btn-primary btn-sm">Relatório de
                     clientes</a> --}}
                 <div class="card">
@@ -87,11 +87,10 @@
 
                         <br />
                         <br />
-                        <div class="table-responsive">
+                        <div class="card-body">
                             <table class="table">
                                 <thead>
                                     <tr>
-
                                         <th>Id</th>
                                         <th>Nome/Razão social</th>
                                         <th>Cidade</th>
@@ -124,27 +123,27 @@
                                                 {{-- can(): Diretiva do blade que verifica se tem permissão ou não --}}
                                                 {{-- Parâmetros: Nome do gate e instância do cliente, o qual terá ou não permissão. --}}
                                                 {{-- @can('update-client', $cliente) --}}
-                                                {{-- @can('admin', $cliente) --}}
-                                                <a href="{{ url('/clientes/' . $cliente->id . '/edit') }}"
-                                                    title="Edit Cliente">
+                                                @can('admin', $cliente)
+                                                    <a href="{{ url('/clientes/' . $cliente->id . '/edit') }}"
+                                                        title="Edit Cliente">
 
-                                                    <button class="btn btn-primary btn-sm">
-                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar
-                                                    </button></a>
-                                                {{-- @endcan --}}
+                                                        <button class="btn btn-primary btn-sm">
+                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar
+                                                        </button></a>
+                                                @endcan
 
-                                                {{-- @can('admin', $cliente) --}}
-                                                <form method="POST" action="{{ url('/clientes' . '/' . $cliente->id) }}"
-                                                    accept-charset="UTF-8" style="display:inline">
-                                                    {{ method_field('DELETE') }}
-                                                    {{ csrf_field() }}
+                                                @can('admin', $cliente)
+                                                    <form method="POST" action="{{ url('/clientes' . '/' . $cliente->id) }}"
+                                                        accept-charset="UTF-8" style="display:inline">
+                                                        {{ method_field('DELETE') }}
+                                                        {{ csrf_field() }}
 
-                                                    <button type="submit" class="btn btn-danger btn-sm"
-                                                        title="Delete Cliente"
-                                                        onclick="return confirm(&quot;Confirm delete?&quot;)">
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Deletar</button>
-                                                </form>
-                                                {{--  @endcan --}}
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            title="Delete Cliente"
+                                                            onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                                            <i class="fa fa-trash-o" aria-hidden="true"></i> Deletar</button>
+                                                    </form>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach

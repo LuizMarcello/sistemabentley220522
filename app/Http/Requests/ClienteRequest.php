@@ -33,25 +33,25 @@ class ClienteRequest extends FormRequest
     {
 
         return [
-            'nome_razaosocial' => ['required'],
-            'ie_rg' => ['required'],
-            'inscricaomunicipal' => ['required'],
-            'nome_contato' => ['required'],
-            'chave' => ['required'],
-            'observacao' => ['required'],
-            'numero1' => ['required'],
-            'bairro1' => ['required'],
-            'status' => ['required'],
-            'formapagamento' => ['required'],
-            'celular1' => ['required'],
-            'email' => ['required'],
-            'telefone1' => ['required'],
-            'cep1' => ['required'],
-            'rua1' => ['required'],
-            'cidade' => ['required'],
-            'estado1' => ['required'],
-            'cpf' => ['required'],
-            'cnpj' => ['required'],
+            //'nome_razaosocial' => ['required'],
+            //'ie_rg' => ['required'],
+            //'inscricaomunicipal' => ['required'],
+            //'nome_contato' => ['required'],
+            //'chave' => ['required'],
+            //'observacao' => ['required'],
+            //'numero1' => ['required'],
+            //'bairro1' => ['required'],
+            //'status' => ['required'],
+            //'formapagamento' => ['required'],
+            //'celular1' => ['required'],
+            //'email' => ['required'],
+            //'telefone1' => ['required'],
+            //'cep1' => ['required'],
+            //'rua1' => ['required'],
+            //'cidade' => ['required'],
+            //'estado1' => ['required'],
+            //'cpf' => ['required'],
+            //'cnpj' => ['required'],
             //'dataadesao' => ['required', 'max:10', 'date_format:d/m/Y'],
        ];
    }
@@ -61,18 +61,19 @@ class ClienteRequest extends FormRequest
     *
     * @return void
     */
-   public function validationData()
-   {
-       $campos = $this->all();
+   //public function validationData()
+   //{
+       //$campos = $this->all();
 
        //$campos['documento'] = \str_replace(['.', '-', '/'], '', $campos['documento']);
-       $campos['celular1'] = \str_replace([' ', '(', ')', '-'], '', $campos['celular1']);
-       $campos['telefone1'] = \str_replace([' ', '(', ')', '-'], '', $campos['telefone1']);
-       $campos['cep1'] = \str_replace(['.', '-'], '', $campos['cep1']);
-       $campos['ie_rg'] = \str_replace(['.', '-'], '', $campos['ie_rg']);
-       $this->replace($campos);
-       return $campos;
-   }
+       //$campos['celular1'] = \str_replace([' ', '(', ')', '-'], '', $campos['celular1']);
+       //$campos['telefone1'] = \str_replace([' ', '(', ')', '-'], '', $campos['telefone1']);
+       //$campos['cep1'] = \str_replace(['.', '-'], '', $campos['cep1']);
+       //$campos['ie_rg'] = \str_replace(['.', '-'], '', $campos['ie_rg']);
+       //$this->replace($campos);
+       //return $campos;
+   //}
+
 
     /**
     * Retorna o "tipo de validação" (cpf-cnpj) baseado
