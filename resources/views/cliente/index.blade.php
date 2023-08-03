@@ -123,16 +123,16 @@
                                                 {{-- can(): Diretiva do blade que verifica se tem permissão ou não --}}
                                                 {{-- Parâmetros: Nome do gate e instância do cliente, o qual terá ou não permissão. --}}
                                                 {{-- @can('update-client', $cliente) --}}
-                                                @can('admin', $cliente)
+                                                {{-- @can('admin', $cliente) --}}
                                                     <a href="{{ url('/clientes/' . $cliente->id . '/edit') }}"
                                                         title="Edit Cliente">
 
                                                         <button class="btn btn-primary btn-sm">
                                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar
                                                         </button></a>
-                                                @endcan
+                                               {{--  @endcan --}}
 
-                                                @can('admin', $cliente)
+                                                {{-- @can('admin', $cliente) --}}
                                                     <form method="POST" action="{{ url('/clientes' . '/' . $cliente->id) }}"
                                                         accept-charset="UTF-8" style="display:inline">
                                                         {{ method_field('DELETE') }}
@@ -143,7 +143,7 @@
                                                             onclick="return confirm(&quot;Confirm delete?&quot;)">
                                                             <i class="fa fa-trash-o" aria-hidden="true"></i> Deletar</button>
                                                     </form>
-                                                @endcan
+                                               {{--  @endcan --}}
                                             </td>
                                         </tr>
                                     @endforeach

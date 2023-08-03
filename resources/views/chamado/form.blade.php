@@ -52,9 +52,8 @@
 
     <div class="categoria form-group {{ $errors->has('categoria') ? 'has-error' : '' }}">
         <label for="categoria" class="control-label">{{ 'Categoria' }}</label>
-
-        <select name="categoria" class="form-control col-form-label col-sm-12" id="categoria">
-            <option value="" selected>Selecione uma categoria...</option>
+        <select name="categoria" class="form-control col-form-label col-sm-5" id="categoria">
+            {{-- <option value="" selected>Selecione uma categoria...</option> --}}
             @foreach (json_decode(
         '{" ativacao":"Ativação","remanejamento":"Remanejamento","desligamentotemporario":"Desligamento Temporário", "cancelamento" :"Cancelamento","manutencao":"Manutenção"}',
          true, ) as $optionKey=>$optionValue)
@@ -62,10 +61,11 @@
                     {{ isset($chamado->categoria) && $chamado->categoria == $optionKey ? 'selected' : '' }}>
                     {{ $optionValue }}</option>
             @endforeach
-
         </select>
         {!! $errors->first('categoria', '<p class="help-block">:message</p>') !!}
     </div>
+
+
 
     <div class="responsavel form-group {{ $errors->has('responsavel') ? 'has-error' : '' }}">
         <label for="responsavel" class="control-label">{{ 'Responsável' }}</label>
@@ -74,10 +74,12 @@
         {!! $errors->first('responsavel', '<p class="help-block">:message</p>') !!}
     </div>
 
+
+
     <div class="prioridade form-group {{ $errors->has('prioridade') ? 'has-error' : '' }}">
         <label for="prioridade" class="control-label">{{ 'Prioridade' }}</label>
-        <select name="prioridade" class="form-control col-form-label col-sm-3" id="prioridade">
-            {{-- <option value="" selected>Selecione uma categoria...</option> --}} {{-- Colocar placeholder em <select> --}}
+        <select name="prioridade" class="form-control col-form-label col-sm-5" id="prioridade">
+           {{--  <option value="" selected>Selecione uma prioridade...</option> --}} {{-- Colocar placeholder em <select> --}}
             @foreach (json_decode('{" baixa":"Baixa","media":"Média","alta":"Alta"}', true)
                 as $optionKey=> $optionValue)
                 <option value="{{ $optionKey }}"
@@ -85,8 +87,10 @@
                     {{ $optionValue }}</option>
             @endforeach
         </select>
-        {!! $errors->first('categoria', '<p class="help-block">:message</p>') !!}
+        {!! $errors->first('prioridade', '<p class="help-block">:message</p>') !!}
     </div>
+
+
 
     <div class="agendamento form-group {{ $errors->has('agendamento') ? 'has-error' : '' }}">
         <label for="agendamento" class="control-label">{{ 'Agendamento' }}</label>

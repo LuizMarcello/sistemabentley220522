@@ -27,12 +27,37 @@ class ChamadoController extends Controller
     */
     public function index(ChamadoRequest $request, Chamado $chamados)
     {
+    $keyword = $request->get('search');
+    $perPage = 25;
+
+    if (!empty($keyword)) {
+    $modelochamados = Chamado::where('cliente', 'LIKE', "%$keyword%")
+    ->orWhere('categoria', 'LIKE', "%$keyword%")
+    ->orWhere('responsavel', 'LIKE', "%$keyword%")
+    ->orWhere('agendamento', 'LIKE', "%$keyword%")
+    ->orWhere('assunto', 'LIKE', "%$keyword%")
+    ->orWhere('mensagem', 'LIKE', "%$keyword%")
+    ->orWhere('prioridade', 'LIKE', "%$keyword%")
+    ->orWhere('horario', 'LIKE', "%$keyword%")
+    ->latest()->paginate($perPage);
+    } else {
+    /* $chamado = Chamado::latest()->paginate($perPage); */
+    $chamados = Chamado::latest()->paginate(3);
+    }
+
+    return view('chamado.index', compact('chamados'));
+    }
+
+
+    /* {
         $keyword = $request->get('search');
         $perPage = 25;
 
         $chamados = Chamado::latest()->paginate(5);
         return view('chamado.index', compact('chamados'));
-    }
+    } */
+
+
 
     /**
     * Show the form for creating a new resource.
@@ -62,9 +87,9 @@ class ChamadoController extends Controller
     * @param \App\Models\Chamado $chamado
     * @return View
     */
-    public function show(Chamado $chamados): View
+    public function show(Chamado $chamado): View
     {
-        return view('chamado.show', \compact('chamados'));
+        return view('chamado.show', \compact('chamado'));
     }
 
     /**
@@ -77,9 +102,9 @@ class ChamadoController extends Controller
     * O método edit() serve somente para retornar o formulário
     * preenchido com os dados para serem editados, como create() e store().
     */
-    public function edit(Chamado $chamados): View
+    public function edit(Chamado $chamado): View
     {
-        return view('chamado.edit', \compact('chamados'));
+        return view('chamado.edit', \compact('chamado'));
     }
 
     /**
@@ -99,6 +124,7 @@ class ChamadoController extends Controller
     {
         $chamados->update($request->all());
         return \redirect()->route('chamados.index', $chamados);
+        /* return \redirect()->route('chamados.index', 'chamados'); */
     }
 
     /**

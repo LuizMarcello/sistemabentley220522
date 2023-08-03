@@ -55,9 +55,9 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
                 {{-- <a href="{{ route('empresa.relatorios.chamado') }}" class="btn btn-primary btn-sm">Relatório de chamado</a> --}}
                 <div class="card">
                     <div class="card-header">
@@ -66,19 +66,19 @@
                     <div class="card-body">
 
                         <div>
-                            <span class="block p-2 bg-white text-black">TODOS - 00</span>
-                            <span class="block p-2 bg-info text-white">NOVOS - 00</span>
-                            <span class="block p-2 bg-success text-white">AGUARDANDO CLIENTE - 00</span>
-                            <span class="block p-2 bg-danger text-white">AGUARDANDO EMPRESA - 00</span>
-                            <span class="block p-2 bg-dark text-white">FINALIZADO - 00</span>
+                            <span class="block p-2 bg-white text-black">TODOS - 08</span>
+                            <span class="block p-2 bg-info text-white">NOVOS - 03</span>
+                            <span class="block p-2 bg-success text-white">AGUARDANDO CLIENTE - 03</span>
+                            <span class="block p-2 bg-danger text-white">AGUARDANDO EMPRESA - 02</span>
+                            <span class="block p-2 bg-dark text-white">FINALIZADO - 05</span>
                         </div>
                         <br>
 
                         <form method="GET" action="{{ url('/chamados') }}" accept-charset="UTF-8"
-                            class="form- my-2 my-lg-2 {{-- float-right --}}" role="search">
-                            <div class="col-md-12">
+                            class="form-inline my-2 my-lg-0 float-right" role="search">
+                            {{-- <div class="col-md-12"> --}}
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="search" style=""
+                                    <input type="text" class="form-control" name="search"
                                         placeholder="Pesquisar por id, assunto, cliente, nome, e-mail e CPF/CNPJ"
                                         value="{{ request('search') }}">
                                     <span class="input-group-append">
@@ -87,7 +87,7 @@
                                         </button>
                                     </span>
                                 </div>
-                            </div>
+                            {{-- </div --}}>
                         </form>
                         <br>
                         <div class="col">
@@ -126,6 +126,7 @@
                         <br>
 
                         <div class="table-responsive">
+
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -133,7 +134,7 @@
                                         <th>Cliente</th>
                                         <th>Categoria</th>
                                         <th>Prioridade</th>
-                                        <th>Criado em</th>
+                                        {{-- <th>Criado em</th> --}}
                                         <th>Agendado para</th>
                                         <th>Ações</th>
                                     </tr>
@@ -146,7 +147,7 @@
                                             <td>{{ $chamado->cliente }}</td>
                                             <td>{{ $chamado->categoria }}</td>
                                             <td>{{ $chamado->prioridade }}</td>
-                                            <td>{{ $chamado->created_at }}</td>
+                                            {{-- <td>{{ $chamado->created_at }}</td> --}}
                                             <td>{{ $chamado->agendamento }}</td>
                                             <td>
                                                 <a href="{{ url('/chamados' . '/' . $chamado->id) }}" title="View chamado">
@@ -157,14 +158,17 @@
                                                 {{-- can(): Diretiva do blade que verifica se tem permissão ou não --}}
                                                 {{-- Parâmetros: Nome do gate e instância do chamado, o qual terá ou não permissão. --}}
                                                 {{--  @can('update-client', $chamado) --}}
+                                                {{-- @can('admin', $chamado) --}}
                                                     <a href="{{ url('/chamados' . '/' . $chamado->id . '/edit') }}"
                                                         title="Edit chamado">
                                                         <button class="btn btn-primary btn-sm">
                                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar
                                                         </button></a>
+                                                {{-- @endcan --}}
 
+                                                {{-- @can('admin', $chamado) --}}
                                                     <form method="POST" action="{{ url('/chamados' . '/' . $chamado->id) }}"
-                                                        accept-charset="UTF-8" style="display-">
+                                                        accept-charset="UTF-8" style="display:inline">
                                                         {{ method_field('DELETE') }}
                                                         {{ csrf_field() }}
                                                         <button type="submit" class="btn btn-danger btn-sm"

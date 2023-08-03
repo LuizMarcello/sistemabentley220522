@@ -60,7 +60,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4> Editando Chamado id: {{ $chamados->id }}</h4>
+                        <h4> Editando Chamado id: {{ $chamado->id }}</h4>
                     </div>
                     <div class="card-body">
                         <a href="{{ url('/chamados') }}" title="Back"><button class="btn btn-warning btn-sm"><i
@@ -76,7 +76,7 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/chamados' . '/' . $chamados->id) }}" accept-charset="UTF-8"
+                        <form method="POST" action="{{ url('/chamados' . '/' . $chamado->id) }}" accept-charset="UTF-8"
                             class="form-horizontal" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}

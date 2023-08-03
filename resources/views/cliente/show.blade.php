@@ -66,7 +66,7 @@
 
                         <a href="{{ url('/clientes') }}" title="Back"><button class="btn btn-warning btn-sm"><i
                                     class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</button></a>
-                        <a href="{{ url('/clientes/' . $cliente->id . '/edit') }}" title="Edit Cliente"><button
+                        <a href="{{ url('/clientes' . '/' . $cliente->id . '/edit') }}" title="Edit Cliente"><button
                                 class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 Editar</button></a>
 

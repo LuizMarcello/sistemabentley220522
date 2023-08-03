@@ -60,16 +60,16 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4> chamado id: {{ $chamados->id }}</h4>
+                        <h4> chamado id: {{ $chamado->id }}</h4>
                     </div>
                     <div class="card-body">
 
                         <a href="{{ url('/chamados') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</button></a>
-                        <a href="{{ url('/chamados' . $chamados->id . '/edit') }}" title="Edit chamado"><button
+                        <a href="{{ url('/chamados' . '/' . $chamado->id . '/edit') }}" title="Edit chamado"><button
                         class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         Editar</button></a>
 
-                        <form method="POST" action="{{ url('/chamados' . '/' . $chamados->id) }}" accept-charset="UTF-8"
+                        <form method="POST" action="{{ url('/chamados' . '/' . $chamado->id) }}" accept-charset="UTF-8"
                         style="display:inline">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
@@ -83,43 +83,43 @@
                                 <tbody>
                                     <tr>
                                         <th>ID</th>
-                                        <td>{{ $chamados->id }}</td>
+                                        <td>{{ $chamado->id }}</td>
                                     </tr>
                                     <tr>
                                         <th> Cliente</th>
-                                        <td> {{ $chamados->cliente }} </td>
+                                        <td> {{ $chamado->cliente }} </td>
                                     </tr>
                                     <tr>
                                         <th> Categoria </th>
-                                        {{ $chamados->categoria }}
+                                        <td> {{ $chamado->categoria }} </td>
                                     </tr>
                                     <tr>
                                         <th> Responsável </th>
-                                        <td> {{ $chamados->responsavel }} </td>
+                                        <td> {{ $chamado->responsavel }} </td>
                                     </tr>
                                     <tr>
                                         <th> Data do chamado </th>
-                                        <td> {{ $chamados->created_at }} </td>
+                                        <td> {{ $chamado->created_at }} </td>
                                     </tr>
                                     <tr>
                                         <th> Horário </th>
-                                        <td> {{ $chamados->horario }} </td>
+                                        <td> {{ $chamado->horario }} </td>
                                     </tr>
                                     <tr>
                                         <th> Agendamento </th>
-                                        <td> {{ $chamados->agendamento }} </td>
+                                        <td> {{ $chamado->agendamento }} </td>
                                     </tr>
                                     <tr>
                                         <th> Assunto </th>
-                                        <td> {{ $chamados->assunto }} </td>
+                                        <td> {{ $chamado->assunto }} </td>
                                     </tr>
                                     <tr>
                                         <th> Mensagem </th>
-                                        <td> {{ $chamados->mensagem }} </td>
+                                        <td> {{ $chamado->mensagem }} </td>
                                     </tr>
                                     <tr>
                                         <th> Prioridade </th>
-                                        <td> {{ $chamados->prioridade }} </td>
+                                        <td> {{ $chamado->prioridade }} </td>
                                     </tr>
                                 </tbody>
                             </table>
