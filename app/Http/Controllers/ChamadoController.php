@@ -18,7 +18,7 @@ class ChamadoController extends Controller
     * Aplicando o "Route Model Binding" do laravel,
     * que está injetando uma instância do Model como
     * parâmetro.
-    * Isto já vai tornar meu Model "chamado" filtrado
+    * Isto já vai tornar meu Model "Chamado" filtrado
     * e dísponivel dentro da view retornada.
     *
     * @param \App\Models\Chamado $chamados
@@ -30,32 +30,13 @@ class ChamadoController extends Controller
     $keyword = $request->get('search');
     $perPage = 25;
 
-    if (!empty($keyword)) {
-    $modelochamados = Chamado::where('cliente', 'LIKE', "%$keyword%")
-    ->orWhere('categoria', 'LIKE', "%$keyword%")
-    ->orWhere('responsavel', 'LIKE', "%$keyword%")
-    ->orWhere('agendamento', 'LIKE', "%$keyword%")
-    ->orWhere('assunto', 'LIKE', "%$keyword%")
-    ->orWhere('mensagem', 'LIKE', "%$keyword%")
-    ->orWhere('prioridade', 'LIKE', "%$keyword%")
-    ->orWhere('horario', 'LIKE', "%$keyword%")
-    ->latest()->paginate($perPage);
-    } else {
-    /* $chamado = Chamado::latest()->paginate($perPage); */
-    $chamados = Chamado::latest()->paginate(3);
-    }
-
-    return view('chamado.index', compact('chamados'));
-    }
-
-
-    /* {
+    {
         $keyword = $request->get('search');
         $perPage = 25;
 
         $chamados = Chamado::latest()->paginate(5);
         return view('chamado.index', compact('chamados'));
-    } */
+    }
 
 
 
@@ -64,7 +45,7 @@ class ChamadoController extends Controller
     *
     * @return View
     */
-    public function create()
+    public function create(): View
     {
         return view('chamado.create');
     }
