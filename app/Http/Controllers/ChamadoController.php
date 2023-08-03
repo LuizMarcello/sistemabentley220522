@@ -30,15 +30,14 @@ class ChamadoController extends Controller
     $keyword = $request->get('search');
     $perPage = 25;
 
-    {
-        $keyword = $request->get('search');
-        $perPage = 25;
+        {
+            $keyword = $request->get('search');
+            $perPage = 25;
 
-        $chamados = Chamado::latest()->paginate(5);
-        return view('chamado.index', compact('chamados'));
+            $chamados = Chamado::latest()->paginate(5);
+            return view('chamado.index', compact('chamados'));
+        }
     }
-
-
 
     /**
     * Show the form for creating a new resource.

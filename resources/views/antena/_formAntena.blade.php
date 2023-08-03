@@ -40,7 +40,7 @@ function selected($value, $selected)
     <div class="col-sm-4">
         <select class="form-select" name="banda" id="banda">
             <option value="">Selecione uma opção</option>
-            <option value="ka" {{ <?php echo selected('ka', @$antena->banda); ?> }}>KA</option>
+            //<option value="ka" {{ <?php echo selected('ka', @$antena->banda); ?> }}>KA</option>
             <option value="ku" {{ <?php echo selected('ku', @$antena->banda); ?> }}>KU</option>
         </select>
     </div>
