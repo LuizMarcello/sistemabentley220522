@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContratoRequest extends FormRequest
+class ModelocontratoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,15 @@ class ContratoRequest extends FormRequest
     public function rules()
     {
         return [
-            //'cliente' => ['required'],
+            //'modelo' => ['required', 'alpha_num', 'max:20', 'min:3'],
             //'documento' => $this->tipoValidacaoDocumento(),
-            //'cortesia' => ['required'],
-            //'desconto' => ['required'],
-            //'msg_pend_automatica' => ['required'],
-            //'dias_para_pendencia' => ['required'],
-            //'acrescimo' => ['required'],
-            //'msg_bloqueio_automatica' => ['required'],
+            //'cep' => ['required', 'size:8'],
+            //'diametro' => ['required', 'max:6', 'min:2'],
+            //'notafiscal' => ['required', 'integer'],
+            //'banda' => ['required', 'max:7', 'min:2'],
+            //'datanota' => ['required'],
+            //'marca' => ['required', 'alpha_num', 'max:50', 'min:2']
             //'dataadesao' => ['required', 'max:10', 'date_format:d/m/Y'],
-            //'dias_para_bloqueio' => ['required'],
-            //'dia_de_pagamento' => ['required'],
-            //'forma_de_pagamento' => ['required'],
-            //'modelo_de_contrato' => ['required']
         ];
     }
 

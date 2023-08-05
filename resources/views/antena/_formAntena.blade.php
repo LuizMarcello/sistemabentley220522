@@ -29,8 +29,8 @@ function selected($value, $selected)
 
 <div class="form-group row{{ $errors->has('datanota') ? 'has-error' : '' }}">
     <label for="datanota" class="col-form-label col-sm-2 required">{{ 'Data da Nota' }}</label>
-    <input style="margin-left: 1.3%" class="form-control col-form-label col-sm-3" rows="5" name="datanota" type="date" id="datanota"
-        required value="{{ old('datanota', @$antena->datanota) }}">
+    <input style="margin-left: 1.3%" class="form-control col-form-label col-sm-3" rows="5" name="datanota"
+        type="date" id="datanota" required value="{{ old('datanota', @$antena->datanota) }}">
     {!! $errors->first('datanota', '<p class="help-block">:message</p>') !!}
 </div>
 
@@ -40,7 +40,7 @@ function selected($value, $selected)
     <div class="col-sm-4">
         <select class="form-select" name="banda" id="banda">
             <option value="">Selecione uma opção</option>
-            //<option value="ka" {{ <?php echo selected('ka', @$antena->banda); ?> }}>KA</option>
+            <option value="ka" {{ <?php echo selected('ka', @$antena->banda); ?> }}>KA</option>
             <option value="ku" {{ <?php echo selected('ku', @$antena->banda); ?> }}>KU</option>
         </select>
     </div>

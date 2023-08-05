@@ -21,11 +21,16 @@ class AntenaController extends Controller
      * Isto já vai tornar meu Model "antena" filtrado
      * e dísponivel dentro da view retornada.
      *
+     * @param \App\Models\Antena $antena
+     * @param \App\Http\Requests\AntenaRequest $request
      */
-    public function index(Antena $antena): View
+    public function index(AntenaRequest $request, Antena $antena): View
     {
-       $registros = Antena::paginate(5);
-       return view('antena.indexAntena', \compact('registros'));
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        $antena = Antena::paginate(5);
+        return view('antena.indexAntena', \compact('antena'));
     }
 
     /**

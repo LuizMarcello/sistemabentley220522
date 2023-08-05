@@ -25,13 +25,13 @@ class ContratoController extends Controller
    * @param \App\Http\Requests\ContratoRequest
    *
    */
-    public function index(ContratoRequest $request, Contrato $contrato)
+    public function index(ContratoRequest $request, Contrato $contratos)
     {
         $keyword = $request->get('search');
         $perPage = 25;
 
-        $contrato = Contrato::latest()->paginate(5);
-        return view('contrato.index', compact('contrato'));
+        $contratos = Contrato::latest()->paginate(5);
+        return view('contrato.index', compact('contratos'));
     }
 
     /**
@@ -79,7 +79,7 @@ class ContratoController extends Controller
     */
     public function edit(Contrato $contrato): View
     {
-        return view('contrato.view', \compact('contrato'));
+        return view('contrato.edit', \compact('contrato'));
     }
 
     /**
@@ -87,7 +87,7 @@ class ContratoController extends Controller
     *
     * Aplicando o "Route Model Binding" do laravel
     * @param \App\Models\Contrato $contrato
-    * @param \App\Http\Request\ContratoRequest
+    * @param \App\Http\Requests\ContratoRequest
     * @return \Illuminate\Http\Response
     *
     * Usando a classe "ContratoRequest" para validar.

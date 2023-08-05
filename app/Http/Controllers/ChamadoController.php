@@ -21,22 +21,16 @@ class ChamadoController extends Controller
     * Isto já vai tornar meu Model "Chamado" filtrado
     * e dísponivel dentro da view retornada.
     *
-    * @param \App\Models\Chamado $chamados
-    * @param \App\Http\Requests\ChamadoRequest
-    *
+    * @param \App\Models\Chamado $chamado
+    * @param\App\Http\Requests\ChamadoRequest $request
     */
-    public function index(ChamadoRequest $request, Chamado $chamados)
+    public function index(ChamadoRequest $request, Chamado $chamado): View
     {
-    $keyword = $request->get('search');
-    $perPage = 25;
+        $keyword = $request->get('search');
+        $perPage = 25;
 
-        {
-            $keyword = $request->get('search');
-            $perPage = 25;
-
-            $chamados = Chamado::latest()->paginate(5);
-            return view('chamado.index', compact('chamados'));
-        }
+        $chamado = Chamado::latest()->paginate(5);
+        return view('chamado.index', compact('chamado'));
     }
 
     /**
