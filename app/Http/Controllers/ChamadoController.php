@@ -86,7 +86,7 @@ class ChamadoController extends Controller
     *
     * Aplicando o "Route Model Binding" do laravel
     * @param \App\Models\Chamado $chamado
-    * @param \App\Http\Request\ChamadoRequest
+    * @param \App\Http\Requests\ChamadoRequest
     * @return \Illuminate\Http\Response
     *
     * Usando a classe "ChamadoRequest" para validar.

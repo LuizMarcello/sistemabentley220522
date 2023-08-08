@@ -86,7 +86,7 @@ class AntenaController extends Controller
      *
      * Aplicando o "Route Model Binding" do laravel
      * @param  \App\Models\Antena  $antena
-     * @param \App\Http\Request\AntenaRequest
+     * @param \App\Http\Requests\AntenaRequest
      * @return \Illuminate\Http\Response
      *
      * Usando a classe "AntenaRequest" para validar.

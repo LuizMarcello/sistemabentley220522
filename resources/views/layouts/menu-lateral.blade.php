@@ -50,8 +50,8 @@
             <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
 
-            {{-- <li class="nav-item"> --}} {{-- Para recolher o menu da barra lateral --}}
-            <li class=" nav-item menu-open">{{-- Para deixar o menu sempre aberto --}}
+            <li class="nav-item"> {{-- Para recolher o menu da barra lateral --}}
+            {{-- <li class=" nav-item menu-open"> --}}{{-- Para deixar o menu sempre aberto --}}
                 <a href="{{ route('home') }}" class="nav-link">
                     <i class="nav-icon fas fa-satellite-dish"></i>
                     <p>
@@ -61,7 +61,7 @@
             </li>
 
             <li class="nav-item"> {{-- Para recolher o menu da barra lateral --}}
-                {{-- <li class="nav-item menu-open"> --}}{{-- Para deixar o menu sempre aberto --}}
+            {{-- <li class="nav-item menu-open"> --}}{{-- Para deixar o menu sempre aberto --}}
 
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-users nav-icon"></i>
