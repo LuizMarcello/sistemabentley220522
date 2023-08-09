@@ -29,7 +29,7 @@ class ChamadoController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
 
-        $chamado = Chamado::latest()->paginate(5);
+        $chamados = Chamado::latest()->paginate(5);
         return view('chamado.index', compact('chamado'));
     }
 
@@ -109,7 +109,7 @@ class ChamadoController extends Controller
     * @return \Illuminate\Http\Response
     *
     */
-    public function destroy(Chamado $chamados)
+    public function destroy(Chamado $chamados): Response
     {
         $chamados->delete();
         return \redirect()->route('chamados.index');
