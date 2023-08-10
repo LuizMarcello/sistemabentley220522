@@ -11,9 +11,9 @@
     flex-flow: row;
     align-items: center;
     justify-content: center;">
-        <span class="brand-text font-weight-light">
+        <span style="width:85%; margin: auto; display: block" class="brand-text font-weight-light">
             {{-- <img height="80" src="https://sistema.bentleybrasil.com.br/img/logo-empresa-br.png"> --}}
-            <img height="80" src="../../../img/logo-empresa-br.png">
+            <img width="65%" src="../../../img/logo-empresa-br.png" />
         </span>
     </a>
 
