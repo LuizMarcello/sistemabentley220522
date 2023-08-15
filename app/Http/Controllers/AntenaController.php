@@ -18,7 +18,7 @@ class AntenaController extends Controller
      * Aplicando o "Route Model Binding" do laravel,
      * que está injetando uma instância do Model como
      * parâmetro.
-     * Isto já vai tornar meu Model "antena" filtrado
+     * Isto já vai tornar meu Model "Antena" filtrado
      * e dísponivel dentro da view retornada.
      *
      * @param \App\Models\Antena $antena
