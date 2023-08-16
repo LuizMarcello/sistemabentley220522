@@ -50,6 +50,16 @@
     <!-- /.navbar -->
 @endsection
 
+@section('breadcrumb')
+    <li class="breadcrumb-item">
+        <a href="{{ route('contratos.index', $contrato) }}">Listagem de Contratos</a>
+    </li>
+
+    <li class="breadcrumb-item">
+        <a href="{{ route('contratos.edit', $contrato) }}">Editar</a>
+    </li>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">

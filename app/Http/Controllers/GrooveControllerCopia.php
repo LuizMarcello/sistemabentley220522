@@ -4,41 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Groove;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GrooveRequest;
 use Symfony\Component\HttpFoundation\Response;
-
 class GrooveController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return View
-     *
-     * Aplicando o "Route Model Binding" do laravel,
-     * que está injetando uma instância do Model como
-     * parâmetro.
-     * Isto já vai tornar meu Model "Groove" filtrado
-     * e dísponivel dentro da view retornada.
-     *
-     * @param \App\Models\Groove $groove
-     * @param \App\Http\Requests\GrooveRequest $request
      */
-    public function index(GrooveRequest $request, Groove $grooves): View
+    public function index(): View
     {
-        $keyword = $request->get('search');
-        $perPage = 25;
-
-        $grooves = Groove::paginate(5);
-        return view('groove.indexGroove', \compact('grooves'));
+        $registros = Groove::paginate(1);
+        return view('Groove.indexGroove', \compact('registros'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param Request $request
      * @return View
      */
-    public function create(): View
+    public function create(Request $request): View
     {
         return view('groove.createGroove');
     }
@@ -46,20 +35,23 @@ class GrooveController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\GrooveRequest
+     * @param GrooveRequest $request
      * @return Response
      */
     public function store(GrooveRequest $request): Response
     {
         $registro = Groove::create($request->all());
-         return \redirect()->route('grooves.index', $registro->id);
+
+        return \redirect()->route('grooves.show', $registro->id);
     }
 
     /**
-     * Display the specified resource.
-     * Aplicando o "Route Model Binding" do laravel
-     * @param  \App\Models\Groove $groove
+     *  Display the specified resource.
+     *
+     * @param Groove $groove
      * @return View
+     *
+     * Também usando "Route Model Binding", como no "edit" e "upgrade".
      */
     public function show(Groove $groove): View
     {
@@ -69,12 +61,14 @@ class GrooveController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * Aplicando o "Route Model Binding" do laravel
-     * @param  \App\Models\Groove $groove
+     * @param Groove $groove
      * @return View
      *
-     * O método edit() serve somente para retornar o formulário
-     * preenchido com os dados para serem editados, como create() e store().
+     * Aplicando o "Route Model Binding" do laravel,
+     * que está injetando uma instância do Model como
+     * parâmetro.
+     * Isto já vai tornar meu Model "Groove" filtrado
+     * e dísponivel dentro da view retornada.
      */
     public function edit(Groove $groove): View
     {
@@ -84,33 +78,32 @@ class GrooveController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * Aplicando o "Route Model Binding" do laravel
-     * @param  \App\Models\Groove  $groove
-     * @param \App\Http\Requests\GrooveRequest
-     * @return \Illuminate\Http\Response
+     * @param GrooveRequest $request
+     * @param Groove $groove
+     * @return Response
      *
      * Usando a classe "GrooveRequest" para validar.
-     * o método update() serve para receber esses dados e atualizar
-     * no banco de dados, como create() e store().
-     *
+     * Também usando "Route Model Binding", como no "edit" acima.
      */
     public function update(GrooveRequest $request, Groove $groove): Response
     {
         $groove->update($request->all());
+
         return \redirect()->route('grooves.show', $groove);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * Aplicando o "Route Model Binding" do laravel
-     * @param  \App\Models\Groove $groove
-     * @return \Illuminate\Http\Response
-     * A
+     * @param Groove $groove
+     * @return Response
+     *
+     * Também usando "Route Model Binding", como no "edit" acima.
      */
     public function destroy(Groove $groove): Response
     {
         $groove->delete();
+
         return \redirect()->route('grooves.index');
     }
 }

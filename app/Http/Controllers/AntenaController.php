@@ -97,7 +97,7 @@ class AntenaController extends Controller
     public function update(AntenaRequest $request, Antena $antena): Response
     {
         $antena->update($request->all());
-        return \redirect()->route('antenas.index', $antena);
+        return \redirect()->route('antenas.show', $antena);
     }
 
     /**
