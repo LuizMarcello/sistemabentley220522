@@ -24,13 +24,13 @@ class AntenaController extends Controller
      * @param \App\Models\Antena $antena
      * @param \App\Http\Requests\AntenaRequest $request
      */
-    public function index(AntenaRequest $request, Antena $antena): View
+    public function index(AntenaRequest $request, Antena $antenas): View
     {
         $keyword = $request->get('search');
         $perPage = 25;
 
-        $antena = Antena::paginate(5);
-        return view('antena.indexAntena', \compact('antena'));
+        $antenas = Antena::paginate(5);
+        return view('antena.indexAntena', \compact('antenas'));
     }
 
     /**
@@ -40,7 +40,7 @@ class AntenaController extends Controller
      */
     public function create(): View
     {
-        return view('antena.CreateAntena');
+        return view('antena.createAntena');
     }
 
     /**

@@ -24,14 +24,14 @@ class AntenaRequest extends FormRequest
     public function rules()
     {
         return [
-            'modelo' => ['required', 'alpha_num', 'max:20', 'min:3'],
+            //'modelo' => ['required', 'alpha_num', 'max:20', 'min:3'],
             //'documento' => $this->tipoValidacaoDocumento(),
             //'cep' => ['required', 'size:8'],
-            'diametro' => ['required', 'max:6', 'min:2'],
-            'notafiscal' => ['required', 'integer'],
-            'banda' => ['required', 'max:7', 'min:2'],
-            'datanota' => ['required'],
-            'marca' => ['required', 'alpha_num', 'max:50', 'min:2']
+            //'diametro' => ['required', 'max:6', 'min:2'],
+            //'notafiscal' => ['required', 'integer'],
+            //'banda' => ['required', 'max:7', 'min:2'],
+            //'datanota' => ['required'],
+            //'marca' => ['required', 'alpha_num', 'max:50', 'min:2']
             //'dataadesao' => ['required', 'max:10', 'date_format:d/m/Y'],
         ];
     }

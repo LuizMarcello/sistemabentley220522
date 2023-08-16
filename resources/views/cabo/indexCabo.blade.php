@@ -1,18 +1,17 @@
 @extends('layouts.app')
 
 @section('title')
-    <h1>Listagem de Antenas</h1>
+    <h1>Listagem de Cabos</h1>
 @endsection
 
 @section('breadcrumb')
     <li class="breadcrumb-item">
-        <a href="{{ route('antenas.index') }}">Listagem de Antenas</a>
+        <a href="{{ route('cabos.index') }}">Listagem de Cabos</a>
     </li>
 @endsection
 
 @section('navbar')
     <!-- Navbar -->
-    {{-- <nav class="main-header navbar navbar-expand navbar-white navbar-light"> --}}{{-- Original --}}
     {{-- <nav class="main-header navbar navbar-expand navbar-white navbar-light"> --}}{{-- Original --}}
     <nav class="navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -31,7 +30,30 @@
             </li>
         </ul>
 
-        </ul>
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Navbar Search -->
+            <li class="nav-item">
+                <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                    <i class="fas fa-search"></i>
+                </a>
+                <div class="navbar-search-block">
+                    <form class="form-inline">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
     </nav>
     <!-- /.navbar -->
 @endsection
@@ -42,36 +64,37 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Listagem de Antenas</h3>
+                        <h3 class="card-title">Listagem de Cabos</h3>
                         <div class="card-tools">
-                            <a href="{{ route('antenas.create') }}" class="btn btn-success">Nova
-                                Antena</a>
+                            <a href="{{ route('cabos.create') }}" class="btn btn-success">Novo
+                                Cabo</a>
                         </div>
                     </div>
 
                     {{-- O corpo --}}
                     <div class="card-body">
                         <table class="table">
+
                             <thead>
                                 <tr>
                                     <th style="width: 10px"></th>
                                     <th>Id</th>
+                                    <th>Tipo de Cabo</th>
                                     <th>Marca</th>
-                                    <th>Modelo</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @forelse ($antenas as $registro)
+                                @forelse ($cabos as $registro)
                                     <tr>
                                         <td></td>
                                         <td>{{ $registro->id }}</td>
+                                        <td>{{ $registro->tipodecabo }}</td>
                                         <td>{{ $registro->marca }}</td>
-                                        <td>{{ $registro->modelo }}</td>
-                                        <td><a href="{{ route('antenas.show', $registro) }}"
+                                        <td><a href="{{ route('cabos.show', $registro) }}"
                                                 class="btn btn-primary btn-sm">Detalhes</a>
-                                            <a href="{{ route('antenas.edit', $registro) }}"
+                                            <a href="{{ route('cabos.edit', $registro) }}"
                                                 class="btn btn-danger btn-sm">Atualizar</a>
                                         </td>
                                     </tr>
@@ -85,11 +108,12 @@
                                     </tr>
                                 @endforelse
                             </tbody>
+
                         </table>
                     </div>
                     <div class="card-footer clearfix">
                         {{-- O laravel/blade já mostra a paginação no padrâo do bootstrap --}}
-                        {{ $antenas->links() }}
+                        {{ $cabos->links() }}
                     </div>
                 </div>
             </div>
