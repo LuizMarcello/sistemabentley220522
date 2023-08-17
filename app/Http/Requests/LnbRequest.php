@@ -24,12 +24,14 @@ class LnbRequest extends FormRequest
     public function rules()
     {
            return [
-            'serial' => ['required', 'max:20', 'min:3'],
-            'modelo' => ['required', 'alpha_num', 'max:20', 'min:3'],
-            'notafiscal' => ['required', 'integer'],
-            'banda' => ['required', 'max:7', 'min:7'],
-            'datanota' => ['required', 'date_format:d/m/Y'],
-            'marca' => ['required', 'alpha_num', 'max:50', 'min:2']
+            //'serial' => ['required', 'max:20', 'min:3'],
+            //'modelo' => ['required', 'alpha_num', 'max:20', 'min:3'],
+            //'notafiscal' => ['required', 'integer'],
+            //'banda' => ['required', 'max:7', 'min:7'],
+            //'datanota' => ['required', 'date_format:d/m/Y'],
+            //'marca' => ['required', 'alpha_num', 'max:50', 'min:2'],
+            //'situacao' => ['required'],
+            //'observacao' => ['required']
         ];
     }
 }

@@ -109,7 +109,6 @@ function selected($value, $selected)
             <option value="em espera" {{ <?php echo selected('em espera', @$groove->situacao); ?> }}>Em espera</option>
             <option value="suspenso" {{ <?php echo selected('suspenso', @$groove->situacao); ?> }}>Suspenso</option>
             <option value="inativo" {{ <?php echo selected('inativo', @$groove->situacao); ?> }}>Inativo</option>
-
         </select>
     </div>
 </div>

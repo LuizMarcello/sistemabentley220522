@@ -10,11 +10,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Lnb extends Model
 {
     /* Por questão de segurança, o "fillable" é para dizer quais são
-       os únicos campos que serão aceitos pelo model. O usuário poderia
-       tentar inspecionar e injetar algum campo a mais, lá no front. */
+    os únicos campos que serão aceitos pelo model. O usuário poderia
+    tentar inspecionar e injetar algum campo a mais, lá no front. */
 
     use SoftDeletes;
+    use HasFactory;
 
+    /**
+    * The database table used by the model.
+    *
+    * @var string
+    */
+    protected $table = 'lnbs';
+
+    /**
+    * The database primary key value.
+    *
+    * @var string
+    */
+    protected $primaryKey = 'id';
     /**
      * The attributes that are mass assignable.
      *

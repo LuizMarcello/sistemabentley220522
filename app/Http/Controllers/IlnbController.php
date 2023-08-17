@@ -4,24 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Models\Ilnb;
 use Illuminate\View\View;
-use App\Http\Requests\IlnbRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\IlnbRequest;
 use Symfony\Component\HttpFoundation\Response;
+
 class IlnbController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return View
+     *
+     * Aplicando o "Route Model Binding" do laravel,
+     * que está injetando uma instância do Model como
+     * parâmetro.
+     * Isto já vai tornar meu Model "Ilnb" filtrado
+     * e dísponivel dentro da view retornada.
+     *
+     * @param \App\Models\Ilnb $ilnb
+     * @param \App\Http\Requests\IlnbRequest $request
      */
-    public function index(): View
+    public function index(IlnbRequest $request, Ilnb $registros): View
     {
-        $registros = Ilnb::paginate(2);
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        $registros = Ilnb::paginate(5);
         return view('ilnb.indexIlnb', \compact('registros'));
     }
 
     /**
-     *  Show the form for creating a new resource.
+     * Show the form for creating a new resource.
      *
      * @return View
      */
@@ -33,42 +46,36 @@ class IlnbController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param IlnbRequest $request
+     * @param \App\Http\Requests\IlnbRequest
      * @return Response
      */
     public function store(IlnbRequest $request): Response
     {
         $registro = Ilnb::create($request->all());
-
-        return \redirect()->route('ilnbs.show', $registro->id);
+         return \redirect()->route('ilnbs.index', $registro->id);
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param Ilnb $ilnb
+     * Aplicando o "Route Model Binding" do laravel
+     * @param  \App\Models\Antena $antena
      * @return View
-     *
-     *  Também usando "Route Model Binding", como no "edit" e "upgrade".
      */
     public function show(Ilnb $ilnb): View
     {
-        return view('ilnb.showilnb', \compact('ilnb'));
+        return view('ilnb.showIlnb', \compact('ilnb'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Lnb $modem
+     * Aplicando o "Route Model Binding" do laravel
+     * @param  \App\Models\Ilnb $ilnb
      * @return View
      *
-     * Aplicando o "Route Model Binding" do laravel,
-     * que está injetando uma instância do Model como
-     * parâmetro.
-     * Isto já vai tornar meu Model "Modem" filtrado
-     * e dísponivel dentro da view retornada.
+     * O método edit() serve somente para retornar o formulário
+     * preenchido com os dados para serem editados, como create() e store().
      */
-
     public function edit(Ilnb $ilnb): View
     {
         return view('ilnb.editIlnb', \compact('ilnb'));
@@ -77,32 +84,33 @@ class IlnbController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param IlnbRequest $request
-     * @param Ilnb $ilnb
-     * @return Response
+     * Aplicando o "Route Model Binding" do laravel
+     * @param  \App\Models\Ilnb  $ilnb
+     * @param \App\Http\Requests\IlnbRequest
+     * @return \Illuminate\Http\Response
      *
-     * Usando a classe "IilnbRequest" para validar.
-     * Também usando "Route Model Binding", como no "edit" acima.
+     * Usando a classe "IlnbRequest" para validar.
+     * o método update() serve para receber esses dados e atualizar
+     * no banco de dados, como create() e store().
+     *
      */
     public function update(IlnbRequest $request, Ilnb $ilnb): Response
     {
         $ilnb->update($request->all());
-
         return \redirect()->route('ilnbs.show', $ilnb);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Ilnb $ilnb
-     * @return Response
-     *
-     * Também usando "Route Model Binding", como no "edit" acima.
+     * Aplicando o "Route Model Binding" do laravel
+     * @param  \App\Models\Ilnb  $ilnb
+     * @return \Illuminate\Http\Response
+     * A
      */
     public function destroy(Ilnb $ilnb): Response
     {
         $ilnb->delete();
-
         return \redirect()->route('ilnbs.index');
     }
 }

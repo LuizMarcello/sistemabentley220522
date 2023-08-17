@@ -1,5 +1,11 @@
 @csrf
 
+<?php
+function selected($value, $selected)
+{
+    return $value == $selected ? ' selected="selected"' : '';
+}
+?>
 {{-- Essa linha foi colocada dentro do "form" do create: --}}
 {{-- <input type="hidden" name="tipo" value="{{ $tipo }}"> --}}
 
@@ -12,15 +18,15 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="notafiscal">Nota fiscal*</label>
     <div class="col-sm-10">
-        <input value="{{ old('notafiscal', @$lnb->notafiscal) }}" type="text" id="notafiscal" name="notafiscal" required="required" maxlength="18"
-            class="notafiscal form-control @error('notafiscal') is-invalid @enderror">
+        <input value="{{ old('notafiscal', @$lnb->notafiscal) }}" type="text" id="notafiscal" name="notafiscal"
+            required="required" maxlength="18" class="notafiscal form-control @error('notafiscal') is-invalid @enderror">
         @error('notafiscal')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
 </div>
 
-<div class="form-group row">
+{{-- <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="datanota">Data da Nota*</label>
     <div class="col-sm-10">
         <input value="{{ old('datanota', @$lnb->datanota) }}" type="text" id="datanota" name="datanota" required="required" maxlength="18"
@@ -29,13 +35,21 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
+</div> --}}
+
+
+<div class="form-group row{{ $errors->has('datanota') ? 'has-error' : '' }}">
+    <label for="datanota" class="col-form-label col-sm-2 required">{{ 'Data da Nota' }}</label>
+    <input style="margin-left: 1.3%" class="form-control col-form-label col-sm-3" rows="5" name="datanota"
+        type="date" id="datanota" required value="{{ old('datanota', @$lnb->datanota) }}">
+    {!! $errors->first('datanota', '<p class="help-block">:message</p>') !!}
 </div>
 
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="banda">Banda*</label>
     <div class="col-sm-10">
-        <input value="{{ old('banda', @$lnb->banda) }}" type="text" id="banda" name="banda" {{-- required="required" --}} maxlength="18"
-            class="banda form-control @error('banda') is-invalid @enderror">
+        <input value="{{ old('banda', @$lnb->banda) }}" type="text" id="banda" name="banda"
+            {{-- required="required" --}} maxlength="18" class="banda form-control @error('banda') is-invalid @enderror">
         @error('banda')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -45,8 +59,8 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="marca">Marca*</label>
     <div class="col-sm-10">
-        <input value="{{ old('marca', @$lnb->marca) }}" type="text" id="marca" name="marca" {{-- required="required" --}} maxlength="18"
-            class="marca form-control @error('marca') is-invalid @enderror">
+        <input value="{{ old('marca', @$lnb->marca) }}" type="text" id="marca" name="marca"
+            {{-- required="required" --}} maxlength="18" class="marca form-control @error('marca') is-invalid @enderror">
         @error('marca')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -56,8 +70,8 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="modelo">Modelo*</label>
     <div class="col-sm-10">
-        <input value="{{ old('modelo', @$lnb->modelo) }}" type="text" id="modelo" name="modelo" {{-- required="required" --}} maxlength="18"
-            class="modelo form-control @error('modelo') is-invalid @enderror">
+        <input value="{{ old('modelo', @$lnb->modelo) }}" type="text" id="modelo" name="modelo"
+            {{-- required="required" --}} maxlength="18" class="modelo form-control @error('modelo') is-invalid @enderror">
         @error('modelo')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -67,8 +81,8 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2 required" for="serial">Serial*</label>
     <div class="col-sm-10">
-        <input value="{{ old('serial', @$lnb->serial) }}" type="text" id="serial" name="serial" {{-- required="required" --}} maxlength="18"
-            class="serial form-control @error('serial') is-invalid @enderror">
+        <input value="{{ old('serial', @$lnb->serial) }}" type="text" id="serial" name="serial"
+            {{-- required="required" --}} maxlength="18" class="serial form-control @error('serial') is-invalid @enderror">
         @error('serial')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -78,8 +92,8 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="observacao">Observacao</label>
     <div class="col-sm-10">
-        <input value="{{ old('observacao', @$lnb->observacao) }}" type="text" id="observacao" name="observacao" maxlength="500"
-            class="form-control @error('observacao') is-invalid @enderror">
+        <input value="{{ old('observacao', @$lnb->observacao) }}" type="text" id="observacao" name="observacao"
+            maxlength="500" class="form-control @error('observacao') is-invalid @enderror">
         @error('observacao')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -89,13 +103,12 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="situacao">Situação atual</label>
     <div class="col-sm-3">
-        <input value="{{ old('situacao', @$lnb->situacao) }}" type="text" id="situacao" name="situacao" class="form-control">
-        <select class="form-control" name="situacao" id="situacao">
-            <option value="{{  @$lnb->situacao }}">Alterar situação</option>
-            <option>Ativo</option>
-            <option>Em espera</option>
-            <option>Suspenso</option>
-            <option>Inativo</option>
+        <select class="form-select" name="situacao" id="situacao">
+            <option value="">Selecione uma opção</option>
+            <option value="ativo" {{ <?php echo selected('ativo', @$lnb->situacao); ?> }}>Ativo</option>
+            <option value="em espera" {{ <?php echo selected('em espera', @$lnb->situacao); ?> }}>Em espera</option>
+            <option value="suspenso" {{ <?php echo selected('suspenso', @$lnb->situacao); ?> }}>Suspenso</option>
+            <option value="inativo" {{ <?php echo selected('inativo', @$lnb->situacao); ?> }}>Inativo</option>
         </select>
     </div>
 </div>
