@@ -7,13 +7,13 @@ use Illuminate\Foundation\Http\FormRequest;
 class TriaRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+    * Determine if the user is authorized to make this request.
+    *
+    * @return bool
+    */
     public function authorize()
     {
-        return true;
+    return true;
     }
 
     /**
@@ -24,12 +24,16 @@ class TriaRequest extends FormRequest
     public function rules()
     {
         return [
-            'serial' => ['required', 'max:20', 'min:3'],
-            'modelo' => ['required', 'alpha_num', 'max:20', 'min:3'],
-            'notafiscal' => ['required', 'integer'],
-            'banda' => ['required', 'max:7', 'min:7'],
-            'datanota' => ['required', 'date_format:d/m/Y'],
-            'marca' => ['required', 'alpha_num', 'max:50', 'min:2']
+            //'serial' => ['required', 'max:20', 'min:3'],
+            //'modelo' => ['required', 'alpha_num', 'max:20', 'min:3'],
+            //'notafiscal' => ['required', 'integer'],
+            //'banda' => ['required', 'max:7', 'min:7'],
+            //'datanota' => ['required', 'date_format:d/m/Y'],
+            //'marca' => ['required', 'alpha_num', 'max:50', 'min:2'],
+            //'macaddress' => ['required'],
+            //'situacao' => ['required'],
+            //'observacao' => ['required']
         ];
+
     }
 }

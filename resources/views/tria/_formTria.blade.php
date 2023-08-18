@@ -1,5 +1,12 @@
 @csrf
 
+<?php
+function selected($value, $selected)
+{
+    return $value == $selected ? ' selected="selected"' : '';
+}
+?>
+
 {{-- Essa linha foi colocada dentro do "form" do create: --}}
 {{-- <input type="hidden" name="tipo" value="{{ $tipo }}"> --}}
 
@@ -20,15 +27,11 @@
     </div>
 </div>
 
-<div class="form-group row">
-    <label class="col-form-label col-sm-2 required" for="datanota">Data da Nota*</label>
-    <div class="col-sm-10">
-        <input value="{{ old('datanota', @$tria->datanota) }}" type="text" id="datanota" name="datanota" required="required" maxlength="18"
-            class="datanota form-control @error('datanota') is-invalid @enderror">
-        @error('datanota')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
+<div class="form-group row{{ $errors->has('datanota') ? 'has-error' : '' }}">
+    <label for="datanota" class="col-form-label col-sm-2 required">{{ 'Data da Nota' }}</label>
+    <input style="margin-left: 1.3%" class="form-control col-form-label col-sm-3" rows="5" name="datanota"
+        type="date" id="datanota" required value="{{ old('datanota', @$tria->datanota) }}">
+    {!! $errors->first('datanota', '<p class="help-block">:message</p>') !!}
 </div>
 
 <div class="form-group row">
@@ -76,6 +79,17 @@
 </div>
 
 <div class="form-group row">
+    <label class="col-form-label col-sm-2" for="macaddress">Endereço Mac</label>
+    <div class="col-sm-10">
+        <input value="{{ old('macaddress', @$tria->macaddress) }}" type="text" id="macaddress" name="macaddress"
+            maxlength="100" class="macaddress form-control @error('macaddress') is-invalid @enderror">
+        @error('macaddress')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+    </div>
+</div>
+
+<div class="form-group row">
     <label class="col-form-label col-sm-2" for="observacao">Observacao</label>
     <div class="col-sm-10">
         <input value="{{ old('observacao', @$tria->observacao) }}" type="text" id="observacao" name="observacao" maxlength="500"
@@ -89,15 +103,13 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="situacao">Situação atual</label>
     <div class="col-sm-3">
-        <input value="{{ old('situacao', @$tria->situacao) }}" type="text" id="situacao" name="situacao" class="form-control">
-        <select class="form-control" name="situacao" id="situacao">
-            <option value="{{  @$tria->situacao }}">Alterar situação</option>
-            <option>Ativo</option>
-            <option>Em espera</option>
-            <option>Suspenso</option>
-            <option>Inativo</option>
+        <select class="form-select" name="situacao" id="situacao">
+            <option value="">Selecione uma opção</option>
+            <option value="ativo" {{ <?php echo selected('ativo', @$tria->situacao); ?> }}>Ativo</option>
+            <option value="em espera" {{ <?php echo selected('em espera', @$tria->situacao); ?> }}>Em espera</option>
+            <option value="suspenso" {{ <?php echo selected('suspenso', @$tria->situacao); ?> }}>Suspenso</option>
+            <option value="inativo" {{ <?php echo selected('inativo', @$tria->situacao); ?> }}>Inativo</option>
         </select>
     </div>
-</div>
 
-<button class="btn btn-primary" name="submit" value="" type="submit">Salvar</button>
+</div> <button class="btn btn-primary" name="submit" value="" type="submit">Salvar</button>
