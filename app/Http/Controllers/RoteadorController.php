@@ -4,65 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Roteador;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoteadorRequest;
 use Symfony\Component\HttpFoundation\Response;
+
 class RoteadorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return View
-     */
-    public function index(): View
-    {
-        $registros = Roteador::paginate(2);
-
-        return view('roteador.indexRoteador', \compact('registros'));
-    }
-
-    /**
-     *  Show the form for creating a new resource.
-     *
-     * @param Request $request
-     * @return View
-     */
-    public function create(Request $request): View
-    {
-        return view('roteador.createRoteador');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param RoteadorRequest $request
-     * @return Response
-     */
-    public function store(RoteadorRequest $request): Response
-    {
-        $registro = Roteador::create($request->all());
-
-        return \redirect()->route('roteadors.show', $registro->id);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Roteador $roteador
-     * @return View
-     *
-     * Também usando "Route Model Binding", como no "edit" e "upgrade".
-     */
-    public function show(Roteador $roteador): View
-    {
-        return view('roteador.showroteador', \compact('roteador'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Roteador $roteador
      * @return View
      *
      * Aplicando o "Route Model Binding" do laravel,
@@ -70,41 +20,99 @@ class RoteadorController extends Controller
      * parâmetro.
      * Isto já vai tornar meu Model "Roteador" filtrado
      * e dísponivel dentro da view retornada.
+     *
+     * @param \App\Models\Roteador $registros
+     * @param \App\Http\Requests\RoteadorRequest $request
      */
-    public function edit(Roteador $roteador): View
+    public function index(RoteadorRequest $request, Roteador $registros): View
     {
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        $registros = Roteador::paginate(5);
+        return view('roteador.indexRoteador', \compact('registros'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return View
+     */
+    public function create(): View
+    {
+        return view('roteador.createRoteador');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \App\Http\Requests\RoteadorRequest
+     * @return Response
+     */
+    public function store(RoteadorRequest $request): Response
+    {
+        $registro = Roteador::create($request->all());
+         return \redirect()->route('roteadores.index', $registro->id);
+    }
+
+    /**
+    * Display the specified resource.
+    * @param int $id
+    * @return \Illuminate\View\View
+    */
+    public function show($id): View
+    {
+        $roteador = Roteador::findOrFail($id);
+        return view('roteador.showRoteador', \compact('roteador'));
+    }
+
+    /**
+    * Display the specified resource.
+    * @param int $id
+    * @return \Illuminate\View\View
+    *
+    *
+    * O método edit() serve somente para retornar o formulário
+    * preenchido com os dados para serem editados, como create() e store().
+    */
+    public function edit($id): View
+    {
+        $roteador = Roteador::findOrFail($id);
         return view('roteador.editRoteador', \compact('roteador'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param RoteadorRequest $request
-     * @param Roteador $roteador
-     * @return Response
+     * @param int $id
+     * @param \App\Http\Requests\RoteadorRequest
+     * @return \Illuminate\Http\Response
      *
      * Usando a classe "RoteadorRequest" para validar.
-     * Também usando "Route Model Binding", como no "edit" acima.
+     * o método update() serve para receber esses dados e atualizar
+     * no banco de dados, como create() e store().
+     *
      */
-    public function update(RoteadorRequest $request, Roteador $roteador): Response
+    public function update(RoteadorRequest $request, $id): Response
     {
-        $roteador->update($request->all());
+        $requestData = $request->all();
+        $roteador = Roteador::findOrFail($id);
+        $roteador->update($requestData);
 
-        return \redirect()->route('roteadors.show', $roteador);
+        return \redirect()->route('roteadores.show', $roteador);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Roteador $roteador
-     * @return Response
-     *
-     * Também usando "Route Model Binding", como no "edit" acima.
+     * Aplicando o "Route Model Binding" do laravel
+     * @param  \App\Models\Roteador $roteador
+     * @return \Illuminate\Http\Response
+     * A
      */
     public function destroy(Roteador $roteador): Response
     {
         $roteador->delete();
-
-        return \redirect()->route('roteadors.index');
+        return \redirect()->route('roteadores.index');
     }
 }

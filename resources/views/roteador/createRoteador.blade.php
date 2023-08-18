@@ -6,11 +6,11 @@
 
 @section('breadcrumb')
     <li class="breadcrumb-item">
-        <a href="{{ route('roteadors.index') }}">Listagem de Roteadores</a>
+        <a href="{{ route('roteadores.index') }}">Listagem de Roteadores</a>
     </li>
 
     <li class="breadcrumb-item">
-        <a href="{{ route('roteadors.create') }}">Novo Roteador</a>
+        <a href="{{ route('roteadores.create') }}">Novo Roteador</a>
     </li>
 @endsection
 
@@ -22,13 +22,13 @@
                     <div class="card-header">
                         <h3 class="card-title">Entre com os dados</h3>
                         <div class="card-tools">
-                            <a href="{{ route('roteadors.index') }}" class="btn btn-success">Voltar</a>
+                            <a href="{{ route('roteadores.index') }}" class="btn btn-success">Voltar</a>
                         </div>
                     </div>
 
                     {{-- O corpo --}}
                     <div class="card-body">
-                        <form action="{{ route('roteadors.store') }}" method="POST">
+                        <form action="{{ route('roteadores.store') }}" method="POST">
                             @include('roteador._formRoteador')
                         </form>
                     </div>

@@ -1,5 +1,12 @@
 @csrf
 
+<?php
+function selected($value, $selected)
+{
+    return $value == $selected ? ' selected="selected"' : '';
+}
+?>
+
 {{-- Essa linha foi colocada dentro do "form" do create: --}}
 {{-- <input type="hidden" name="tipo" value="{{ $tipo }}"> --}}
 
@@ -20,15 +27,11 @@
     </div>
 </div>
 
-<div class="form-group row">
-    <label class="col-form-label col-sm-2 required" for="datanota">Data da Nota*</label>
-    <div class="col-sm-10">
-        <input value="{{ old('datanota', @$roteador->datanota) }}" type="text" id="datanota" name="datanota" required="required" maxlength="18"
-            class="datanota form-control @error('datanota') is-invalid @enderror">
-        @error('datanota')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
+<div class="form-group row{{ $errors->has('datanota') ? 'has-error' : '' }}">
+    <label for="datanota" class="col-form-label col-sm-2 required">{{ 'Data da Nota' }}</label>
+    <input style="margin-left: 1.3%" class="form-control col-form-label col-sm-3" rows="5" name="datanota"
+        type="date" id="datanota" required value="{{ old('datanota', @$roteador->datanota) }}">
+    {!! $errors->first('datanota', '<p class="help-block">:message</p>') !!}
 </div>
 
 <div class="form-group row">
@@ -100,13 +103,12 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="situacao">Situação atual</label>
     <div class="col-sm-3">
-        <input value="{{ old('situacao', @$roteador->situacao) }}" type="text" id="situacao" name="situacao" class="form-control">
-        <select class="form-control" name="situacao" id="situacao">
-            <option value="{{  @$roteador->situacao }}">Alterar situação</option>
-            <option>Ativo</option>
-            <option>Em espera</option>
-            <option>Suspenso</option>
-            <option>Inativo</option>
+        <select class="form-select" name="situacao" id="situacao">
+            <option value="">Selecione uma opção</option>
+            <option value="ativo" {{ <?php echo selected('ativo', @$roteador->situacao); ?> }}>Ativo</option>
+            <option value="em espera" {{ <?php echo selected('em espera', @$roteador->situacao); ?> }}>Em espera</option>
+            <option value="suspenso" {{ <?php echo selected('suspenso', @$roteador->situacao); ?> }}>Suspenso</option>
+            <option value="inativo" {{ <?php echo selected('inativo', @$roteador->situacao); ?> }}>Inativo</option>
         </select>
     </div>
 </div>
