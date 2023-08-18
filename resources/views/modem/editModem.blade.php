@@ -29,11 +29,15 @@
                     {{-- O corpo --}}
                     <div class="card-body">
                         <form action="{{ route('modens.update', $modem) }}" method="POST">
+                            {{-- {{ csrf_field() }} --}}
+                            @method('PUT')
+                            {{-- ou assim --}}
+                            {{-- <input type="hidden" name="_method" value="put"> --}}
                             @include('modem._formModem')
                         </form>
 
                     </div>
-                    
+
                 </div>
             </div>
         </div>
