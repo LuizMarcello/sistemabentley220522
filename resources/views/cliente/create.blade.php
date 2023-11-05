@@ -20,6 +20,7 @@
                         <li class="nav-item breadcrumb-item d-none d-sm-inline-block active" aria-current="page">
                             {{ Route::currentRouteName() }}</li>
                     </ol>
+                //</nav>
                 </nav>
             @endauth
         </ul>
